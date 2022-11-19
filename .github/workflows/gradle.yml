@@ -9,12 +9,12 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "ah-ha-admin-patch1 ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "ah-ha-admin" ]
 
 permissions:
-  contents: read
+  contents: read,write
 
 jobs:
   build:
@@ -30,5 +30,35 @@ jobs:
         distribution: 'temurin'
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: build
+      with: 
+ java-version: 11 
+
+distribution: temurin 
+ cache: gradle 
+
+java-package: jdk 
+check-latest: false 
+
+server-id: github 
+server-username: GITHUB_ACTOR 
+server-password: GITHUB_TOKEN 
+overwrite-settings: true 
+job-status: success 
+
+ token: *** 
+
+Installed distributions 
+
+Resolved Java 11.0.16+1 from tool-cache 
+
+Setting Java 11.0.16+1 as the default 
+
+Creating toolchains.xml for JDK version 11 from temurin 
+
+Writing to /home/runner/.m2/toolchains.xml 
+
+ Java configuration: 
+Distribution: temurin 
+Version: 11.0.16+1 
+Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.16-1/x64
+arguments: build
