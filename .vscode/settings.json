@@ -47,5 +47,7 @@
         "**/Makefile": true,
         "**/*.sh": true
     },
-    "workspace.isHidden": true
+    "workspace.isHidden": true,
+    "editor.tabCompletion": "on",
+    "diffEditor.codeLens": true
 }
