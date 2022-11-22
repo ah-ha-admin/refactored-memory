@@ -16,9 +16,30 @@ jobs:
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
+        Run actions/setup-java@v3
+2
+  with:
+3
+    java-version: 11
+4
+    distribution: temurin
+5
+    cache: gradle
+6
+    java-package: jdk
+7
+    check-latest: false
+8
+    server-id: github
+9
+    server-username: Ah-Ha-Admin
+    server-password: none
+11
+    overwrite-settings: true
+12
+    job-status: success
+13
+    token: ***
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
