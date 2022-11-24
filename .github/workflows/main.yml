@@ -1,1 +1,3 @@
 SSH-tunnel/Vscode.dev
+- name: Setup Java JDK
+  uses: actions/setup-java@v3.6.0
