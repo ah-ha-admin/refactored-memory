@@ -24,3 +24,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+- name: Setup Java JDK
+  uses: actions/setup-java@v3.6.0
