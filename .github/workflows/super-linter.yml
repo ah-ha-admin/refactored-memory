@@ -24,6 +24,6 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: "main"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: "master"
+          GITHUB_TOKEN: ${{ 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 }}
