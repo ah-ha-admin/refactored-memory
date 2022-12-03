@@ -53,3 +53,21 @@ jobs:
         with:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
+name: autofix.ci
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: cargo clippy --fix
+      - run: cargo fmt
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
