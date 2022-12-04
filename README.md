@@ -4,24 +4,10 @@
 ### ahahahahaha ###
 ------------------
 ==================
-""
-> python3 -m setuptools
-*import setuptools
 
-with:
-${(open("README.md", "r") as fhandle:
-	long_description = fhandle.read(
-	)  # Your README.md file will be used as the long description!
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console (Text Based)
 
-setuptools.setup(
-    name="Ah-ha-admin",   
-    version="0.0.1", 
-    author="Ah-ha-admin",  
-    author_email="sexflixxxvip@gmail.com",  
-    description="Pypa Project",  
-    long_description=Python Package Project Pypa,
-    long_description_content_type="text/markdown",
-    url=
     "https://github.com/pypa/sampleproject",  
     "https://ah-ha-admin.github.io/refactored-memory"
     
