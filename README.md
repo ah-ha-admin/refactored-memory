@@ -4,6 +4,8 @@
 ### ahahahahaha ###
 ------------------
 ==================
+""
+> python3 -m setuptools
 *import setuptools
 
 with:
