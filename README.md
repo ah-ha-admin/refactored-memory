@@ -1,9 +1,13 @@
 # refactored-memory
 ![246459-200](https://user-images.githubusercontent.com/118419708/205466524-0d919823-fddd-464c-a4b8-c05b25c01b6e.png)
+## Ah-Ha-Admin ##
+### ahahahahaha ###
+------------------
+==================
+*import setuptools
 
-import setuptools
-
-with open("README.md", "r") as fhandle:
+with:
+${(open("README.md", "r") as fhandle:
 	long_description = fhandle.read(
 	)  # Your README.md file will be used as the long description!
 
@@ -25,7 +29,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-    ],  # Enter meta data into the classifiers list!
+    ],  Enter meta data into the classifiers list!
     python_requires=
-    '>=3.6',  # The version requirement for Python to run your package!
-)
+    '>=3.6')} 
