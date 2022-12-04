@@ -11,12 +11,11 @@ Classifier: Environment :: Console (Text Based)
     "https://github.com/pypa/sampleproject",  
     "https://ah-ha-admin.github.io/refactored-memory"
     
-    packages=setuptools.find_packages(
-    ),  # A list of all packages for Python to distribute!
-    classifiers=[
+    packages=setuptools.find_packages(),  # A list of all packages for Python to distribute!
+    classifiers=
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],  Enter meta data into the classifiers list!
     python_requires=
-    '>=3.6')} 
+    '>=3.6'
