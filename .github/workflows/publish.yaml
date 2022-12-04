@@ -22,7 +22,7 @@ jobs:
 
     steps:
 
-      - name: Checkout
+      - name: action/checkout
 
         uses: actions/checkout@v2
 
