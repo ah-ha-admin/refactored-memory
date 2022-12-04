@@ -4,8 +4,7 @@
 ### ahahahahaha ###
 ------------------
 ==================
-
-Classifier: Development Status :: 4 - Beta
+<key><id>Classifier: Development Status :: 4 - Beta
 Classifier: Environment :: Console (Text Based)
 
     "https://github.com/pypa/sampleproject",  
@@ -18,4 +17,4 @@ Classifier: Environment :: Console (Text Based)
         "Operating System :: OS Independent",
     ],  Enter meta data into the classifiers list!
     python_requires=
-    '>=3.6'
+    '>=3.6' </key></id>
