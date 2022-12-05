@@ -5,14 +5,4 @@
 ------------------
 ==================
 
-<key><id>="Classifier" 
-Classifier:Development Status:: 4 -Beta
-Classifier:Environment:: (Text Based) Url=
-    "https://github.com/pypa/sampleproject",  
-    "https://ah-ha-admin.github.io/refactored-memory"
-    packages=setuptools.find_packages(),  # A list of all packages for Python to distribute!
-    classifiers=
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    python_requires=>='3.6'" </key></id>
+        
