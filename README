@@ -2,3 +2,8 @@ $ curl -o actions-runner-linux-arm64-2.299.1.tar.gz -L https://github.com/action
 $ echo "debe1cc9656963000a4fbdbb004f475ace5b84360ace2f7a191c1ccca6a16c00  actions-runner-linux-arm64-2.299.1.tar.gz" | shasum -a 256 -c
  tar xzf ./actions-runner-linux-arm64-2.299.1.tar.gz
 ./config.sh --url https://github.com/ah-ha-admin/refactored-memory --token A4HPB7HYPQWVEDMBXNF47KDDRU5YW
+
+
+
+KaLI LiNux + NET hunter 
+wget https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project/raw/master/nethunter-rootless/install-nethunter-termux
