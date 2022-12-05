@@ -1,0 +1,2 @@
+> sudo gem install package_cloud
+> package_cloud push ah-ha-admin/Ah-Ha-colomboobiz-info-FAIlS ah-ha-admin/refactored-memory/.github/workflows/rubygems/> package_cloud push ah-ha-admin/Ah-Ha-colomboobiz-info-FAIlS
