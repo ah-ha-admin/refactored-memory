@@ -1,0 +1,8 @@
+app_name:WakaFlokaLoka
+app_id:
+{{ hC3ETBVKpoJzya4HlzcGvDVI }}
+app_secret:
+{{ waka_sec_Htee94P42sYHf8c6YSiGt3AMPsF24yBS6bnifAbJbDsfRVT0Rd1Auc0o6KYcShIs0k2WZzOprnKDhIRx }}
+with:
+gh-page
+url:https://ah-ha-admin.github.io/refactored-memory
