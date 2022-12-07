@@ -1,5 +1,15 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+jobs:
+  my_first_job:
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          repository: Ah-ha-admin/refactored-memory
+          ref: v1.0
+          token: ${{ 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 }}
+          path: ./.github/actions/refactored-memory
+      - name: Run my action
+        uses: ./.github/actions/workflows/jobs
 
 on:
   # Runs on pushes targeting the default branch
@@ -25,7 +35,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ ah-ha-admin.github.io }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
