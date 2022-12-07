@@ -1,6 +1,17 @@
+jobs:
+  my_first_job:
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          repository: Ah-ha-admin/refactored-memory
+          ref: v1.0
+          token: ${{ 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 }}
+          path: ./.github/actions/refactored-memory
+      - name: Run my action
+        uses: ./.github/actions/workflows/jobs
 Run actions/deploy-pages@v1
 Actor: ah-ha-admin
-
 Run actions/checkout@v3
 Name: docker
 Action ID: 3610059348
@@ -18,4 +29,4 @@ Reported success!
 
 Run actions/workflows@v3
 runs-on: action/checkout@v3
-  on: pull request,draft,commit,comment
+  on: pull request,draft,commit,comment,push
