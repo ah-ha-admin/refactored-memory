@@ -1,32 +1,42 @@
-# This workflow executes several linters on changed files based on languages used in your code base whenever
-# you push a code or open a pull request.
-#
-# You can adjust the behavior by modifying this file.
-# For more information, see:
-# https://github.com/github/super-linter
-name: Lint Code Base
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Upload Python Package
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-jobs:
-  run-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
-          fetch-depth: 1
+  release:
+    types: [published]
 
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: "master"
-          GITHUB_TOKEN: ${{ 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 }}
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+    - name: Build package
+      run: python -m build
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
 name: autofix.ci
 on:
   workflow_call:
@@ -65,24 +75,3 @@ jobs:
       - run: black .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c016
-name: autofix.ci
-on:
-  pull_request:
-  push:
-    branches: [ "main" ]
-permissions:
-  contents: read
-
-jobs:
-  autofix:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - run: npm ci
-      - run: npx prettier --write .
-
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
