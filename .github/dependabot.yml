@@ -1,0 +1,47 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 1,2,3,4,5
+updates: '.github/workflows' {{ .yml }}
+    directory: "/"
+     schedule:
+      interval: "daily"
+trigger:
+- main
+
+# Install Nuget
+steps:
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 5.2.0'
+  inputs:
+    versionSpec: 5.2.0
+
+# Install DotNet
+- task: UseDotNet@2
+  displayName: 'Use .NET Core SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '3.1.100'
+
+# Nuget Restore.
+- task: NuGetCommand@2
+  displayName: 'NuGet restore YourSolutionPath.sln'
+  inputs:
+    restoreSolution: YourSolutionPath.sln
+    feedsToUse: config
+    nugetConfigPath: NuGet.config
+
+# Build the code.
+- task: VSBuild@1
+  displayName: 'Build solution YourSolutionPath.sln'
+  inputs:
+    solution: YourSolutionPath.sln
+    configuration: '$(BuildConfiguration)'
+
+# Train the model.
+- task: IntelliCodeTeamModels@1
+  displayName: 'Visual Studio IntelliCode Team Models training'
+  inputs:
+    branch: 'main'
