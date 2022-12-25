@@ -78,3 +78,13 @@ on:
                                                                                                                                                                                                                                                                                                                                     run: |
                                                                                                                                                                                                                                                                                                                                               printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
                                                                                                                                                                                                                                                                                                                                                         pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
+																																	
+																																	defineComponent({
+  async run({ steps, $ }) {
+    await $.respond({
+      status: 200,
+      headers: { "API-KEY": "PROCESS.ENV" },
+      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable stream
+    });
+  }
+});
