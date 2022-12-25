@@ -1,0 +1,2 @@
+##fedora35
+sudo yum install zlib.i686 ncurses-libs.i686 bzip2-libs.i686
