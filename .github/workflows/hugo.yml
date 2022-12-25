@@ -51,7 +51,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "${{https://eo6dgrxggmba08k.m.pipedream.net}}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -61,8 +61,8 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+      url: ${{https://ah-ha-admin.github.io/refactored-memory/}}
+    runs-on: ubuntu-lates
     needs: build
     steps:
       - name: Deploy to GitHub Pages
