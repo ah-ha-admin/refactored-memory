@@ -24,10 +24,10 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-name: autofix.ci
-on:
-  pull_request:
-  push:
+    - name:autofix.ci: 
+nn:
+pull_request:
+push:
     branches: [ "main" ]
 permissions:
   contents: read
