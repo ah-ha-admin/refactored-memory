@@ -1,0 +1,4 @@
+type HostHasField = {
+  type: 'host';
+  value: string;
+};
