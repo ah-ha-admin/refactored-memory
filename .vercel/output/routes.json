@@ -1,3 +1,7 @@
+type Locale = {
+  redirect?: Record<string, string>;
+  cookie?: string;
+};
 type HostHasField = {
   type: 'host';
   value: string;
