@@ -1,0 +1,14 @@
+type HandleValue =
+  | 'rewrite'
+  | 'filesystem' // check matches after the filesystem misses
+  | 'resource'
+  | 'miss' // check matches after every filesystem miss
+  | 'hit'
+  | 'error'; //  check matches after error (500, 404, etc.)
+
+type Handler = {
+  handle: HandleValue;
+  src?: string;
+  dest?: string;
+  status?: number;
+};
