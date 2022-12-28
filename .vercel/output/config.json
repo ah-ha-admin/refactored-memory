@@ -6,3 +6,7 @@ type Config = {
   overrides?: OverrideConfig;
   cache?: string[];
 };
+type Locale = {
+  redirect?: Record<string, string>;
+  cookie?: string;
+};
