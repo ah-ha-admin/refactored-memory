@@ -65,4 +65,7 @@ def requirement
 
   @requirement = @version_requirements if defined?(@version_requirements)
 end
-
+# File lib/rubygems/dependency.rb, line 148
+def requirements_list
+  requirement.as_list
+end
