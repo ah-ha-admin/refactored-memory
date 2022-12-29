@@ -69,3 +69,7 @@ end
 def requirements_list
   requirement.as_list
 end
+# File lib/rubygems/dependency.rb, line 167
+def runtime?
+  @type == :runtime || !@type
+end
