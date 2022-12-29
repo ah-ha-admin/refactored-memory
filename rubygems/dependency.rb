@@ -85,3 +85,32 @@ def to_spec
 
   matches.last
 end
+# File lib/rubygems/dependency.rb, line 297
+def to_specs
+  matches = matching_specs true
+
+  # TODO: check Gem.activated_spec[self.name] in case matches falls outside
+
+  if matches.empty? then
+    specs = Gem::Specification.find_all { |s|
+              s.name == name
+            }.map { |x| x.full_name }
+
+    if specs.empty?
+      total = Gem::Specification.to_a.size
+      msg   = "Could not find '#{name}' (#{requirement}) among #{total} total gem(s)\n"
+    else
+      msg   = "Could not find '#{name}' (#{requirement}) - did find: [#{specs.join ','}]\n"
+    end
+    msg << "Checked in 'GEM_PATH=#{Gem.path.join(File::PATH_SEPARATOR)}', execute `gem env` for more information"
+
+    error = Gem::LoadError.new(msg)
+    error.name        = self.name
+    error.requirement = self.requirement
+    raise error
+  end
+
+  # TODO: any other resolver validations should go here
+
+  matches
+end
