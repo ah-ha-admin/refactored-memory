@@ -114,3 +114,7 @@ def to_specs
 
   matches
 end
+# File lib/rubygems/dependency.rb, line 163
+def type
+  @type ||= :runtime
+end
