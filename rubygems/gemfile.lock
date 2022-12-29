@@ -1,0 +1,4 @@
+Gem::Specification.new 'my_gem', '1.0' do |s|
+  # ...
+  s.metadata['allowed_push_host'] = 'https://gems.my-company.example'
+end
