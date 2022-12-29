@@ -29,3 +29,10 @@ def initialize name, *requirements
 
   @version_requirements = @requirement
 end
+# File lib/rubygems/dependency.rb, line 250
+def matches_spec? spec
+  return false unless name === spec.name
+  return true  if requirement.none?
+
+  requirement.satisfied_by?(spec.version)
+end
