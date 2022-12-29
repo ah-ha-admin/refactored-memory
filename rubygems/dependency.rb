@@ -73,3 +73,15 @@ end
 def runtime?
   @type == :runtime || !@type
 end
+# File lib/rubygems/dependency.rb, line 326
+def to_spec
+  matches = self.to_specs
+
+  active = matches.find { |spec| spec && spec.activated? }
+
+  return active if active
+
+  matches.delete_if { |spec| spec.nil? || spec.version.prerelease? } unless prerelease?
+
+  matches.last
+end
