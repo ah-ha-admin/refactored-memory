@@ -1,3 +1,4 @@
+Gem::Specification.new "my_malloc", "1.0" do |s| # [...] s.extensions = %w[ext/my_malloc/extconf.rb] end
 # frozen_string_literal: true
 
 version = File.read(File.expand_path("RAILS_VERSION", __dir__)).strip
