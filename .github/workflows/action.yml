@@ -85,7 +85,12 @@ on:
     await $.respond({
       status: 200,
       headers: { "API-KEY": "PROCESS.ENV" },
-      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable stream
-    });
-  }
-});
+      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
