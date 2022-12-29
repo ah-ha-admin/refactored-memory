@@ -1,0 +1,5 @@
+class Gem::Ext::ExtConfBuilder
+
+Public Class Methods
+
+build(extension, directory, dest_path, results, args=[], lib_dir=nil)
