@@ -7,3 +7,5 @@ fn main() {
     // (optional) We don't need to rerun for anything external.
     autocfg::rerun_path("build.rs");
 }
+[build-dependencies]
+autocfg = "1"
