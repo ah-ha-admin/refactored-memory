@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...>
+    <application ...>
+        ...
+        <meta-data android:name="com.rollbar.android.ACCESS_TOKEN"
+        android:value="85f50898a1464d76bc44963336a8a5ec" />
+    </application>
+</manifest>

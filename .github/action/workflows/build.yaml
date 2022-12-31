@@ -1,0 +1,57 @@
+name: Lint, Build & Test
+
+on: 
+
+  pull_request:
+
+    branches: [master]
+
+jobs:
+
+  lintBuildTest:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v1
+
+    - name: NPM Install
+
+      run: npm install
+
+    - name: Lint code
+
+      run: npm run lint
+
+    - name: Compile TypeScript
+
+      run: npm run compile
+
+    - name: Run tests
+
+      run: npm run test
+      
+      - name: Checkout
+
+  uses: actions/checkout@v2.6.0
+
+ steps: $respond
+
+ defineComponent({
+
+  async run({ steps, $ }) {
+
+    await $.respond({
+
+      status: 200,
+
+      headers: { "my-custom-header": "value" },
+
+      body: { message: "My custom response" }, // This can be any string, object, Buffer, or Readable stream
+
+    });
+
+  }
+
+});

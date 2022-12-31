@@ -1,0 +1,118 @@
+project_name: qodana
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -X github.com/JetBrains/qodana-cli/core.Version={{ .Tag }}
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+archives:
+  - name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ if .Mips }}_{{ .Mips }}{{ end }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    replacements:
+        amd64: x86_64
+nfpms:
+  - vendor: "JetBrains s.r.o."
+    homepage: "https://github.com/JetBrains/qodana-cli"
+    maintainer: "Qodana <qodana-support@jetbrains.com>"
+    description: "🔧 Run Qodana as fast as possible, with minimum effort required"
+    license: "Apache-2.0"
+    formats:
+      - apk
+      - deb
+      - rpm
+brews:
+  - tap:
+      owner: JetBrains
+      name: homebrew-utils
+    commit_author:
+      name: "tiulpin"
+      email: "viktor@tiulp.in"
+    commit_msg_template: ":sparkles: Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    folder: Formula
+    homepage: "https://github.com/JetBrains/qodana-cli"
+    description: "🔧 Run Qodana as fast as possible, with minimum effort required"
+    license: "Apache-2.0"
+scoop:
+  bucket:
+    owner: JetBrains
+    name: scoop-utils
+  commit_author:
+    name: "tiulpin"
+    email: "viktor@tiulp.in"
+  commit_msg_template: ":sparkles: Scoop update for {{ .ProjectName }} version {{ .Tag }}"
+  homepage: "https://github.com/JetBrains/qodana-cli"
+  description: "🔧 Run Qodana as fast as possible, with minimum effort required"
+  license: "Apache-2.0"
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+release:
+  footer: |
+    ## Install
+    
+    > 💡 The Qodana CLI is distributed and run as a binary. The Qodana linters with inspections are [Docker Images](https://www.jetbrains.com/help/qodana/docker-images.html).
+    > - You must have Docker installed and running locally to support this: https://www.docker.com/get-started
+    > - If you are using Linux, you should be able to run Docker from the current (non-root) user (https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+    
+    #### macOS and Linux
+    ##### Install with [Homebrew](https://brew.sh) (recommended)
+    ```console
+    brew install jetbrains/utils/qodana
+    ```
+    ##### Install with our installer
+    ```console
+    curl -fsSL https://jb.gg/qodana-cli/install | bash
+    ```
+    
+    #### Windows
+    ##### Install with [Scoop](https://scoop.sh)
+    ```console
+    scoop bucket add jetbrains https://github.com/JetBrains/scoop-utils
+    scoop install qodana
+    ```
+    
+    #### Anywhere else
+    #### Install with [Go](https://go.dev/doc/install)
+    ```console
+    go install github.com/JetBrains/qodana-cli@latest
+    ```
+    Alternatively, you can install the latest binary (or the apt/rpm/deb package) from this page.
+    
+    ## Update
+    Update to the latest version depends on how you choose to install `qodana` on your machine.
+    #### Update with [Homebrew](https://brew.sh)
+    ```console
+    brew upgrade qodana
+    ```
+    #### Update with [Scoop](https://scoop.sh)
+    ```console
+    scoop update qodana
+    ```
+    #### Update on Linux and macOS with the installer script
+    ```console
+    curl -fsSL https://jb.gg/qodana-cli/install | bash
+    ```
+    #### Update with [Go](https://go.dev/doc/install)
+    ```console
+    go install github.com/JetBrains/qodana-cli@latest
+    ```
+    Alternatively, you can grab the latest binary (or the apt/rpm/deb package) from this page.
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^:memo:'
+      - '^:bricks:'
+      - '^:recycle:'
