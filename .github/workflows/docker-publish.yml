@@ -6,6 +6,10 @@ name: Docker
 # documentation.
 
 on:
+ ah-ha-admin-patch-3
+  schedule:
+    - cron: '30 0 * * *'
+ main
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
