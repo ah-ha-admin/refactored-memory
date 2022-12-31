@@ -1,0 +1,64 @@
+ConnectWise_Control_Documentation/Get_started/Remote_access_guide/Install_an_access_agent
+Introduction
+
+After building an access agent installer, you will need run it one or more machines in order to connect to them from the Host page. This page will describe how to install a ConnectWise Control® access agent.
+
+Note: Be sure to review the guest client requirements before installing an agent on a machine.
+Warning: While it is possible to deploy the agent installer via Group Policy, the agent installer may be installed in unexpected directories. As a result, this implementation is unsupported. For more information on Group Policy, see our forum.
+Windows (.msi)
+
+Double-click on the .msi file to install. You can also install via the command line using msiexec:
+
+1
+msiexec /i ConnectWiseControl.ClientSetup.msi
+Windows (.exe)
+
+Double-click on the .exe file to install the access agent. You can also run the executable via a Windows command prompt.
+
+macOS / OS X (.pkg)
+
+Please see our instructions for installing the macOS access agent and configuring the necessary security and privacy controls.
+
+Terminal installation
+
+You can also install the .pkg file via the terminal:
+
+view sourceprint
+1
+sudo installer -pkg "ConnectWiseControl.ClientSetup.pkg" -target /
+ 
+
+Debian Linux (.deb)
+
+Run the following command in a terminal window:
+
+1
+sudo dpkg -i ConnectWiseControl.ClientSetup.deb
+ 
+
+Red Hat Linux (.rpm)
+
+Run the following in a terminal window:
+
+1
+sudo rpm -U ConnectWiseControl.ClientSetup.rpm
+ 
+
+Mac/Linux (.sh)
+
+The Mac/Linux shell script (.sh) will automatically detect a machine's OS and install the appropriate agent on it.
+
+1
+sudo ./ConnectWiseControl.ClientSetup.sh
+ 
+
+What's next
+
+Once the client is installed and running, you will see the client appear on the sessions list under the "Access" section. You may also deploy the installer via other methods, such as:
+
+The toolbox – Generate your installer, save it to your personal toolbox, then deploy it easily during a support session.
+Client Network Deployer – Install the Client Network Deployer extension to deploy the installer to multiple machines in an ARP table or in a subnet.
+Guest Basic Installer Builder – Add an extension such as the Guest Basic Installer Builder that will allow guests to build their own access agent installers.
+Email – Send the file via email for the guest to run.
+Share via download link – Generate the installer, upload it to your website and direct guests to download and install.
+Share via group policy (GPO) – This implementation is not supported

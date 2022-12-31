@@ -39,7 +39,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Execute gradle build
-      run: ./gradlew build    # Change this to build your mobile application
+      run: ./gradlew build
 
     - name: Run Zimperium zScan
       uses: zimperium/zscanmarketplace@bfc6670f6648d796098c251ccefcfdb98983174d
@@ -58,3 +58,7 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: Zimperium.sarif
+    - name: action/checkout
+    - uses: action/checkout3
+
+[![Zimperium zScan](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/zscan.yml/badge.svg?event=create)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/zscan.yml)
