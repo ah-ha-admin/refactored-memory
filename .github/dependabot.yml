@@ -3,8 +3,9 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
-version: 1,2,3,4,5
-updates: '.github/workflows' {{ .yml }}
+version: 1,2,3 4,5 updates: '.github/workflows' {{ workflows.yml }}
     directory: "/"
      schedule:
       interval: "daily"
+trigger:
+- main

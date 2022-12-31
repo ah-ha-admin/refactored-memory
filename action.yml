@@ -1,3 +1,64 @@
+name: "Next Version"
+description: "Format, bump, and update a package version"
+author: "Vlad Emelianov"
+inputs:
+  path:
+    description: Path to file that contains current version. Supports package.json, pyproject.toml, setup.cfg, version.txt
+    default: ""
+    required: false
+  version:
+    description: Current version to bump, use path isntead if possible
+    default: "0.0.0"
+    required: false
+  type:
+    description: "Version type: semver or pep440"
+    default: semver
+    required: false
+  release:
+    description: "Release type: stable, rc, alpha, or beta"
+    default: stable
+    required: false
+  result:
+    description: "Version to set as result: input, major, minor, patch, micro, prerelease, build, postrelease or exact version"
+    default: patch
+    required: false
+  update:
+    description: "Newline-separated paths to version files to update"
+    default: ""
+    required: false
+  encoding:
+    description: "Encoding for files provided in path"
+    default: utf-8
+    required: false
+outputs:
+  major:
+    description: "Next major version"
+  minor:
+    description: "Next minor version"
+  patch:
+    description: "Next patch/micro version"
+  micro:
+    description: "Next patch/micro version"
+  prerelease:
+    description: "Next prerelease version"
+  build:
+    description: "Next build/local version"
+  postrelease:
+    description: "Next postrelease version (pep440 only)"
+  result:
+    description: "Next version specified in output"
+  is-prerelease:
+    description: "Whether result version is a prerelease"
+  input:
+    description: "Normalized input version"
+  raw-input:
+    description: "Raw string input"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  icon: "tag"
+  color: "green"
 name: 'Setup .NET Core SDK'
 description: 'Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository'
 author: 'GitHub'

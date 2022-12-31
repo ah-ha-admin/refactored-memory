@@ -1,0 +1,40 @@
+name: GITHUB_CREATE_RELEASE@1
+steps:
+- task: GitHubAppCreateIssueComment@1
+  name: CreateComment
+  inputs:
+    privateKey: sha256:kbW29fuwcF8DQM/thZa7riP3hAUCjNuObQSFuIuMYDw=
+    appId: 268789
+    repo:  $(ah-ha-admin/refactored-memory) # format should be `owner/repo`
+    issueId: 1 # optional (defaults to pr id if available), this can be an issue or a PR
+    body: > # multiple lines and markdown supported.
+      ### Example Comment
+
+      This is a comment made by my **bot** via Azure Pipelines! 
+steps:
+- task: GitHubAppDeleteIssueComment@1
+  condition: ne(CreateComment.CommentId, '') # this skips the step if the comment id could not be found
+  inputs:
+    privateKey: sha256:kbW29fuwcF8DQM/thZa7riP3hAUCjNuObQSFuIuMYDw=
+    appId:Sexflixxxvip00/PROJECTCI
+    repo: $(ah-ha-admin/refactored-memory) # format should be `owner/repo`
+    commentId: $(CreateComment.CommentId)
+    #`CreateComment` comes from the name property of the `GitHubAppCreateIssueComment` task
+steps:
+- task: GitHubAppCreateRelease@1
+  inputs:
+    privateKey: 'sha256:kbW29fuwcF8DQM/thZa7riP3hAUCjNuObQSFuIuMYDw='
+    appId: 268789
+    repo: $(ah-ha-admin/refactored-memory) # format should be `owner/repo`
+    tagName: 'v1.0.0'
+    targetCommitish: '$(Pre Release,Create,Release,Run,Build,Deploy)' # optional
+    name: 'Sexflixxxvip00/ProjectCI' # optional
+    body: > # optional, multiple lines and markdown supported.
+      ### Example Release
+
+      This is a release made by my **bot** via Azure Pipelines!
+    draft: false # optional
+    prerelease: false # optional
+    discussionCategoryName: 'some category name' # optional
+    generateReleaseNotes: true
+    assets: ./release-assets # optional, can be a single file or a folder where all root files are 

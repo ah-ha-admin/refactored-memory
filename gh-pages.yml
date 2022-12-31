@@ -1,0 +1,10 @@
+name: gh-pages
+uses: @actions/checkoutv3
+build: deployment
+on-push: 
+deploy to gh-pages
+env:
+gh-pages
+branch: main
+
+

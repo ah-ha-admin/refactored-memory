@@ -1,0 +1,86 @@
+# contentstack ;
+## sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+INSTALLATION
+1
+2
+pkg update
+pkg upgrade
+Next, we install the packages we need: Git and Python.
+
+1
+2
+apt install git -y
+apt install python -y
+Now we balance the instrument itself
+
+1
+2
+git clone https://github.com/initstring/evil-ssdp
+cd evil-ssdp
+Next we will launch the tool:
+
+1
+python evil_ssdp.py eth0
+The installation process will continue. In case you require help to use the tool, experts in ethical hacking recommend using these commands:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+usage: evil_ssdp.py [-h] [-p PORT] [-t TEMPLATE] [-s SMB] [-b] [-r REALM]
+                    [-u URL]
+                    interface
+ 
+positional arguments:
+  interface             Network interface to listen on.
+ 
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PORT, --port PORT  Port for HTTP server. Defaults to 8888.
+  -t TEMPLATE, --template TEMPLATE
+                        Name of a folder in the templates directory. Defaults
+                        to "office365". This will determine xml and phishing
+                        pages used.
+  -s SMB, --smb SMB     IP address of your SMB server. Defalts to the primary
+                        address of the "interface" provided.
+  -b, --basic           Enable base64 authentication for templates and write
+                        credentials to log file.
+  -r REALM, --realm REALM
+                        Realm when prompting target for authentication via
+                        Basic Auth.
+  -u URL, --url URL     Redirect to this URL. Works with templates that do a
+                        POST for logon forms and with templates that include
+                        the custom redirect JavaScript (see README for more
+                        info).[example: -r https://google.com]
+  -a, --analyze         Run in analyze mode. Will NOT respond to any SSDP
+                        queries, but will still enable and run the web server
+                        for testing.
+These are all the commands needed to familiarize you with the tool. Ethical hacking experts recommend trying them out for a better experience. 
+
+To learn more about information security risks, malware variants, vulnerabilities and information technologies, feel free to access the International Institute of Cyber Security (IICS) websites.
+
+Share this…
