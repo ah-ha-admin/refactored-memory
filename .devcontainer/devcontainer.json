@@ -1,8 +1,12 @@
 {
 	"name": "Anaconda (Python 3)",
 	"build": { 
+ ms-vscode.extension-activator
 		"context": "..",
 		"dockerfile": "Dockerfile"
+		"context": ".[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode-remote-try-java).",
+		"dockerfile": ".Devcontainers.json"
+ main
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/anaconda:1": {},
@@ -58,6 +62,7 @@
 		"ghcr.io/guiyomh/features/golangci-lint:0": {},
 		"ghcr.io/guiyomh/features/pact-go:0": {},
 		"ghcr.io/tlc-sundown/devcontainers-features/msquic:1": {}
+ ms-vscode.extension-activator
 	},
 	"customizations": {
 		"vscode": {
@@ -65,19 +70,27 @@
 				"ms-azuretools.vscode-docker"
 			]
 		}
+main
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+ ms-vscode.extension-activator
 	// "forwardPorts": [],
+	// "forwardPorts": [false],
+ main
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "python --version",
 
 	// Configure tool-specific properties.
+ ms-vscode.extension-activator
 	// "customizations": {https://vscode.dev/liveshare/E984E45C53F28EBE6F95A212CEC69C89C39C},
+
+	// "customizations": {},
+ main
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

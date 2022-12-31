@@ -28,7 +28,10 @@
             "port": 9222,
             "request": "attach",
             "type": "chrome",
+ ms-vscode.extension-activator
             "webRoot": "${ah-ha-admin/refactored-memory/.devcontaainer.json}"
+            "webRoot": "${workspaceFolder}" 
+            main
         },
 
 
