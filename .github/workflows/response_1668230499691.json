@@ -1,0 +1,11 @@
+{
+  "code": "INVALID_BODY",
+  "message": "Request body contains invalid field(s), see details in `fields`",
+  "fields": [
+    {
+      "path": "auth.password",
+      "code": "INVALID_PASSWORD"
+    }
+  ],
+  "name": "ApiError"
+}

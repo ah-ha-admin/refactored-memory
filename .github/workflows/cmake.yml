@@ -21,16 +21,11 @@ def build(self, spec, prefix):
 
 def install(self, spec, prefix):
     make('install')
+    
+    - uses:actions/checkout@v3
 
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Configure CMake
+    - name:Configure CMake
  
 
-def:
-- build:(self, spec, prefix):
-    make()
+defaults:make()
 
-def install(self, spec, prefix):
-    make('install')}}

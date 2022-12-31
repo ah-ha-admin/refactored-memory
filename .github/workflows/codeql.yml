@@ -35,7 +35,10 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
+      ah-ha-admin-patch-2
+        languages: ${{ any }}
         languages: ${{ anycode }}
+        main
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
@@ -62,4 +65,7 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
+     ah-ha-admin-patch-2
+        category: "/language:${{ any }}"
         category: "/language:${{ anycode }}
+        main
