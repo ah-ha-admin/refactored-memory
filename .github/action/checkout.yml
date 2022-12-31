@@ -1,0 +1,23 @@
+- name:- name: Checkout
+
+  uses: actions/checkout@v2.6.0
+
+ steps: $respond
+
+ defineComponent({
+
+  async run({ steps, $ }) {
+
+    await $.respond({
+
+      status: 200,
+
+      headers: { "my-custom-header": "value" },
+
+      body: { message: "My custom response" }, // This can be any string, object, Buffer, or Readable stream
+
+    });
+
+  }
+
+});
