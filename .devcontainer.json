@@ -1,0 +1,5 @@
+##build:
+*/.devcontainer.json
+**/vscode.dev
+**/insiders.vscode.dev
+*/github.dev
