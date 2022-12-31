@@ -1,0 +1,61 @@
+name: Pylint
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+name: autofix.ci
+on:
+  workflow_call:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
+      - uses: install-pinned/pyupgrade@2438dd5b51107d2bebff5e85c46a0849fdad0e95
+      - name: Run pyupgrade
+        run: |  
+          shopt -s globstar
+          pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
+
+      # Sort imports with https://github.com/asottile/reorder_python_imports
+      - uses: install-pinned/reorder_python_imports@0505c9cc1805564ca09905637e20d334990501a0
+      - name: Run reorder-python-imports
+        run: |
+         shopt -s globstar
+         reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
+
+      # Remove unused imports with https://github.com/PyCQA/autoflake
+      - uses: install-pinned/autoflake@32877f5112ce1c5b8b30cf57d70593a53d5fca87
+      - run: autoflake --in-place --remove-all-unused-imports -r .
+
+      # Format your code with https://github.com/psf/black
+      - uses: install-pinned/black@dde5aed720bc458e86d99144d4d0c1f6c8e08844
+      - run: black .
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c016

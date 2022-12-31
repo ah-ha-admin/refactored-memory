@@ -1,0 +1,25 @@
+runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
+name: ci
+on:
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material
+      - run: cd docs; mkdocs gh-deploy --force

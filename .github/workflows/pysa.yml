@@ -1,0 +1,89 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow integrates Python Static Analyzer (Pysa) with
+# GitHub's Code Scanning feature.
+#
+# Python Static Analyzer (Pysa) is a security-focused static
+# analysis tool that tracks flows of data from where they
+# originate to where they terminate in a dangerous location.
+#
+# See https://pyre-check.org/docs/pysa-basics/
+
+name: Pysa
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main", all ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '32 1 * * 0'
+
+permissions:
+    contents: read
+
+jobs:
+  pysa:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Run Pysa
+        uses: facebook/pysa-action@f46a63777e59268613bd6e2ff4e29f144ca9e88b
+        with:
+          # To customize these inputs:
+          # See https://github.com/facebook/pysa-action#inputs
+          repo-directory: './'
+          requirements-path: 'requirements.txt'
+          infer-types: true
+          include-default-sapp-filters: true
+
+name: autofix.ci
+on:
+  workflow_call:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
+      - uses: install-pinned/pyupgrade@2438dd5b51107d2bebff5e85c46a0849fdad0e95
+      - name: Run pyupgrade
+        run: |  
+          shopt -s globstar
+          pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
+
+      # Sort imports with https://github.com/asottile/reorder_python_imports
+      - uses: install-pinned/reorder_python_imports@0505c9cc1805564ca09905637e20d334990501a0
+      - name: Run reorder-python-imports
+        run: |
+         shopt -s globstar
+         reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
+
+      # Remove unused imports with https://github.com/PyCQA/autoflake
+      - uses: install-pinned/autoflake@32877f5112ce1c5b8b30cf57d70593a53d5fca87
+      - run: autoflake --in-place --remove-all-unused-imports -r .
+
+      # Format your code with https://github.com/psf/black
+      - uses: install-pinned/black@dde5aed720bc458e86d99144d4d0c1f6c8e08844
+      - run: black .
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c016ye

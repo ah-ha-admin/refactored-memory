@@ -1,0 +1,181 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@ah-ha-admin 
+rubocop
+/
+rubocop
+Public
+Code
+Issues
+242
+Pull requests
+34
+Discussions
+Actions
+Security
+Insights
+rubocop/.github/workflows/rubocop.yml
+@koic
+koic Use GitHub Actions instead of CircleCI for JRuby matrix
+…
+Latest commit db4fa07 on Aug 16
+ History
+ 5 contributors
+@koic@MSP-Greg@marcandre@pirj@bquorning
+97 lines (90 sloc)  2.64 KB
+
+###
+# Please keep /.mergify.yml synced!
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  main:
+    name: >-
+      ${{ matrix.os }} ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}-latest
+    env:
+      # See https://github.com/tmm1/test-queue#environment-variables
+      TEST_QUEUE_WORKERS: 2
+    strategy:
+      fail-fast: false
+      matrix:
+        # [ubuntu, macos, windows]
+        os: [windows]
+        ruby: ['2.6', '2.7', '3.0', '3.1', 'head']
+        include:
+          - os: windows
+            ruby: mingw
+        exclude:
+          - os: windows
+            ruby: head
+
+    steps:
+      - name: windows misc
+        if: matrix.os == 'windows'
+        run: |
+          # set TMPDIR, git core.autocrlf
+          echo "TMPDIR=$env:RUNNER_TEMP" >> $GITHUB_ENV
+          git config --system core.autocrlf false
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+
+      - name: install dependencies
+        run: bundle install --jobs 3 --retry 3
+      - name: spec
+        run: bundle exec rake spec
+      - name: ascii_spec
+        run: bundle exec rake ascii_spec
+      - name: internal_investigation
+        run: bundle exec rake internal_investigation
+
+  jruby:
+    name: JRuby 9.3
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: jruby-9.3
+
+      - name: install dependencies
+        run: bundle install --jobs 3 --retry 3
+      - name: spec
+        run: bundle exec rake spec
+      - name: ascii_spec
+        run: bundle exec rake ascii_spec
+      - name: internal_investigation
+        run: bundle exec rake internal_investigation
+
+  rspec4:
+    runs-on: ubuntu-latest
+    name: RSpec 4
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use latest RSpec 4 from `4-0-dev` branch
+        run: |
+          sed -e "/'rspec', '~> 3/d" -i Gemfile
+          cat << EOF > Gemfile.local
+            gem 'rspec', github: 'rspec/rspec', branch: '4-0-dev'
+            gem 'rspec-core', github: 'rspec/rspec-core', branch: '4-0-dev'
+            gem 'rspec-expectations', github: 'rspec/rspec-expectations', branch: '4-0-dev'
+            gem 'rspec-mocks', github: 'rspec/rspec-mocks', branch: '4-0-dev'
+            gem 'rspec-support', github: 'rspec/rspec-support', branch: '4-0-dev'
+          EOF
+      - name: set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - name: spec
+        run: bundle exec rspec
+rubocop/rubocop.yml at db4fa07de044513a106ddafa735d5c918ce0bd99 · rubocop/rubocop# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# pulled from repo
+name: "Rubocop"
+
+on:
+  push:
+    branches: [ "main", all ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '41 10 * * 2'
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # If running on a self-hosted runner, check it meets the requirements
+    # listed at https://github.com/ruby/setup-ruby#using-self-hosted-runners
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
+      with:
+        ruby-version: 2.6
+
+    # This step is not necessary if you add the gem to your Gemfile
+    - name: Install Code Scanning integration
+      run: bundle add code-scanning-rubocop --version 0.3.0 --skip-install
+
+    - name: Install dependencies
+      run: bundle install
+
+    - name: Rubocop run
+      run: |
+        bash -c "
+          bundle exec rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
+          [[ $? -ne 2 ]]
+        "
+
+    - name: Upload Sarif output
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: rubocop.sarif
