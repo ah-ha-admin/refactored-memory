@@ -1,0 +1,77 @@
+{
+	"name": "Anaconda (Python 3)",
+	"build": { 
+		"context": ".[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode-remote-try-java).",
+		"dockerfile": ".Devcontainers.json"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/anaconda:1": {},
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/conda:1": {},
+		"ghcr.io/devcontainers/features/docker-from-docker:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:1": {},
+		"ghcr.io/devcontainers/features/dotnet:1": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/git-lfs:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/java:1": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/devcontainers/features/nix:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/ruby:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/rocker-org/devcontainer-features/miniforge:0": {},
+		"ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {},
+		"ghcr.io/mpriscella/features/helm-chart-testing:1": {},
+		"ghcr.io/devcontainers-contrib/features/ansible:1": {},
+		"ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
+		"ghcr.io/devcontainers-contrib/features/argo-workflows:1": {},
+		"ghcr.io/devcontainers-contrib/features/bandit:1": {},
+		"ghcr.io/devcontainers-contrib/features/black:1": {},
+		"ghcr.io/devcontainers-contrib/features/cookiecutter:1": {},
+		"ghcr.io/devcontainers-contrib/features/coverage-py:1": {},
+		"ghcr.io/devcontainers-contrib/features/digitalocean-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/glances:1": {},
+		"ghcr.io/devcontainers-contrib/features/hatch:1": {},
+		"ghcr.io/devcontainers-contrib/features/heroku-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/kubectx-kubens:1": {},
+		"ghcr.io/devcontainers-contrib/features/localstack:1": {},
+		"ghcr.io/devcontainers-contrib/features/meltano:1": {},
+		"ghcr.io/devcontainers-contrib/features/mkdocs:1": {},
+		"ghcr.io/devcontainers-contrib/features/pre-commit:1": {},
+		"ghcr.io/devcontainers-contrib/features/pyscaffold:1": {},
+		"ghcr.io/devcontainers-contrib/features/qrcode:1": {},
+		"ghcr.io/dhoeric/features/act:1": {},
+		"ghcr.io/dhoeric/features/conftest:1": {},
+		"ghcr.io/dhoeric/features/flyctl:1": {},
+		"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+		"ghcr.io/dhoeric/features/k9s:1": {},
+		"ghcr.io/dhoeric/features/opa:1": {},
+		"ghcr.io/dhoeric/features/oras:1": {},
+		"ghcr.io/dhoeric/features/terraform-docs:1": {},
+		"ghcr.io/dhoeric/features/tfsec:1": {},
+		"ghcr.io/rchaganti/vsc-devcontainer-features/azurebicep:1": {},
+		"ghcr.io/guiyomh/features/dagger-cue:0": {},
+		"ghcr.io/guiyomh/features/golangci-lint:0": {},
+		"ghcr.io/guiyomh/features/pact-go:0": {},
+		"ghcr.io/tlc-sundown/devcontainers-features/msquic:1": {}
+	}
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [false],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "python --version",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
