@@ -1,0 +1,16 @@
+.git*
+.github*
+log/*
+tmp/*
+doc/*
+server/*
+vendor/cache/*
+config/deploy/*
+Dockerfile
+.gitignore
+.gitmodules
+CONDUCT.md
+CONTRIBUTING.md
+MIT-LICENSE
+README.md
+shipit.yml

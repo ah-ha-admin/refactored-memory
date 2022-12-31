@@ -1,0 +1,614 @@
+var ghpages = require('gh-pages');
+
+ghpages.publish('dist', function(err) {});
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+
+# gh-pages
+
+Publish files to a `gh-pages` branch on GitHub (or any other branch anywhere else).
+
+## Getting Started
+
+```shell
+npm install gh-pages --save-dev
+```
+
+This module requires Git >= 1.9 and Node >= 12.
+
+## Basic Usage
+
+```js
+var ghpages = require('gh-pages');
+
+ghpages.publish('dist', function(err) {});
+```
+
+
+## `publish`
+
+```js
+ghpages.publish(dir, callback);
+// or...
+ghpages.publish(dir, options, callback);
+```
+
+Calling this function will create a temporary clone of the current repository, create a `gh-pages` branch if one doesn't already exist, copy over all files from the base path, or only those that match patterns from the optional `src` configuration, commit all changes, and push to the `origin` remote.
+
+If a `gh-pages` branch already exists, it will be updated with all commits from the remote before adding any commits from the provided `src` files.
+
+**Note** that any files in the `gh-pages` branch that are *not* in the `src` files **will be removed**.  See the [`add` option](#optionsadd) if you don't want any of the existing files removed.
+
+
+### <a id="dir">`dir`</a>
+* type: `string`
+
+The base directory for all source files (those listed in the `src` config property).
+
+Example use:
+
+```js
+/**
+ * Given the following directory structure:
+ *
+ *   dist/
+ *     index.html
+ *     js/
+ *       site.js
+ *
+ * The usage below will create a `gh-pages` branch that looks like this:
+ *
+ *   index.html
+ *   js/
+ *     site.js
+ *
+ */
+ghpages.publish('dist', callback);
+```
+
+
+### Options
+
+The default options work for simple cases.  The options described below let you push to alternate branches, customize your commit messages, and more.
+
+
+#### <a id="optionssrc">options.src</a>
+ * type: `string|Array<string>`
+ * default: `'**/*'`
+
+The [minimatch](https://github.com/isaacs/minimatch) pattern or array of patterns used to select which files should be published.
+
+
+#### <a id="optionsbranch">options.branch</a>
+ * type: `string`
+ * default: `'gh-pages'`
+ * `-b | --branch <branch name>`
+
+The name of the branch you'll be pushing to.  The default uses GitHub's `gh-pages` branch, but this can be configured to push to any branch on any remote.
+
+Example use of the `branch` option:
+
+```js
+/**
+ * This task pushes to the `master` branch of the configured `repo`.
+ */
+ghpages.publish('dist', {
+  branch: 'master',
+  repo: 'https://example.com/other/repo.git'
+}, callback);
+```
+
+
+#### <a id="optionsdest">options.dest</a>
+ * type: `string`
+ * default: `'.'`
+
+The destination folder within the destination branch.  By default, all files are published to the root of the repository.
+
+Example use of the `dest` option:
+
+```js
+/**
+ * Place content in the static/project subdirectory of the target
+ * branch.
+ */
+ghpages.publish('dist', {
+  dest: 'static/project'
+}, callback);
+```
+
+#### <a id="optionsdotfiles">options.dotfiles</a>
+ * type: `boolean`
+ * default: `false`
+
+Include dotfiles.  By default, files starting with `.` are ignored unless they are explicitly provided in the `src` array.  If you want to also include dotfiles that otherwise match your `src` patterns, set `dotfiles: true` in your options.
+
+Example use of the `dotfiles` option:
+
+```js
+/**
+ * The usage below will push dotfiles (directories and files)
+ * that otherwise match the `src` pattern.
+ */
+ghpages.publish('dist', {dotfiles: true}, callback);
+```
+
+
+#### <a id="optionsadd">options.add</a>
+ * type: `boolean`
+ * default: `false`
+
+Only add, and never remove existing files.  By default, existing files in the target branch are removed before adding the ones from your `src` config.  If you want the task to add new `src` files but leave existing ones untouched, set `add: true` in your options.
+
+Example use of the `add` option:
+
+```js
+/**
+ * The usage below will only add files to the `gh-pages` branch, never removing
+ * any existing files (even if they don't exist in the `src` config).
+ */
+ghpages.publish('dist', {add: true}, callback);
+```
+
+
+#### <a id="optionsrepo">options.repo</a>
+ * type: `string`
+ * default: url for the origin remote of the current dir (assumes a git repository)
+ * `-r | --repo <repo url>`
+
+By default, `gh-pages` assumes that the current working directory is a git repository, and that you want to push changes to the `origin` remote.
+
+If instead your script is not in a git repository, or if you want to push to another repository, you can provide the repository URL in the `repo` option.
+
+Example use of the `repo` option:
+
+```js
+/**
+ * If the current directory is not a clone of the repository you want to work
+ * with, set the URL for the repository in the `repo` option.  This usage will
+ * push all files in the `src` config to the `gh-pages` branch of the `repo`.
+ */
+ghpages.publish('dist', {
+  repo: 'https://example.com/other/repo.git'
+}, callback);
+```
+
+
