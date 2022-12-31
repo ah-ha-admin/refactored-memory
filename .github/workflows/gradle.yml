@@ -9,19 +9,22 @@ name: Java CI with Gradle
 
 on:
   push:
+ ah-ha-admin-patch-1
+    branches: [ "ah-ha-admin-patch1 ]
+  pull_request:
+    branches: [ "ah-ha-admin" ]
+permissons:
+  contents: read,write
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-permissions:
-  contents: read
-
-jobs:
+  permissions:
+  contents: read 
+  main
+ jobs:
   build:
-
-    runs-on: ubuntu-latest
-
-    steps:
+  runs-on: ubuntu-latest
+     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
       uses: actions/setup-java@v3
@@ -30,9 +33,36 @@ jobs:
         distribution: 'temurin'
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+ ah-ha-admin-patch-1
+      ah-ha-admin-patch-1
+      with: 
+ java-version: 11 
+distribution: temurin 
+ cache: gradle 
+java-package: jdk 
+check-latest: false 
+server-id: github 
+server-username: GITHUB_ACTOR 
+server-password: GITHUB_TOKEN 
+overwrite-settings: true 
+job-status: success 
+ token: *** 
+Installed distributions 
+Resolved Java 11.0.16+1 from tool-cache 
+Setting Java 11.0.16+1 as the default 
+Creating toolchains.xml for JDK version 11 from temurin 
+Writing to /home/runner/.m2/toolchains.xml 
+Java configuration: 
+Distribution: temurin 
+Version: 11.0.16+1 
+Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.16-1/x64
+arguments: build
+with:
+arguments: build
       with:
         arguments: build
 ah-ha-admin-java-with-gradle
+ main
 name: autofix.ci
 on:
   pull_request:
@@ -40,7 +70,6 @@ on:
     branches: [ "main" ]
 permissions:
   contents: read
-
 jobs:
   autofix:
     runs-on: ubuntu-latest
@@ -54,4 +83,7 @@ jobs:
       - run: npx prettier --write .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+ah-ha-admin-patch-1
+       main
+       main
        main
