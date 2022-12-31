@@ -1,0 +1,26 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    name: Alto Push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set node version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install Altostra CLI
+        run: |
+             npm install -g @altostra/cli
+             alto --version
+             alto api-key set ${{ secrets.ALTO_API_KEY }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install

@@ -1,0 +1,12 @@
+> sudo gem install package_cloud
+> package_cloud push ah-ha-admin/Ah-Ha-colomboobiz-info-FAIlS ah-ha-admin/refactored-memory/.github/workflows/rubygems/> package_cloud push ah-ha-admin/Ah-Ha-colomboobiz-info-FAIlS
+> package_cloud push computology/prod package_cloud-0.2.24.gem
+> package_cloud repository create prod  Looking for repository at prod... success!  Your repository has been created at: <https://packagecloud.io/computology/prod>
+Using:<https://packagecloud.io> 
+with token:******fefe0
+Looking for repository at computology/prod... success!
+Pushing package_cloud-0.2.24.gem... success!
+
+> curl -s <https://packagecloud.io/../prod/script.gem.sh> | sudo bash
+<https://packagecloud.io/computology/prod/> added to gem 'package_cloud', '~> 0.3.11
+$HOME/.packagecloud
