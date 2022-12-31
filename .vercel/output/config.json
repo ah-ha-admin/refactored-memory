@@ -1,0 +1,12 @@
+type Config = {
+  version: 3;
+  routes?: Route[];
+  images?: ImagesConfig;
+  wildcard?: WildcardConfig;
+  overrides?: OverrideConfig;
+  cache?: string[];
+};
+type Locale = {
+  redirect?: Record<string, string>;
+  cookie?: string;
+};
