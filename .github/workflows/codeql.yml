@@ -1,13 +1,12 @@
-
-#create
+gradlewrapperpropertiesfiles
+create
 name: "CodeQL"
-
 on:
   push:
-    branches: [ "all" ]
+    branches: [ "main" ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "all" ]
+    branches: [ "main" ]
   schedule:
     - cron: '44 18 * * 3'
 
@@ -35,7 +34,10 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
+      ah-ha-admin-patch-2
+        languages: ${{ any }}
         languages: ${{ anycode }}
+        main
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
@@ -45,21 +47,27 @@ jobs:
 
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
-    # If this step fails, then you should remove it and run the build manually (see below)
+    # If this step fails, then you should remove it and run the build manually (see belo 
+     main
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
-
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
+  github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
 
     #   If the Autobuild fails above, remove it and uncomment the following three lines.
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
-    # - run: |
-    #   echo "Run, Build Application using script"
-    #   ./**/*/buildscript.sh
+     - run: |
+       echo "Run, Build Application using script"
+       ./**/*/buildscript.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
+ gradlewrapperpropertiesfiles
+   # - run: |
+    #   echo "Run, Build Application using script"
+    #   ./location_of_script_within_repo/buildscript.sh
+      ah-ha-admin-patch-2
+        category: "/language:${{ any }}"
         category: "/language:${{ anycode }}
+        main
