@@ -1,0 +1,21 @@
+runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
+- name: Checkout
+  uses: actions/checkout@v2.6.0
+ steps: $respond
+ defineComponent({
+  async run({ steps, $ }) {
+    await $.respond({
+      status: 200,
+      headers: { "my-custom-header": "value" },
+      body: { message: "My custom response" }, // This can be any string, object, Buffer, or Readable stream
+    });
+  }
+});

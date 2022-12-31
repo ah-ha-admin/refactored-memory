@@ -1,0 +1,22 @@
+job:
+  name: MyFirstYAMLJob
+  vm-template: Basic Build VM Template
+  git:
+  - url: "https://mydevcsinstance-mydomain.developer.ocp.oraclecloud.com/mydevcsinstance-mydomain/s/mydevcsinstance-mydomain_my-project_902/scm/employee.git"
+    branch: master
+    repo-name: origin
+  steps:
+  - shell:
+      script: "echo Build Number: $BUILD_NUMBER"
+  - maven:
+      goals: clean install
+      pom-file: "employees-app/pom.xml"
+  after:
+  - artifacts:
+      include: "employees-app/target/*"
+  settings:
+    - discard-old:
+        days-to-keep-build: 5
+        builds-to-keep: 10
+        days-to-keep-artifacts: 5
+        artifacts-to-keep: 10
