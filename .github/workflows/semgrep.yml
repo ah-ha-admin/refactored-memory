@@ -12,12 +12,19 @@ name: Semgrep
 
 on:
   push:
+ Semgrep.yml
+    branches: [ "main" ]
     branches: [ "main", all ]
+main
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
   schedule:
+Semgrep.yml
+    - cron: '24 16 * * 4'
+
     - cron: '40 14 * * 0'
+main
 
 permissions:
   contents: read
@@ -47,3 +54,7 @@ jobs:
         with:
           sarif_file: semgrep.sarif
         if: always()
+ Semgrep.yml
+- name : action/checkout
+- uses : actions/checkout3
+ main
