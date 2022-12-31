@@ -5,21 +5,10 @@ azure-boards
 ## Ah-Ha-Admin ##
 ### ahahahahaha ###
 ------------------
-<key><id>="Classifier" 
-Classifier:Development Status:: 4 -Beta
-Classifier:Environment:: (Text Based) Url=
-    "https://github.com/pypa/sampleproject",  
-    "https://ah-ha-admin.github.io/refactored-memory"
-    packages=setuptools.find_packages(),  # A list of all packages for Python to distribute!
-    classifiers=
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    python_requires=>='3.6'" </key></id>
 [![Deploy Next.js site to Pages](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/nextjs.yml/badge.svg?branch=main&event=page_build)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/nextjs.yml)
 # README.md
 ------------
 ## MULTIPLE DEPLOYMENTS AND APPS TEST
 ### FOR MY 👀 ONLY
 [![CodeQL scan](https://github.com/jedisct1/libsodium/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jedisct1/libsodium/actions/workflows/codeql-analysis.yml
-main
+main)
