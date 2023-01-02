@@ -94,3 +94,4 @@ on:
     preemptible: true
     labels:
       - "cirun-gpu-runner"
+      AppCenter.start(getApplication(), "{Your app secret here}", Analytics.class, Crashes.class);
