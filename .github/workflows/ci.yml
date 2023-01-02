@@ -14,3 +14,6 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material
       - run: cd docs; mkdocs gh-deploy --force
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
