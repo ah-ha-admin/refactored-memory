@@ -65,25 +65,25 @@ jobs:
       - uses: actions/checkout@v3
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@2438dd5b51107d2bebff5e85c46a0849fdad0e95
+      - uses: install-pinned/pyupgrade@423622e7c2088eeba495a591385ec22074284f90
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
           pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Sort imports with https://github.com/asottile/reorder_python_imports
-      - uses: install-pinned/reorder_python_imports@0505c9cc1805564ca09905637e20d334990501a0
+      - uses: install-pinned/reorder_python_imports@515035fd9eb355713f61dee238b17a04ce01f4d2
       - name: Run reorder-python-imports
         run: |
          shopt -s globstar
          reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
-      - uses: install-pinned/autoflake@32877f5112ce1c5b8b30cf57d70593a53d5fca87
+      - uses: install-pinned/autoflake@1a248450153f02b75d051acf6c2a05df8c797666
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Format your code with https://github.com/psf/black
-      - uses: install-pinned/black@dde5aed720bc458e86d99144d4d0c1f6c8e08844
+      - uses: install-pinned/black@bcf144213c4943c1f2078a257fa566cebec36107
       - run: black .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c016ye
