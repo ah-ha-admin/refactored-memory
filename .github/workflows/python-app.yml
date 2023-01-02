@@ -54,14 +54,14 @@ jobs:
       - uses: actions/checkout@v3
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@2438dd5b51107d2bebff5e85c46a0849fdad0e95
+      - uses: install-pinned/pyupgrade@423622e7c2088eeba495a591385ec22074284f90
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
           pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Sort imports with https://github.com/asottile/reorder_python_imports
-      - uses: install-pinned/reorder_python_imports@0505c9cc1805564ca09905637e20d334990501a0
+      - uses: install-pinned/reorder_python_imports@515035fd9eb355713f61dee238b17a04ce01f4d2
       - name: Run reorder-python-imports
         run: |
          shopt -s globstar
