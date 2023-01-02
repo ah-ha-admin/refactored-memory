@@ -1,4 +1,5 @@
 homepage": "https://[github-username].github.io/[github-repository-name]"
+"publish": "gh-pages -d src"
 {
   "name": "ghactions-next-version",
   "version": "0.1.1",
