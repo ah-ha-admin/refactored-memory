@@ -1,2 +1,2 @@
 - name: Logflare Log
-  uses: Logflare/action@v1.1.2
+  uses: Logflare/action@v1.1.6
