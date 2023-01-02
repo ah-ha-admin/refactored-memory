@@ -1,4 +1,4 @@
-homepage": "https://[github-username].github.io/[github-repository-name]"
+homepage": "https://[github-ah-ha-admin].github.io/[Refactored-memory]"
 "publish": "gh-pages -d src"
 {
   "name": "ghactions-next-version",
