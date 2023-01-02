@@ -1,3 +1,4 @@
+homepage": "https://[github-ah-ha-admin].github.io/[Refactored-memory]"
 {
   "name": "ghactions-next-version",
   "version": "0.1.1",
@@ -7,8 +8,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist/* lib/* && tsc && ncc build -o dist src/index.ts",
+    "publish": "gh-pages -d src"
     "test": "jest",
-    "lint": "eslint src/*.ts --cache",
+    "lint"publish": "gh-pages -d src"": "eslint src/*.ts --cache",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "uglify": "uglifyjs dist/index.js -cm > dist/index.min.js && rm dist/index.js && mv dist/index.min.js dist/index.js"
