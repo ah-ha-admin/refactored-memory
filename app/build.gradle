@@ -1,5 +1,10 @@
+apply plugin
 dependencies {
     def appCenterSdkVersion = '5.0.0'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+}
+dependencies {
+   def appCenterSdkVersion = '5.0.0'
+   implementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 }
