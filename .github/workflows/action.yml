@@ -94,3 +94,6 @@ on:
     preemptible: true
     labels:
       - "cirun-gpu-runner"
+      
+      onCreate:
+      AppCenter.start(getApplication(), "{"5058cbeb-fd90-4520-8bbf-46f9a6f4fe6e"dependencies { def appCenterSdkVersion = '4.4.5' implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}" implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}" }}", Analytics.class, Crashes.class);
