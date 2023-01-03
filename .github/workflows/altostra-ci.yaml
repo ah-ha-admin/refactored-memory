@@ -21,6 +21,6 @@ jobs:
              alto --version
              alto api-key set ${{ secrets.ALTO_API_KEY }}
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
