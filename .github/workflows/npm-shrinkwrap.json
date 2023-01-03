@@ -1,0 +1,17 @@
+NAME
+       npm-shrinkwrap -- Lock down dependency versions
+
+SYNOPSIS
+       npm shrinkwrap
+
+DESCRIPTION
+       This  command  locks down the versions of a package's dependencies so
+       that you can control exactly which versions of each  dependency  will
+       be used when your package is installed.
+{ "name": "A", "version": "0.1.0", "dependencies": { "B": "<0.1.0" } }
+{ "name": "B", "version": "0.0.1", "dependencies": { "C": "<0.1.0" } }
+{ "name": "C", "version": "0.0.1" }
+A@0.1.0 └─┬ B@0.0.1 └── C@0.0.1
+A@0.1.0 └─┬ B@0.0.2 └── C@0.0.1
+npm shrinkwrap
+{ "name": "A", "dependencies": { "B": { "version": "0.0.1", "dependencies": { "C": { "version": "0.1.0" } } } } }
