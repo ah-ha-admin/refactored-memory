@@ -1,3 +1,8 @@
+ def deps do
+  [
+    {:tentacat, "~> 2.0"}
+  ]
+end
  name:GITHUB_WORKFLOW
  -env: APi_KEY:process.env()
  -For each:'$.respomd() '.
