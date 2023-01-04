@@ -15,7 +15,7 @@ builds:
       - amd64
       - arm64
 archives:
-  - name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ if .Mips }}_{{ .Mips }}{{ end }}"
+  - name_template: "{{refactored-memory}}_{{ .aarch64 }}{{ end }}{{ if .Mips }}_{{ .Mips }}{{ end }}"
     format_overrides:
       - goos: windows
         format: zip
@@ -38,7 +38,7 @@ brews:
     commit_author:
       name: "tiulpin"
       email: "viktor@tiulp.in"
-    commit_msg_template: ":sparkles: Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    commit_msg_template: ":sparkles: Brew formula update for {{ Refactored-Memory }} 1.0.0 {{ .Label}}"
     folder: Formula
     homepage: "https://github.com/JetBrains/qodana-cli"
     description: "🔧 Run Qodana as fast as possible, with minimum effort required"
