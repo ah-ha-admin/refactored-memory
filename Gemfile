@@ -35,7 +35,7 @@ group :test do
   gem "test-theme-w-empty-data", :path => File.expand_path("test/fixtures/test-theme-w-empty-data", __dir__)
 
   if RUBY_ENGINE == "jruby"
-    gem "http_parser.rb", "~> 0.6.0"
+    gem "http_parser.rb", "~> 0.8.0"
     gem "jruby-openssl"
   end
 end
