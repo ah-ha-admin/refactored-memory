@@ -1,5 +1,5 @@
 - name: Checkout
-  uses: actions/checkout@v3.2.0
+  uses: actions/checkout@v3.3.0
   jobs:
   my_first_job:
     steps:
@@ -42,7 +42,7 @@ on:
                       runs-on: ubuntu-latest
                           steps:
                                 - name: Checkout code
-                                        uses: actions/checkout@v3.2.0
+                                        uses: actions/checkout@v3.3.0
                                               - uses: pnpm/action-setup@v2.2.4
                                                       with:
                                                                 version: 7.0.0
@@ -60,7 +60,7 @@ on:
                                                                                                                                                                       - name: Install dependencies
                                                                                                                                                                               run: pnpm install -r --no-frozen-lockfile
                                                                                                                                                                                     - name: Setup Node Env
-                                                                                                                                                                                            uses: actions/setup-node@v3.5.1
+                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
                                                                                                                                                                                                     with:
                                                                                                                                                                                                               node-version: 14
                                                                                                                                                                                                                         registry-url: https://registry.npmjs.org/
@@ -105,12 +105,15 @@ steps:
 
   with:
 
-    node-version: 16
+    node-version: latest
 
 - run: npm ci
 
 - run: npm test
 - name: Setup Node.js environment
 
-  uses: actions/setup-node@v3.5.1
+  uses: actions/setup-node@v3.6.0
 
+- uses: jfrog/setup-jfrog-cli@v3
+  with:
+    version: latest
