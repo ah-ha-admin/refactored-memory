@@ -81,7 +81,7 @@ group :jekyll_optional_dependencies do
   # Since we don't have a direct dependency on the Psych gem (it gets included in the gem bundle as
   # a dependency of the `rdoc` gem), lock psych gem to v4.x instead of installing `libyaml` in our
   # development / CI environment.
-  gem "psych", "~> 4.0"
+  gem "psych", "~> 5.0"
   gem "rdoc", "~> 6.0"
   gem "tomlrb"
 
