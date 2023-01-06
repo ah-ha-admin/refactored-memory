@@ -120,3 +120,5 @@ steps:
     - name: Setup Node.js environment
   uses: actions/setup-node@v3.6.0
 
+- name: Gradle Wrapper Validation
+  uses: gradle/wrapper-validation-action@v1
