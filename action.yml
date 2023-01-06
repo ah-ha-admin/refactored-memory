@@ -1,0 +1,100 @@
+name: "Next Version"
+description: "Format, bump, and update a package version"
+author: "Vlad Emelianov"
+inputs:
+  path:
+    description: Path to file that contains current version. Supports package.json, pyproject.toml, setup.cfg, version.txt
+    default: ""
+    required: false
+  version:
+    description: Current version to bump, use path isntead if possible
+    default: "0.0.0"
+    required: false
+  type:
+    description: "Version type: semver or pep440"
+    default: semver
+    required: false
+  release:
+    description: "Release type: stable, rc, alpha, or beta"
+    default: stable
+    required: false
+  result:
+    description: "Version to set as result: input, major, minor, patch, micro, prerelease, build, postrelease or exact version"
+    default: patch
+    required: false
+  update:
+    description: "Newline-separated paths to version files to update"
+    default: ""
+    required: false
+  encoding:
+    description: "Encoding for files provided in path"
+    default: utf-8
+    required: false
+outputs:
+  major:
+    description: "Next major version"
+  minor:
+    description: "Next minor version"
+  patch:
+    description: "Next patch/micro version"
+  micro:
+    description: "Next patch/micro version"
+  prerelease:
+    description: "Next prerelease version"
+  build:
+    description: "Next build/local version"
+  postrelease:
+    description: "Next postrelease version (pep440 only)"
+  result:
+    description: "Next version specified in output"
+  is-prerelease:
+    description: "Whether result version is a prerelease"
+  input:
+    description: "Normalized input version"
+  raw-input:
+    description: "Raw string input"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  icon: "tag"
+  color: "green"
+name: 'Setup .NET Core SDK'
+description: 'Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository'
+author: 'GitHub'
+branding:
+  icon: play
+  color: green
+inputs:
+  dotnet-version:
+    description: 'Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x'
+  dotnet-quality:
+    description: 'Optional quality of the build. The possible values are: daily, signed, validated, preview, ga.'
+  global-json-file:
+    description: 'Optional global.json location, if your global.json isn''t located in the root of the repo.'
+  source-url:
+    description: 'Optional package source for which to set up authentication. Will consult any existing NuGet.config in the root of the repo and provide a temporary NuGet.config using the NUGET_AUTH_TOKEN environment variable as a ClearTextPassword'
+  owner:
+    description: 'Optional OWNER for using packages from GitHub Package Registry organizations/users other than the current repository''s owner. Only used if a GPR URL is also provided in source-url'
+  config-file:
+    description: 'Optional NuGet.config location, if your NuGet.config isn''t located in the root of the repo.'
+outputs:
+  dotnet-version:
+    description: 'Contains the installed by action .NET SDK version for reuse.'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+Run actions/deploy-pages@v1
+Actor: ah-ha-admin
+Action ID: 3610059348
+Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-preview
+{"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}
+Creating deployment with payload:
+{
+	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
+	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",
+	"oidc_token": "***"
+}
+Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
+{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
+Reported success!

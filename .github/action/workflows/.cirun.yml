@@ -1,0 +1,9 @@
+runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"

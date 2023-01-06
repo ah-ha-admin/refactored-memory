@@ -1,0 +1,160 @@
+name: autofix.ci  # needed to securely identify the workflow
+
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # TODO: add all code-fixing here.
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+name: autofix.ci
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Optimize all PNGs with https://pngquant.org/
+      - run: sudo apt-get update && sudo apt-get install -y pngquant
+      - name: Run pngquant
+        run: |
+          shopt -s globstar
+          pngquant -f --ext .png --skip-if-larger -- **/*.png
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+name: autofix.ci
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: pip install pre-commit
+      - run: pre-commit run --all-files
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+name: autofix.ci
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.17'
+
+      # goimports works like gofmt, but also fixes imports.
+      # see https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+      - run: go install golang.org/x/tools/cmd/goimports@latest
+      - run: goimports -w .
+      # of course we can also do just this instead:
+      # - run: gofmt -w .
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+name: autofix.ci
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: cargo clippy --fix
+      - run: cargo fmt
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+name: autofix.ci
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm ci
+      - run: npx prettier --write .
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+name: autofix.ci
+on:
+  workflow_call:
+  pull_request:
+  push:
+    branches: [ "main" ]
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
+      - uses: install-pinned/pyupgrade@423622e7c2088eeba495a591385ec22074284f90
+      - name: Run pyupgrade
+        run: |  
+          shopt -s globstar
+          pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
+
+      # Sort imports with https://github.com/asottile/reorder_python_imports
+      - uses: install-pinned/reorder_python_imports@515035fd9eb355713f61dee238b17a04ce01f4d2
+      - name: Run reorder-python-imports
+        run: |
+         shopt -s globstar
+         reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
+
+      # Remove unused imports with https://github.com/PyCQA/autoflake
+      - uses: install-pinned/autoflake@1a248450153f02b75d051acf6c2a05df8c797666
+      - run: autoflake --in-place --remove-all-unused-imports -r .
+
+      # Format your code with https://github.com/psf/black
+      - uses: install-pinned/black@9101a4d68e870eaaaae21c412d1d879b93c9afcb
+      - run: black .
+
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
