@@ -1,4 +1,5 @@
-# frozen_string_literal: true
+gem 'gems', '~> 1.2'
+#frozen_string_literal: true
 
 source "https://rubygems.org"
 gemspec :name => "jekyll"
