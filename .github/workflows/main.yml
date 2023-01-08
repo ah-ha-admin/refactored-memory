@@ -1,6 +1,5 @@
-ah-ha-admin-patch-5
-SSH-tunnel/Vscode.dev
-ah-ha-admin-main.yml
+- name: Maven Version Bump Action
+  uses: nnichols/maven-version-bump-action@v4
 - name : action/checkout
 - uses : actions/checkout3
 - name: Setup Java JDK
