@@ -247,3 +247,10 @@
     "nwmatcher": "^1.4.4"
   }
 }
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  }
+}
