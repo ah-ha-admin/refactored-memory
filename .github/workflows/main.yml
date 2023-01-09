@@ -1,9 +1,39 @@
+on: [push]
+
+jobs:
+  versioning_job:
+    runs-on: ubuntu-latest
+    name: RainMachine Parsers versioning
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Automatic Versioning
+        uses: nicupavel/action-files-version-increment@v3
+      - name: Get the output time
+        run: echo "The time was ${{ steps.versioning_job.outputs.time }}"
+      - name: Get list of modified files
+        run: echo "Modified files ${{ steps.versioning_job.outputs.modified_files }}"
+      - id: commit_if_modified
+        name: Commit metadata file
+        if: steps.versioning_job.outputs.modified_files
+        run: |
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --local user.name "$ah-ha-admin"
+          git commit -am "Versioning for ${{ steps.versioning_job.outputs.modified_files }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@main
+        with:
+          github_token: ${{ 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 }}
+          branch: ${{ main }}
+	  
 - name: Setup Node.js environment
   uses: actions/setup-node@v3.6.0
   
 - name: actions/deploy-pages@v1
- actor: ah-ha-admin
- Action ID: 3610059348
+  actor: ah-ha-admin
+  Action ID: 3610059348
      Artifact URL:https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-preview
       {"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}
       Creating deployment with payload
