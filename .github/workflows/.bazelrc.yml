@@ -1,0 +1,24 @@
+build --bes_results_url=https://app.buildbuddy.io/invocation/
+build --bes_backend=grpcs://remote.buildbuddy.io
+build --build_metadata=REPO_URL=https://github.com/buildbuddy-io/buildbuddy.git
+build --workspace_status_command=$(pwd)/workspace_status.sh
+--build_metadata=COMMIT_SHA=$(git rev-parse HEAD)
+build:ci --build_metadata=ROLE=CI
+bazel build //...
+//...
+
+tylerw@lunchbox:~/buildbuddy-io/buildbuddy$ bazel build server:all
+
+INFO: Streaming build results to: https://app.buildbuddy.io/invocation/24a37b8f-4cf2-4909-9522-3cc91d2ebfc4
+
+INFO: Analyzed 13 targets (0 packages loaded, 0 targets configured).
+
+INFO: Found 13 targets...
+
+INFO: Elapsed time: 0.212s, Critical Path: 0.01s
+
+INFO: 0 processes.
+
+INFO: Streaming build results to: https://app.buildbuddy.io/invocation/24a37b8f-4cf2-4909-9522-3cc91d2ebfc4
+
+INFO: Build completed successfully, 1 total action
