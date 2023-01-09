@@ -1,9 +1,14 @@
+- name: Dependencies Autoupdate
+  uses: romoh/dependencies-autoupdate@v1.2
+
 - name: Setup CI/CD tools
   uses: CashStory/setup-cd-tools@v1.0.2
+
 - name: Setup Node.js environment
   uses: actions/setup-node@v3.6.0
+
 - name: Checkout
-uses: actions/checkout@v3.3.0  
+  uses: actions/checkout@v3.3.0  
   jobs:
   my_first_job:
     steps:
