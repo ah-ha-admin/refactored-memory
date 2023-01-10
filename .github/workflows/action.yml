@@ -162,7 +162,7 @@ uses: actions/checkout@v3.3.0
         with:
           repository: Ah-ha-admin/refactored-memory
           ref: v1.0
-          token: ${{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}}
+          token: ${{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}}
           path: ./.github/actions/refactored-memory
       
       - name: Run my action
@@ -304,7 +304,7 @@ uses: actions/checkout@v3.3.0
         with:
           repository: Ah-ha-admin/refactored-memory
           ref: v1.0
-          token: ${{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}}
+          token: ${{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}}
           path: ./.github/actions/refactored-memory
       
       - name: Run my action
@@ -469,7 +469,7 @@ uses: actions/checkout@v3.3.0
   Creating deployment with payload:
 	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
 	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",
-	"oidc_token": "***"
+	"oidc_token": "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"
 }
 Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
 {"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
