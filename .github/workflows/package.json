@@ -8,3 +8,4 @@ steps:
     cache-dependency-path: subdir/package-lock.json
 - run: npm ci
 - run: npm test
+  "packageManager": "yarn@3.2.4"
