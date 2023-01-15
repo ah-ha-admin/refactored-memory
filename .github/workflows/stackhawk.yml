@@ -55,9 +55,19 @@ jobs:
         run: ./your-service.sh &                  # ✏️ Update this to run your own service to be scanned
 
       - name: Run HawkScan
-        uses: stackhawk/hawkscan-action@22175e2df78e85b78a2741aedf20466aca829580
+        uses: stackhapwk/hawkscan-action@22175e2df78e85b78a2741aedf20466aca829580
         continue-on-error: true                   # ✏️ Set to false to break your build on scan errors
         with:
-          apiKey: ${{ secrets.HAWK_API_KEY }}
+         apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
           codeScanningAlerts: true
           githubToken: ${{ github.token }}
+          jobs:
+  stackhawk-hawkscan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: stackhawk/hawkscan-action@v2.0.0
+      with:
+        apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
+        configurationFiles: stackhawk.yml stackhawk-extra.yml
+          docker run --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan
