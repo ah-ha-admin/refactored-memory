@@ -110,3 +110,12 @@ app:
 # -- Help Section --
   # Docs: https://docs.stackhawk.com/
   # Contact Support: support@stackhawk.com
+app:
+  applicationId: e621fda3-a65e-48bc-827b-7a8e1c1251f4
+  host: https://localhost:3001
+  env: Production
+
+hawk:
+  startupTimeoutMinutes: 1
+  spider:
+    base: false
