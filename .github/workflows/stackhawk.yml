@@ -1,3 +1,22 @@
+# -- stackhawk configuration for hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs --
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: e621fda3-a65e-48bc-827b-7a8e1c1251f4 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Production # (required)
+  # -- The url of your application to scan --
+  host: https://ah-ha-admin.io/refactored-memory # (required)
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -71,3 +90,23 @@ jobs:
         apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
         configurationFiles: stackhawk.yml stackhawk-extra.yml
           docker run --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan
+# -- stackhawk configuration for hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs --
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: e621fda3-a65e-48bc-827b-7a8e1c1251f4 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Production # (required)
+  # -- The url of your application to scan --
+  host: https://ah-ha-admin.io/refactored-memory # (required)
+
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
