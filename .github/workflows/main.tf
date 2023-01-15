@@ -1,5 +1,22 @@
 terraform {
 
+  cloud {
+
+    organization = "ah-ha-admin"
+
+    hostname = "app.terraform.io" # Optional; defaults to app.terraform.io
+
+    workspaces {
+
+      tags = ["networking", "source:cli"]
+
+    }
+
+  }
+
+}
+terraform {
+
   required_providers {
 
     aws = {
