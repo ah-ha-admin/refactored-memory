@@ -27,3 +27,35 @@ package-3@^3.0.0:
 package-4@^4.0.0, package-4@^4.5.0:
   version "4.6.3"
   resolved "https://registry.npmjs.org/package-4/-/package-4-2.6.3.tgz#a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+gpg: key 1646B01B86E50310: public key "Yarn Packaging <yarn@dan.cx>" imported
+
+gpg: Total number processed: 1
+
+gpg:               imported: 1
+
+gpg: Signature made 2022-05-10 15:48:23 -0400 EDT
+
+gpg:                using RSA key 6D98490C6F1ACDDD448E45954F77679369475BAA
+
+gpg: Good signature from "Yarn Packaging <yarn@dan.cx>" [unknown]
+
+gpg: WARNING: This key is not certified with a trusted signature!
+
+gpg:          There is no indication that the signature belongs to the owner.
+
+Primary key fingerprint: 72EC F46A 56B4 AD39 C907  BBB7 1646 B01B 86E5 0310
+
+     Subkey fingerprint: 6D98 490C 6F1A CDDD 448E  4595 4F77 6793 6947 5BAA
+
+> GPG signature looks good
+
+> Extracting to ~/.yarn...
+
+> Adding to $PATH...
+
+> We've added the following to your /data/data/com.termux/files/home/.bashrc
+
+> If this isn't the profile of your current shell then please add the following to your correct profile:
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
