@@ -60,7 +60,7 @@ jobs:
         with:
          apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
           codeScanningAlerts: true
-          githubToken: ${{ github.token }}
+          githubToken: ${{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}}
           jobs:
   stackhawk-hawkscan:
     runs-on: ubuntu-latest
