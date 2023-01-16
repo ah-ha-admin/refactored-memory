@@ -348,7 +348,7 @@ jobs:
 
     steps:
       - name: "Download Terraform CLI package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: clipkg
         with:
           name: terraform_${{ env.version }}_${{ env.os }}_${{ env.arch }}.zip
@@ -511,13 +511,13 @@ jobs:
       # really testing the release package and not inadvertently testing a
       # fresh build from source.)
       - name: "Download e2etest package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: e2etestpkg
         with:
           name: terraform-e2etest_${{ env.os }}_${{ env.arch }}.zip
           path: .
       - name: "Download Terraform CLI package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: clipkg
         with:
           name: terraform_${{env.version}}_${{ env.os }}_${{ env.arch }}.zip
@@ -557,13 +557,13 @@ jobs:
       # really testing the release package and not inadvertently testing a
       # fresh build from source.)
       - name: "Download e2etest package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: e2etestpkg
         with:
           name: terraform-e2etest_${{ env.os }}_${{ env.arch }}.zip
           path: .
       - name: "Download Terraform CLI package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: clipkg
         with:
           name: terraform_${{env.version}}_${{ env.os }}_${{ env.arch }}.zip
@@ -602,13 +602,13 @@ jobs:
       # really testing the release package and not inadvertently testing a
       # fresh build from source.)
       - name: "Download e2etest package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: e2etestpkg
         with:
           name: terraform-e2etest_${{ env.os }}_${{ env.arch }}.zip
           path: .
       - name: "Download Terraform CLI package"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         id: clipkg
         with:
           name: terraform_${{env.version}}_${{ env.os }}_${{ env.arch }}.zip
