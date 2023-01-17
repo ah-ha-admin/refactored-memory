@@ -22,11 +22,11 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        r-version: ['3.6.3', '4.1.1']
+        r-version: ['4.1.1']
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up R ${{ matrix.r-version }}
+      - name: Set up R ${{ matrix.r-versio  }}
         uses: r-lib/actions/setup-r@33f03a860e4659235eb60a4d87ebc0b2ea65f722
         with:
           r-version: ${{ matrix.r-version }}
