@@ -1,12 +1,12 @@
 - name: Dependencies Autoupdate
   uses: romoh/dependencies-autoupdate@v1.2
-  runs-on: self-hosted
+  runs-on: ubuntu-latest
 - name: Setup CI/CD tools
   uses: CashStory/setup-cd-tools@v1.0.2
   runs-on: self-hosted
 - name: Setup Node.js environment
   uses: actions/setup-node@v3.6.0     
-  runs-on: self-hosted
+  runs-on: ubuntu-latest
 - name: Checkout
   uses: actions/checkout@v3.3.0  
   jobs:
@@ -20,7 +20,7 @@
           ref: v1.0
           token: ${{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}}
           path: ./.github/actions/refactored-memory
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
       - name: Run my action
       
         uses: ./.github/actions/workflows/jobs
