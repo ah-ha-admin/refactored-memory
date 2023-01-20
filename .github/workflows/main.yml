@@ -58,3 +58,11 @@ jobs:
           BACKPORT_LABEL_REGEXP: "(?P<target>\\d+\\.\\d+)-backport"
           BACKPORT_TARGET_TEMPLATE: "v{{.target}}"
           GITHUB_TOKEN: ${{ secrets.ELEVATED_GITHUB_TOKEN }}
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cargo fmt
+      - uses: autofix-ci/action@40f4f7bccdde208056784fa907921be767412c5f
+2. Receive automatic fixes.
