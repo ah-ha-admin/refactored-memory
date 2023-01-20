@@ -1,4 +1,5 @@
 sudo chmod +x ./dotnet-install.sh
+./dotnet-install.sh --version latest
 
 #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #contentstack ;
