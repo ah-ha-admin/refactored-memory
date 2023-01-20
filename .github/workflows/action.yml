@@ -576,3 +576,5 @@ steps:
     with:
       go-version: '1.16.1' # The Go version to download (if necessary) and use.
   - run: go run hello.go
+
+{ 	"name": "actions", 	"matcher": { 		"matchType": "regex", 		"regex": ".*" 	}, 	"ruleSet": { 		"repository": { 			"visibility": null, 			"has_issues": null, 			"has_projects": null, 			"has_wiki": null, 			"is_template": null, 			"default_branch": "main", 			"allow_squash_merge": null, 			"allow_merge_commit": null, 			"allow_rebase_merge": null, 			"delete_branch_on_merge": null 		}, 		"automatedSecurityFixes": { 			"enabled": true 		}, 		"vulnerabilityAlerts": { 			"enabled": true 		}, 		"teamsSetting": { 			"teamPermissions": [], 			"removeOthers": false 		} 	} }
