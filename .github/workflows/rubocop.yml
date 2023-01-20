@@ -1,11 +1,108 @@
-Skip to content
-Search or jump to…
-Pulls
-Issues
-Codespaces
-Marketplace
-Explore
+
  
+1
+# This workflow uses actions that are not certified by GitHub.
+2
+# They are provided by a third-party and are governed by
+3
+# separate terms of service, privacy policy, and support
+4
+# documentation.
+5
+​
+6
+# pulled from repo
+7
+name: "Rubocop"
+8
+​
+9
+on:
+10
+  push:
+11
+    branches: [ "main", all ]
+12
+  pull_request:
+13
+    # The branches below must be a subset of the branches above
+14
+    branches: [ "main" ]
+15
+  schedule:
+16
+    - cron: '33 18 * * 4'
+17
+​
+18
+jobs:
+19
+  rubocop:
+20
+    runs-on: ubuntu-latest
+21
+    strategy:
+22
+      fail-fast: false
+23
+​
+24
+    steps:
+25
+    - name: Checkout repository
+26
+      uses: actions/checkout@v3
+27
+​
+28
+    # If running on a self-hosted runner, check it meets the requirements
+29
+    # listed at https://github.com/ruby/setup-ruby#using-self-hosted-runners
+30
+    - name: Set up Ruby
+31
+      uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+32
+      with:
+33
+        ruby-version: 2.6
+34
+​
+35
+    # This step is not necessary if you add the gem to your Gemfile
+36
+    - name: Install Code Scanning integration
+37
+      run: bundle add code-scanning-rubocop --version 0.3.0 --skip-install
+38
+​
+39
+    - name: Install dependencies
+40
+      run: bundle install
+41
+​
+42
+    - name: Rubocop run
+43
+      run: |
+44
+        bash -c "
+45
+          bundle exec rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
+46
+          [[ $? -ne 2 ]]
+47
+        "
+48
+​
+49
+    - name: Upload Sarif output
+50
+      uses: github/codeql-action/upload-sarif@v2
+51
+      with:
+52
 @ah-ha-admin 
 rubocop
 /
