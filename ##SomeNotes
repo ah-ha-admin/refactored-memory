@@ -1,9 +1,5 @@
-#!bin/bash
-
-pkg install figlet
-y
-chmod +x install-pkg.sh
-bash install-pkg.sh
+#!/bin/bash
+npm install serverless-plugin-include-dependencies --save-dev
 
 npm i -g serverless && serverless \
     --org=sexflixxx \
