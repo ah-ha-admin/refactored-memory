@@ -1,4 +1,6 @@
 #!/bin/bash
+npm i -g runit-services-admin
+
 npm install serverless-plugin-include-dependencies --save-dev
 
 npm i -g serverless && serverless \
