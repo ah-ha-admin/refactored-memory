@@ -1,4 +1,7 @@
 #!/bin/bash
+git clone --recursive https://github.com/cloudflare/quiche
+cargo build --examples
+RUST_LOG=info target/debug/examples/http3-client https://blog.cloudflare.com/
 
 require 'uri'
 require 'net/http'
