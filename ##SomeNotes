@@ -1,4 +1,22 @@
 #!/bin/bash
+
+require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.cloudflare.com/client/v4/accounts/account_identifier/intel/ip")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request["Content-Type"] = 'application/json'
+request["X-Auth-Email"] = ''
+
+response = http.request(request)
+puts response.read_body
+
 npm i -g runit-services-admin
 
 npm install serverless-plugin-include-dependencies --save-dev
