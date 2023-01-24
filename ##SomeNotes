@@ -1,4 +1,97 @@
 #!/bin/bash
+npm install -g node-gyp
+l
+103
+  # Download and extract agent
+104
+  mkdir -p /.codespaces/agent/bin
+107
+  cd /.codespaces/agent/bin
+108
+  FIRST_LOCATION=($TARGET_VSCS_LOCATIONS)
+109
+  AGENT_DOWNLOAD_URL="https://api.github.com/$INTERNAL_URL/ah-ha-admin/refactored-memory/agent/download?$TARGET_LOCATION_KEY=$FIRST_LOCATION&workflow_run_id=$CODESPACES_GITHUB__WORKFLOWRUNID&$TARGET_KEY=$CODESPACES_GITHUB__VSCSTARGET&$TARGET_URL_KEY=${CODESPACES_GITHUB__VSCSTARGETURL-}"
+110
+  curl --location $AGENT_DOWNLOAD_URL           --header "Authorization: token $CODESPACES_GITHUB__APITOKEN"           --output tmp.zip
+10
+  unzip -q tmp.zip && rm tmp.zip
+11
+  # Install agent
+12
+  containerTmp=/mnt/containerTmp
+13
+  mkdir -p $containerTmp
+14
+  chmod o+rwt $containerTmp
+15
+  setfacl -dR -m o::rw $containerTmp
+16
+  codespacesSharedFolder=~/.codespaces/shared
+17
+  mkdir -p $codespacesSharedFolder
+18
+  chmod o+rw $codespacesSharedFolder
+19
+  setfacl -dR -m o::rw $codespacesSharedFolder
+20
+  chmod +x install_codespaces_agent.sh
+21
+  ./install_codespaces_agent.sh
+22
+  # Make copy of codespaces agent to mount
+23
+  mkdir -p /.codespaces/agent/mount
+24
+  cp -a /.codespaces/agent/bin/. /.codespaces/agent/mount
+25
+  shell: /usr/bin/sudo -EH bash {0}
+26
+  env:
+27
+    CODESPACES_GITHUB__APITOKEN: ***
+28
+    CODESPACES_GITHUB__VSCSTARGET: production
+29
+    CODESPACES_GITHUB__WORKFLOWRUNID: 3993123911
+30
+    CODESPACES_TELEMETRYSETTINGS__TELEMETRYENDPOINT: ***/ah-ha-admin/refactored-memory/agent/diagnostics
+31
+    TARGET_VSCS_LOCATIONS: EastUs WestUs2
+32
+    USER_SECRETS_JSON: ***
+33
+    REPO_URL: https://github.com/ah-ha-admin/refactored-memory/tree/main
+34
+    REPO_URL_WITHOUT_BRANCH: https://github.com/ah-ha-admin/refactored-memory
+35
+    REPO_NAME_WITHOUT_OWNER: refactored-memory
+36
+    DEVCONTAINER_PATH: .devcontainer/devcontainer.json
+37
+    CONFIGURATION_ID: 8893
+38
+    CODESPACES_GITHUB__VSCSTARGETURL: 
+39
+    INTERNAL_URL: ***
+40
+    LOG_PATH: ***
+41
+    TARGET_KEY: ***
+42
+    TARGET_LOCATION_KEY: ***
+43
+    TARGET_URL_KEY: ***
+44
++ mkdir -p /.codespaces/agent/bin
+45
++ cd /.codespaces/agent/bin
+46
++ FIRST_LOCATION=($TARGET_VSCS_LOCATIONS)
+47
++ AGENT_DOWNLOAD_URL='https://api.github.com/***/ah-ha-admin/refactored-memory/agent/download?***=EastUs&workflow_run_id=3993123911&***=production&***='
+48
++ curl --location 'https://api.github.com/***/ah-ha-admin/refactored-memory/agent/download?***=EastUs&workflow_run_id=3993123911&***=production&***=' --header 'Authorization: token ***' --output tmp.zip
+
 https://static.rust-lang.org/rustup/dist/aarch64-unknown-linux-gnu/rustup-init
 ou
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
