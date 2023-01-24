@@ -1,0 +1,10 @@
+$ pkg update && pkg upgrade -y
+$ termux-setup-storage
+$ pkg install wget fish
+$ wget https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project/raw/master/nethunter-rootless/install-nethunter-termux
+$ chmod +x install-nethunter-termux
+
+$ ./install-nethunter-termux
+$ nethunter
+$ cat /etc/os-release | grep "\bNAME="
+NAME="Kali GNU/Linux"
