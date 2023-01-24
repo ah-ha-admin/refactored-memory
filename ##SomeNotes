@@ -1,4 +1,6 @@
 #!/bin/bash
+https://static.rust-lang.org/rustup/dist/aarch64-unknown-linux-gnu/rustup-init
+ou
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 git clone --recursive https://github.com/cloudflare/quiche
 cargo build --examples
