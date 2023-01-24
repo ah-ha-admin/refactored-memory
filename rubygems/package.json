@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "workspaces": [
+    "actioncable",
+    "actiontext",
+    "activestorage",
+    "actionview"
+  ],
+  "dependencies": {
+    "webpack": "^5.0.0"
+  }
+}

@@ -1,0 +1,23 @@
+type ServerlessFunctionConfig = {
+  handler: string;
+  runtime: string;
+  memory?: number;
+  maxDuration?: number;
+  environment: Record<string, string>[];
+  allowQuery?: string[];
+  regions?: string[];
+};
+type NodejsServerlessFunctionConfig = ServerlessFunctionConfig & {
+  launcherType: 'Nodejs';
+  shouldAddHelpers?: boolean; // default: false
+  shouldAddSourceMapSupport?: boolean; // default: false
+};
+{
+  "runtime": "nodejs16.x",
+  "handler": "serve.js",
+  "maxDuration": 3,
+  "launcherType": "Nodejs",
+  "shouldAddHelpers": true,
+  "shouldAddSourcemapSupport": true
+}
+

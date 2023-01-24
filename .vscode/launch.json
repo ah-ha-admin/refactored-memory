@@ -4,6 +4,7 @@
     // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
@@ -28,7 +29,10 @@
             "port": 9222,
             "request": "attach",
             "type": "chrome",
-            "webRoot": "${workspaceFolder}"
+ ms-vscode.extension-activator
+            "webRoot": "${ah-ha-admin/refactored-memory/.devcontaainer.json}"
+            "webRoot": "${workspaceFolder}" 
+            main
         },
 
 

@@ -1,3 +1,22 @@
+# -- stackhawk configuration for hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs --
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: e621fda3-a65e-48bc-827b-7a8e1c1251f4 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Production # (required)
+  # -- The url of your application to scan --
+  host: https://ah-ha-admin.io/refactored-memory # (required)
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -55,9 +74,48 @@ jobs:
         run: ./your-service.sh &                  # ✏️ Update this to run your own service to be scanned
 
       - name: Run HawkScan
-        uses: stackhawk/hawkscan-action@4c3258cd62248dac6d9fe91dd8d45928c697dee0
+        uses: stackhapwk/hawkscan-action@22175e2df78e85b78a2741aedf20466aca829580
         continue-on-error: true                   # ✏️ Set to false to break your build on scan errors
         with:
-          apiKey: ${{ secrets.HAWK_API_KEY }}
+         apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
           codeScanningAlerts: true
-          githubToken: ${{ github.token }}
+          githubToken: ${{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}}
+          jobs:
+  stackhawk-hawkscan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: stackhawk/hawkscan-action@v2.0.0
+      with:
+        apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
+        configurationFiles: stackhawk.yml stackhawk-extra.yml
+          docker run --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan
+# -- stackhawk configuration for hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs --
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: e621fda3-a65e-48bc-827b-7a8e1c1251f4 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Production # (required)
+  # -- The url of your application to scan --
+  host: https://ah-ha-admin.io/refactored-memory # (required)
+
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
+app:
+  applicationId: e621fda3-a65e-48bc-827b-7a8e1c1251f4
+  host: https://localhost:3001
+  env: Production
+
+hawk:
+  startupTimeoutMinutes: 1
+  spider:
+    base: false
