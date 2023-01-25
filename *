@@ -1,3 +1,6 @@
+build-essential libncurses-dev libgdbm-dev libyaml-dev
+tk-dev libreadline-dev zlib1g-dev libssl-dev libffi-dev
+libssl1.0.0 git-core curl
 
 sudo wget --no-cache -O - https://raw.githubusercontent.com/natancabral/shell-script-to-install-multiple-packages/main/run/node-js.sh | bash
 
