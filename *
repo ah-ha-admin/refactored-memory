@@ -1,3 +1,7 @@
+
+apt-get install ycmd yaml-cpp xtrace xmlschema xli xdg-desktop-portal GTK xdg-desktop-portal-gtk xdelta3 xbase64 xbindkeys xca wput
+
+
 $ pkg update && pkg upgrade -y
 $ termux-setup-storage
 $ pkg install wget fish
