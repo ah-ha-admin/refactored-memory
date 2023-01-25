@@ -1,4 +1,6 @@
 
+sudo wget --no-cache -O - https://raw.githubusercontent.com/natancabral/shell-script-to-install-multiple-packages/main/run/node-js.sh | bash
+
 apt-get install ycmd yaml-cpp xtrace xmlschema xli xdg-desktop-portal GTK xdg-desktop-portal-gtk xdelta3 xbase64 xbindkeys xca wput
 
 
