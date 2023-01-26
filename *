@@ -565,6 +565,57 @@ libstemmer-static/                                 10-Dec-2022 10:36            
 libstrophe/                                        10-Dec-2022 10:36                   -
 libstrophe-static/       
 
+libuber-h3/                                        10-Dec-2022 10:36                   -
+libuchardet/                                       10-Dec-2022 10:36                   -
+libuchardet-static/                                10-Dec-2022 10:36                   -
+libucontext/                                       10-Dec-2022 10:36                   -
+libucontext-static/                                10-Dec-2022 10:36                   -
+libudfread/                                        10-Dec-2022 10:36                   -
+libudfread-static/                                 10-Dec-2022 10:36                   -
+libunibilium/                                      10-Dec-2022 10:36                   -
+libunistring/                                      10-Dec-2022 10:36                   -
+libunistring-static/                               10-Dec-2022 10:36                   -
+libunqlite/                                        10-Dec-2022 10:36                   -
+libupscaledb/                                      11-Jan-2023 19:44                   -
+libupscaledb-static/                               11-Jan-2023 19:44                   -
+libusb/                                            10-Dec-2022 10:36                   -
+libusb-static/                                     10-Dec-2022 10:36                   -
+libusbmuxd/                                        10-Dec-2022 10:36                   -
+libusbmuxd-static/                                 10-Dec-2022 10:36                   -
+libusbredir/                                       10-Dec-2022 10:36                   -
+libusbredir-static/                                10-Dec-2022 10:36                   -
+libuuid/                                           28-Dec-2022 17:50                   -
+libuuid-static/                                    23-Jan-2023 07:21                   -
+libuv/                                             10-Dec-2022 10:36                   -
+libuv-static/           
+
+libv4l/                                            10-Dec-2022 10:36                   -
+libv4l-static/                                     10-Dec-2022 10:36                   -
+libvbisam/                                         10-Dec-2022 10:36                   -
+libvbisam-static/                                  10-Dec-2022 10:36                   -
+libvidstab/                                        10-Dec-2022 10:36                   -
+libvigra/                                          24-Jan-2023 18:15                   -
+libvips/                                           19-Jan-2023 06:28                   -
+libvips-static/                                    07-Jan-2023 23:03                   -
+libvmaf/                                           10-Dec-2022 10:36                   -
+libvmaf-static/                                    10-Dec-2022 10:36                   -
+libvorbis/                                         10-Dec-2022 10:36                   -
+libvorbis-static/                                  10-Dec-2022 10:36                   -
+libvpx/                                            10-Dec-2022 10:36                   -
+libvpx-static/                                     10-Dec-2022 10:36                   -
+libvterm/                                          16-Jan-2023 13:51                   -
+libvxl/                                            20-Dec-2022 17:43                   -
+libwavpack/                                        10-Dec-2022 10:36                   -
+libwavpack-static/                                 10-Dec-2022 10:36                   -
+libwebp/                                           14-Jan-2023 03:59                   -
+libwebp-static/                                    14-Jan-2023 03:59                   -
+libwebrtc-audio-processing/                        10-Dec-2022 10:36                   -
+libwebrtc-audio-processing-static/                 10-Dec-2022 10:36                   -
+libwebsockets/                                     10-Dec-2022 10:36                   -
+libwolfssl/                                        10-Dec-2022 10:36                   -
+libwren/                                           10-Dec-2022 10:36                   -
+libwv/                                             10-Dec-2022 10:36                   -
+libwv-static/                                      10-Dec-2022 10:36                   -
 
 
 
