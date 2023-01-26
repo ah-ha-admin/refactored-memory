@@ -1,5 +1,57 @@
 https://f-droid.org/packages/com.termux/
 -------------------------------
+https://packages.termux.dev/apt/termux-main/dists/stable/Contents-aarch64.gz
+ou  =  https://packages.termux.dev/apt/termux-main/dists/stable/main/Contents-aarch64.gz
+ou  =  https://packages.termux.dev/apt/termux-main/dists/stable/main/Contents-i686.gz
+-------------------
+APT PKG LIST TO INSTALL
+--------------------
+apt install liba52/                                            10-Dec-2022 10:34                   -
+liba52-static/                                     10-Dec-2022 10:34                   -
+libacl/                                            10-Dec-2022 10:34                   -
+libacl-static/                                     10-Dec-2022 10:34                   -
+libandroid-complex-math/                           10-Dec-2022 10:34                   -
+libandroid-complex-math-static/                    10-Dec-2022 10:34                   -
+libandroid-execinfo/                               10-Dec-2022 10:34                   -
+libandroid-execinfo-static/                        10-Dec-2022 10:34                   -
+libandroid-glob/                                   10-Dec-2022 10:34                   -
+libandroid-glob-static/                            10-Dec-2022 10:34                   -
+libandroid-posix-semaphore/                        10-Dec-2022 10:34                   -
+libandroid-posix-semaphore-static/                 10-Dec-2022 10:34                   -
+libandroid-shmem/                                  10-Dec-2022 10:34                   -
+libandroid-shmem-static/                           10-Dec-2022 10:34                   -
+libandroid-spawn/                                  10-Dec-2022 10:34                   -
+libandroid-spawn-static/                           10-Dec-2022 10:34                   -
+libandroid-support/                                21-Dec-2022 12:14                   -
+libandroid-support-static/                         21-Dec-2022 12:14                   -
+libandroid-sysv-semaphore/                         10-Dec-2022 10:34                   -
+libandroid-sysv-semaphore-static/                  10-Dec-2022 10:34                   -
+libandroid-wordexp/                                10-Dec-2022 10:34                   -
+libandroid-wordexp-static/                         10-Dec-2022 10:34                   -
+libao/                                             10-Dec-2022 10:34                   -
+libao-static/                                      10-Dec-2022 10:34                   -
+libaom/                                            10-Dec-2022 10:34                   -
+libaom-static/                                     10-Dec-2022 10:34                   -
+libapt-pkg-perl/                                   10-Dec-2022 10:34                   -
+libarchive/                                        15-Dec-2022 09:01                   -
+libarchive-static/                                 15-Dec-2022 09:01                   -
+libarrow-cpp/                                      10-Dec-2022 10:34                   -
+libarrow-python/                                   16-Jan-2023 11:30                   -
+libasio/                                           10-Dec-2022 10:34                   -
+libasm/                                            10-Dec-2022 10:34                   -
+libasm-static/                                     10-Dec-2022 10:34                   -
+libass/                                            10-Dec-2022 10:34                   -
+libass-static/                                     10-Dec-2022 10:34                   -
+libassuan/                                         10-Dec-2022 10:34                   -
+libassuan-static/                                  10-Dec-2022 10:34                   -
+libatomic-ops/                                     10-Dec-2022 10:34                   -
+libatomic-ops-static/   
+
+
+
+
+
+
 https://pypi.python.org/pypi/virtualenvwrapper
 ------- (⬆️⬆️ python env wrapper down'oad link ))--------
 
