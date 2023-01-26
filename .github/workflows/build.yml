@@ -1,5 +1,4 @@
 name: Runner CI
-
 on:
   workflow_dispatch:
   push:
@@ -647,3 +646,22 @@ jobs:
           name: terraform-cli-docs-source_${{ env.version }}.zip
           path: terraform-cli-docs-source_${{ env.version }}.zip
           if-no-files-found: error
+
+name: Build
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build with logs
+        run: |
+          mkdir ${{ runner.temp }}/build_logs
+          ./build.sh --log-path ${{ runner.temp }}/build_logs
+      - name: Upload logs on fail
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build failure logs
+          path: ${{ runner.temp }}/build_logs
