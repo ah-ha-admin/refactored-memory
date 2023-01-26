@@ -6,7 +6,52 @@ ou  =  https://packages.termux.dev/apt/termux-main/dists/stable/main/Contents-i6
 -------------------
 APT PKG LIST TO INSTALL
 --------------------
-apt install liba52/                                            10-Dec-2022 10:34                   -
+apt install liba52/   
+libt3config/                                       10-Dec-2022 10:36                   -
+libt3highlight/                                    10-Dec-2022 10:36                   -
+libt3key/                                          10-Dec-2022 10:36                   -
+libt3widget/                                       10-Dec-2022 10:36                   -
+libt3window/                                       10-Dec-2022 10:36                   -
+libtalloc/                                         21-Jan-2023 12:18                   -
+libtalloc-static/                                  21-Jan-2023 12:18                   -
+libtasn1/                                          10-Dec-2022 10:36                   -
+libtasn1-static/                                   10-Dec-2022 10:36                   -
+libtbb/                                            14-Jan-2023 03:59                   -
+libtd/                                             10-Dec-2022 10:36                   -
+libtd-static/                                      10-Dec-2022 10:36                   -
+libtdb/                                            20-Jan-2023 04:19                   -
+libtermkey/                                        10-Dec-2022 10:36                   -
+libtheora/                                         10-Dec-2022 10:36                   -
+libtheora-static/                                  10-Dec-2022 10:36                   -
+libthread-db/                                      10-Dec-2022 10:36                   -
+libtiff/                                           17-Dec-2022 18:23                   -
+libtiff-static/                                    17-Dec-2022 18:23                   -
+libtiff-utils/                                     17-Dec-2022 18:23                   -
+libtiledb/                                         10-Dec-2022 10:36                   -
+libtins/                                           10-Dec-2022 10:36                   -
+libtinyxml/                                        10-Dec-2022 10:36                   -
+libtinyxml2/                                       10-Dec-2022 10:36                   -
+libtirpc/                                          10-Dec-2022 10:36                   -
+libtirpc-static/                                   10-Dec-2022 10:36                   -
+libtomcrypt/                                       10-Dec-2022 10:36                   -
+libtomcrypt-static/                                10-Dec-2022 10:36                   -
+libtommath/                                        10-Dec-2022 10:36                   -
+libtommath-static/                                 10-Dec-2022 10:36                   -
+libtool/                                           10-Dec-2022 10:36                   -
+libtorrent/                                        10-Dec-2022 10:36                   -
+libtorrent-rasterbar/                              11-Jan-2023 19:44                   -
+libtorrent-static/                                 10-Dec-2022 10:36                   -
+libtpms/                                           10-Dec-2022 10:36                   -
+libtpms-static/                                    10-Dec-2022 10:36                   -
+libtranscript/                                     10-Dec-2022 10:36                   -
+libtree-ldd/                                       10-Dec-2022 10:36                   -
+libtreesitter/                                     10-Dec-2022 10:36                   -
+libtreesitter-static/                              10-Dec-2022 10:36                   -
+libtsduck/                                         10-Dec-2022 10:36                   -
+libtsduck-static/                                  10-Dec-2022 10:36                   -
+libtvision/                                        30-Dec-2022 00:25                   -
+libtwolame/                                        10-Dec-2022 10:36                   -
+libtwolame-static/                                               10-Dec-2022 10:34                   -
 liba52-static/                                     10-Dec-2022 10:34                   -
 libacl/                                            10-Dec-2022 10:34                   -
 libacl-static/                                     10-Dec-2022 10:34                   -
