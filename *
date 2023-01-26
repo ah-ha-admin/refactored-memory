@@ -680,8 +680,99 @@ libzopfli/                                         10-Dec-2022 10:36            
 libzthread/                                        10-Dec-2022 10:36                   -
 libzthread-static/                                 10-Dec-2022 10:36                   -
 libzxing-cpp/                                      14-Jan-2023 13:44                   -
+1oom/
+6tunnel/
+7zip/
+8086tiny/
 
-
+a52dec/                                            10-Dec-2022 10:25                   -
+aalib/                                             10-Dec-2022 10:25                   -
+aalib-static/                                      10-Dec-2022 10:25                   -
+aapt/                                              18-Jan-2023 07:35                   -
+aapt2/                                             18-Jan-2023 07:35                   -
+abduco/                                            10-Dec-2022 10:25                   -
+abook/                                             10-Dec-2022 10:25                   -
+abootimg/                                          10-Dec-2022 10:25                   -
+ack-grep/                                          10-Dec-2022 10:25                   -
+acr/                                               10-Dec-2022 10:25                   -
+adms/                                              10-Dec-2022 10:25                   -
+aerc/                                              05-Jan-2023 06:33                   -
+age/                                               27-Dec-2022 12:16                   -
+agg/                                               13-Dec-2022 09:01                   -
+aha/                                               10-Dec-2022 10:25                   -
+aidl/                                              18-Jan-2023 07:35                   -
+alass/                                             10-Dec-2022 10:25                   -
+alembic/                                           10-Dec-2022 10:25                   -
+algernon/                                          10-Dec-2022 10:25                   -
+alist/                                             19-Jan-2023 13:00                   -
+alpine/                                            10-Dec-2022 10:25                   -
+amber/                                             10-Dec-2022 10:25                   -
+ambr/                                              10-Dec-2022 10:25                   -
+ambs/                                              10-Dec-2022 10:25                   -
+amfora/                                            10-Dec-2022 10:25                   -
+anacron/                                           10-Dec-2022 10:25                   -
+android-tools/                                     10-Jan-2023 06:30                   -
+anewer/                                            10-Dec-2022 10:25                   -
+angband/                                           10-Dec-2022 10:25                   -
+angle-grinder/                                     10-Dec-2022 10:25                   -
+ani-cli/                                           10-Dec-2022 10:25                   -
+ant/                                               11-Jan-2023 00:51                   -
+antibody/                                          10-Dec-2022 10:25                   -
+antiword/                                          10-Dec-2022 10:25                   -
+aom-tools/                                         10-Dec-2022 10:25                   -
+apache2/                                           18-Jan-2023 12:16                   -
+apkeep/                                            05-Jan-2023 06:33                   -
+apksigner/                                         25-Dec-2022 12:13                   -
+apr/                                               28-Dec-2022 17:50                   -
+apr-static/                                        28-Dec-2022 17:50                   -
+apr-util/                                          28-Dec-2022 17:50                   -
+apr-util-static/                                   28-Dec-2022 17:50                   -
+apt/                                               21-Jan-2023 00:25                   -
+apt-file/                                          10-Dec-2022 10:25                   -
+apt-ftparchive/                                    21-Jan-2023 00:25                   -
+apt-transport-tor/                                 21-Jan-2023 00:25                   -
+aptly/                                             10-Dec-2022 10:25                   -
+argon2/                                            10-Dec-2022 10:25                   -
+argon2-static/                                     10-Dec-2022 10:25                   -
+argp/                                              10-Dec-2022 10:25                   -
+argp-static/                                       10-Dec-2022 10:25                   -
+aria2/                                             10-Dec-2022 10:25                   -
+arj/                                               10-Dec-2022 10:25                   -
+asciidoc/                                          16-Jan-2023 11:30                   -
+asciidoctor/                                       10-Dec-2022 10:25                   -
+asciinema/                                         16-Jan-2023 11:30                   -
+aspell/                                            10-Dec-2022 10:25                   -
+aspell-de/                                         10-Dec-2022 10:25                   -
+aspell-en/                                         10-Dec-2022 10:25                   -
+aspell-es/                                         10-Dec-2022 10:25                   -
+aspell-fr/                                         10-Dec-2022 10:25                   -
+aspell-static/                                     10-Dec-2022 10:25                   -
+assimp/                                            10-Dec-2022 10:25                   -
+astra-sm/                                          10-Dec-2022 10:25                   -
+asymptote/                                         24-Jan-2023 14:44                   -
+at/                                                10-Dec-2022 10:25                   -
+at-spi2-core/                                      10-Dec-2022 10:25                   -
+atomicparsley/                                     30-Dec-2022 12:17                   -
+atomvm/                                            10-Dec-2022 10:25                   -
+atool/                                             10-Dec-2022 10:25                   -
+attr/                                              10-Dec-2022 10:25                   -
+attr-static/                                       10-Dec-2022 10:25                   -
+atuin/                                             10-Dec-2022 10:25                   -
+aubio/                                             10-Dec-2022 10:25                   -
+aubio-static/                                      10-Dec-2022 10:25                   -
+autoconf/                                          10-Dec-2022 10:25                   -
+autoconf-archive/                                  10-Dec-2022 10:25                   -
+autoconf213/                                       10-Dec-2022 10:25                   -
+autojump/                                          10-Dec-2022 10:25                   -
+automake/                                          10-Dec-2022 10:25                   -
+autossh/                                           10-Dec-2022 10:25                   -
+avahi/                                             08-Jan-2023 00:43                   -
+avahi-static/                                      08-Jan-2023 00:43                   -
+aview/                                             10-Dec-2022 10:25                   -
+avra/                                              10-Dec-2022 10:25                   -
+await/                                             10-Dec-2022 10:25                   -
+awesomeshot/                                       10-Dec-2022 10:25                   -
+axel/                                              10-Dec-2022 10:25                   -
 
 
 
