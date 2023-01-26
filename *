@@ -1,3 +1,15 @@
+https://pypi.python.org/pypi/virtualenvwrapper
+------- (⬆️⬆️ python env wrapper down'oad link ))--------
+
+extract it and copy virtualenvwrapper.sh to a directory where you have write access.
+Edit your .bashrc to source=
+virtualenvwrapper.sh from that directory.
+
+You can change its path in .bashrc:
+source $HOME/.local/bin/virtualenvwrapper.sh
+
+------------------------
+
 build-essential libncurses-dev libgdbm-dev libyaml-dev
 tk-dev libreadline-dev zlib1g-dev libssl-dev libffi-dev
 libssl1.0.0 git-core curl
