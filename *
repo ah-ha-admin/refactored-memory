@@ -664,6 +664,22 @@ libxtst/                                           10-Dec-2022 10:36            
 libxtst-static/                                    10-Dec-2022 10:36                   -
 libxv/                                             10-Dec-2022 10:36                   -
 libxv-static/                                      10-Dec-2022 10:36                   -
+libyaml/                                           10-Dec-2022 10:36                   -
+libyaml-cpp/                                       10-Dec-2022 10:36                   -
+libyaml-static/                                    10-Dec-2022 10:36                   -
+libzen/                                            24-Dec-2022 05:58                   -
+libzen-static/                                     24-Dec-2022 05:58                   -
+libzim/                                            28-Dec-2022 17:50                   -
+libzimg/                                           10-Dec-2022 10:36                   -
+libzimg-static/                                    10-Dec-2022 10:36                   -
+libzip/                                            10-Dec-2022 10:36                   -
+libzita-convolver/                                 10-Dec-2022 10:36                   -
+libzmq/                                            10-Dec-2022 10:36                   -
+libzmq-static/                                     10-Dec-2022 10:36                   -
+libzopfli/                                         10-Dec-2022 10:36                   -
+libzthread/                                        10-Dec-2022 10:36                   -
+libzthread-static/                                 10-Dec-2022 10:36                   -
+libzxing-cpp/                                      14-Jan-2023 13:44                   -
 
 
 
