@@ -6,7 +6,8 @@ ou  =  https://packages.termux.dev/apt/termux-main/dists/stable/main/Contents-i6
 -------------------
 APT PKG LIST TO INSTALL
 --------------------
-apt install liba52/   
+apt install 0verkill/
+liba52/   
 libt3config/                                       10-Dec-2022 10:36                   -
 libt3highlight/                                    10-Dec-2022 10:36                   -
 libt3key/                                          10-Dec-2022 10:36                   -
