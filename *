@@ -1,3 +1,6 @@
+itpltyp <---- lookup for pkg pi3 ingid5
+
+resolve conflicts dependencies pkg ==
 ~/.termux/shell
 rm -rf /data/data/com.termux/files/home/.termux/shell
 ou
