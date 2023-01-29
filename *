@@ -1,3 +1,8 @@
+~/.termux/shell
+rm -rf /data/data/com.termux/files/home/.termux/shell
+ou
+rm -rf /data/data/com.termux/files/usr
+
 curl -LO https://its-pointless.github.io/setup-pointless-repo.sh
 bash setup-pointless-repo.sh
 
