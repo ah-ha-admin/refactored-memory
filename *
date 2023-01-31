@@ -1,3 +1,5 @@
+git@github.com:ah-ha-admin/refactored-memory.git
+
 npm config set registry https://npm.fury.io/ah-ha-admin/
 
 
