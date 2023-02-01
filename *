@@ -1,3 +1,10 @@
+apt-get update && apt-get upgrade
+apt-get dist-upgrade
+apt-get install openssh-server
+⬇️SUDO PRIVILEGE COMMAND⬇
+test   ALL=(ALL) NOPASSWD: /usr/bin/apt-get
+
+
 git@github.com:ah-ha-admin/refactored-memory.git
  
  apt install atool debianutils dcmtk dart emscripten emscripten-tests-third-party emscripten-binaryen
