@@ -3,6 +3,15 @@ apt-get dist-upgrade
 apt-get install openssh-server
 ⬇️SUDO PRIVILEGE COMMAND⬇
 test   ALL=(ALL) NOPASSWD: /usr/bin/apt-get
+ou
+stall sudo by running:
+apt-get install sudo -y
+
+usermod -aG sudo yourusername
+Run:
+visudo
+%sudo   ALL=(ALL:ALL) ALL
+
 
 
 git@github.com:ah-ha-admin/refactored-memory.git
