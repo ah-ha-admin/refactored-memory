@@ -10,6 +10,6 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v2
       - name: Run HawkScan
-        uses: stackhawk/hawkscan-action@v2.0.0
+        uses: stackhawk/hawkscan-action@v2.0.1
         with:
           apiKey: ${{Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
