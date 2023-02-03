@@ -1,3 +1,11 @@
+
+wget https://github.com/name-is-cipher/termux-superuser/releases/download/v1.0/install_xsu.sh
+chmod +x install_xsu.sh
+./install_xsu.sh
+rm install_xsu.sh
+---> RUN "xsu" for superuser 
+
+
 If you have Rust installed - Run cargo install pyflow.
 
 Quickstart
