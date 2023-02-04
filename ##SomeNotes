@@ -1,3 +1,25 @@
+
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCQPL5QdgGOVYT3PaCfVwaIDGzXyfYKEhEZoI2/hKoLrhWdGKGnBuofvg9PFBRSuUYeLyDJ7wKqScbcKjbzb2DwudOHjDpcjf2NceBdT2XNOgmI886+zPYddXIHVgPqZQ8Tg9q1v/LZxX5oJppfa0TUbF444KVPil4emLq8zO0HWZu6JIhaB5Ou1+kppJon6XaYbhrHBk8mJ1h2AQzH9wiao7DD0j3+rwvB95Do7ourcxcy90cAyr/GqL0x9SKzfb8lfoYN+qOUCo3olg0U4ayFwgqrYDJ6tYv/t6spYT3vXrrtTtyyKcNm2lyhM6DZpbMPlNCwF3baMFT3rv6gUUzP u0_a361@localhost
+Fingerprint: SHA256:qDqvVy9xJzHxPAFi/81jsWycwSYxZNMdCR+niSOem2A
+Generating 256 bit ecdsa key, this may take a while...
+Public key portion is:
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKZXAKCV9m8XiwsKsdsRVlX5WHiTzunmcM+UM8EmdJkSJc1l3h0KIl02XjkESAD8fgzl9Ik2iQyTGcI2234BMSU= u0_a361@localhost
+Fingerprint: SHA256:XuCa68NXGI3ZFHmc6Rp512KgtKx4me9ENBhESfBcKOQ
+Generating 256 bit ed25519 key, this may take a while...
+Public key portion is:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA/bCfrSU0E0UIYzLYmAJDO/h6IS+0XlXaq/S+VPXWl5 u0_a361@localhost
+Fingerprint: SHA256:mqUUAT22iTgVwhPp+tN09CgWGb77xSOHP5fUNWCZFZc
+
+DROPBEAR / CLI INSTALLED
+
+
+
+
+
+
+
+
 #!/bin/bash
 npm install -g node-gyp
 l
