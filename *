@@ -1,4 +1,14 @@
 dhclient -r  <----- NOUVELLE IP
+internet ⬇️⬇️⬇️⬇️
+lspci | egrep -i --color 'network|ethernet'
+<br/>
+ifconfig -a
+<br/>
+ip link show
+<br/>
+lshw -class network
+<br/>
+cat /proc/net/dev
 
 wget https://github.com/name-is-cipher/termux-superuser/releases/download/v1.0/install_xsu.sh
 chmod +x install_xsu.sh
