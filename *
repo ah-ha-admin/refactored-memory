@@ -1,3 +1,6 @@
+
+
+
 dhclient -r  <----- NOUVELLE IP
 internet ⬇️⬇️⬇️⬇️
 lspci | egrep -i --color 'network|ethernet'
