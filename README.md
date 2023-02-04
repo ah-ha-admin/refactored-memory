@@ -1,4 +1,4 @@
-
+[![Semgrep](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/semgrep.yml/badge.svg?branch=main&event=push)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/semgrep.yml)
 [![PSScriptAnalyzer](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/powershell.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/powershell.yml)
 # refactored-memory
 ![246459-200](https://user-images.githubusercontent.com/118419708/205466524-0d919823-fddd-464c-a4b8-c05b25c01b6e.png)
