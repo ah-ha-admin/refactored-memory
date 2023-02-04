@@ -14,6 +14,35 @@ Fingerprint: SHA256:mqUUAT22iTgVwhPp+tN09CgWGb77xSOHP5fUNWCZFZc
 DROPBEAR / CLI INSTALLED
 
 
+Termux Variables:
+TERMUX_API_VERSION=0.50.1
+TERMUX_APK_RELEASE=F_DROID
+TERMUX_APP_PACKAGE_MANAGER=apt
+TERMUX_APP_PID=30684
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX_VERSION=0.118.0
+Packages CPU architecture:
+aarch64
+Subscribed repositories:
+# sources.list
+deb https://grimler.se/termux/termux-main stable main
+# x11-repo (sources.list.d/x11.list)
+deb https://grimler.se/termux/termux-x11 x11 main
+# root-repo (sources.list.d/root.list)
+deb https://grimler.se/termux/termux-root root stable
+Updatable packages:
+All packages up to date
+termux-tools version:
+1.36.1
+Android version:
+11
+Kernel build information:
+Linux localhost 4.9.227-perf-23848788 #1 SMP PREEMPT Thu Jul 21 16:19:53 KST 2022 aarch64 Android
+Device manufacturer:
+samsung
+Device model:
+SM-T290
 
 
 
