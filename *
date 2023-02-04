@@ -1,3 +1,31 @@
+dhclient -r  <----- NOUVELLE IP
+internet ⬇️⬇️⬇️⬇️
+lspci | egrep -i --color 'network|ethernet'
+<br/>
+ifconfig -a
+<br/>
+ip link show
+<br/>
+lshw -class network
+<br/>
+cat /proc/net/dev
+
+wget https://github.com/name-is-cipher/termux-superuser/releases/download/v1.0/install_xsu.sh
+chmod +x install_xsu.sh
+./install_xsu.sh
+rm install_xsu.sh
+---> RUN "xsu" for superuser 
+
+
+If you have Rust installed - Run cargo install pyflow.
+
+Quickstart
+
+(Optional) Run pyflow init in an existing project folder, or pyflow new projname to create a new project folder. init imports data from requirements.txt or Pipfile; new creates a folder with the basics.
+Run pyflow install requests etc to install packages. Alternatively, edit pyproject.toml directly.
+Run pyflow or pyflow myfile.py to run Python.
+
+
 pip install ensurepip venv piwheel conda devpi PyScaffold scikit-build¶
 
 apt-get update && apt-get upgrade
