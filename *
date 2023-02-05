@@ -2,6 +2,13 @@ HEROKU ⬇
 apt-get install curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 
+
+pkg install termux-exec
+$PREFIX/bin/login
+$PREFIX/lib/libtermux-exec.so
+
+
+
 http://www.androidcentral.com/root
 OU ⬇️⬇️⬇️⬇️
 ROOT device info:;
