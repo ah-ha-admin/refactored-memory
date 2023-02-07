@@ -1,3 +1,5 @@
+gem install petergate doorkeeper oauth2 jwt
+
 npm install -g -s infoooze httpfy 
 
 HEROKU ⬇
