@@ -5,7 +5,10 @@ https://launchpad.net/ubuntu/focal/+package/fs-secondary-modules-5.4.0-73-generi
 wget https://raw.githubusercontent.com/wirenboard/wirenboard/master/wbdev
 chmod +x wbdev
 
-
+apt install python git
+git clone https://github.com/Gameye98/Lazymux
+cd Lazymux
+python lazymux.py
 
 gem install petergate doorkeeper oauth2 jwt
 
