@@ -2,6 +2,11 @@ https://launchpad.net/ubuntu/focal/+package/linux-source-5.4.0
 https://launchpad.net/ubuntu/+source/linux/5.4.0-73.82
 https://launchpad.net/ubuntu/focal/+package/fs-secondary-modules-5.4.0-73-generic-d
 
+wget https://raw.githubusercontent.com/wirenboard/wirenboard/master/wbdev
+chmod +x wbdev
+
+
+
 gem install petergate doorkeeper oauth2 jwt
 
 npm install -g -s infoooze httpfy 
