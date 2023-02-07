@@ -1,5 +1,5 @@
 HEROKU ⬇
-apt-get install curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 
 
