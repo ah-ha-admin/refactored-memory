@@ -1,3 +1,5 @@
+git clone https://android.googlesource.com/platform/external/chromium-trace
+
 https://launchpad.net/ubuntu/focal/+package/linux-source-5.4.0
 https://launchpad.net/ubuntu/+source/linux/5.4.0-73.82
 https://launchpad.net/ubuntu/focal/+package/fs-secondary-modules-5.4.0-73-generic-d
