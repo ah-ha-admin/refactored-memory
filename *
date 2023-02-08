@@ -1,3 +1,7 @@
+pkg install recon-NG 
+
+curl https://get.wasmer.io -sSfL | sh
+
 git clone https://android.googlesource.com/platform/external/chromium-trace
 
 name: CIFuzz
