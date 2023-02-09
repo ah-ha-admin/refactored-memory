@@ -1,12 +1,4 @@
 - name: Checkout
   uses: actions/checkout@v3.3.0
-  jobs:
-  steps: $respond
-    defineComponent({async run({steps,$}) {
-    await $.respond({
-    status:200
-      headers:{"my-custom-header":"value"},
-      body:{message:"My custom response"}, // This can be any string, object, Buffer, or Readable stream
-    });
-  }
-});
+   steps:
+  job: actions/workflow/checkout@v3.0.0
