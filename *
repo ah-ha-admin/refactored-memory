@@ -2,6 +2,20 @@ pkg install recon-NG
 
 curl https://get.wasmer.io -sSfL | sh
 
+git clone --recurse-submodules https://github.com/topjohnwu/Magisk.git
+Install Python 3.8+ 
+(Windows only: select 'Add Python to PATH' in installer, and run pip install colorama after install)
+Configure to use the JDK bundled in Android 
+export PATH="/path/to/androidstudio/jre/bin:$PATH"
+Set environment variable ANDROID_SDK_ROOT to the Android SDK folder (can be found in Android Studio settings)
+Run ./build.py ndk to let the script download and install NDK for you
+To start building, run build.py to see your options. 
+For each action, use -h to access help (e.g. ./build.py all -h)
+To start development, open the project with Android Studio. The IDE can be used for both app (Kotlin/Java) and native sources.
+Optionally, set custom configs with config.prop. A sample config.prop.sample is provided.
+
+
+
 git clone https://android.googlesource.com/platform/external/chromium-trace
 Open Terminal.
 Paste the text below, substituting in your GitHub email address.
