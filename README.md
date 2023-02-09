@@ -11,5 +11,4 @@
 ------------
 ## MULTIPLE DEPLOYMENTS AND APPS TEST
 ### FOR MY 👀 ONLY
-[![CodeQL scan](https://github.com/jedisct1/libsodium/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jedisct1/libsodium/actions/workflows/codeql-analysis.yml
-main)
+[![CodeQL scan](https://github.com/jedisct1/libsodium/actions/workflows/codeql-analysis.yml/badge.svg)]
