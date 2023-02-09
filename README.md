@@ -1,3 +1,4 @@
+[![.github/workflows/cleanthat.yaml](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/cleanthat.yaml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/cleanthat.yaml)
 [![Semgrep](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/semgrep.yml/badge.svg?branch=main&event=push)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/semgrep.yml)
 [![PSScriptAnalyzer](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/powershell.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/powershell.yml)
 # refactored-memory
