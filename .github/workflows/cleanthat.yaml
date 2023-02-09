@@ -1,15 +1,20 @@
-syntax_version: "2021-08-02"
+ syntax_version: "2023-01-09"
 meta:
   labels:
   - "cleanthat"
   refs:
-    branches:
-    - "refs/heads/develop"
-    - "refs/heads/main"
-    - "refs/heads/master"
+    protected_patterns:
+      - master
 source_code:
-  excludes: []
-  includes: []
+  excludes:
+  - "regex:.*/generated/.*"
+  - "regex:.*/do_not_format_me/.*"
   encoding: "UTF-8"
-  line_ending: "UNKNOWN"
-languages: []
+  line_ending: "NATIVE"
+engines:
+# https://github.com/diffplug/spotless/pull/568
+- engine: "spotless"
+  steps:
+  - id: "spotless"
+    parameters:
+      configuration: "repository:/.cleanthat/spotless.yaml"
