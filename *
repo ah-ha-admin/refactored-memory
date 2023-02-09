@@ -1,6 +1,10 @@
+
+mqsicreatebroker (command shell)
+
 pkg install recon-NG 
 
 curl https://get.wasmer.io -sSfL | 
+
 wget https://raw.githubusercontent.com/JellyBitz/phBot-xPlugins/master/xLoginController.py
 
 git clone --recurse-submodules https://github.com/topjohnwu/Magisk.git
