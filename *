@@ -1,6 +1,7 @@
 pkg install recon-NG 
 
-curl https://get.wasmer.io -sSfL | sh
+curl https://get.wasmer.io -sSfL | 
+wget https://raw.githubusercontent.com/JellyBitz/phBot-xPlugins/master/xLoginController.py
 
 git clone --recurse-submodules https://github.com/topjohnwu/Magisk.git
 Install Python 3.8+ 
