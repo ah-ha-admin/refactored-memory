@@ -3,7 +3,7 @@ mqsicreatebroker (command shell)
 
 pkg install recon-NG 
 
-curl https://get.wasmer.io -sSfL | 
+iwr https://win.wasmer.io -useb | iex
 
 wget https://raw.githubusercontent.com/JellyBitz/phBot-xPlugins/master/xLoginController.py
 
