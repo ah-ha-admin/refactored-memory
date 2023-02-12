@@ -1,4 +1,5 @@
-https://pypi.org/project/buildout-requirements/
+
+npm install async-itertools dicy/core fury dicy/cli scalpel-ts fix-indents raiment
 
 mqsicreatebroker (command shell)
 
