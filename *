@@ -1,3 +1,7 @@
+  ```bash
+  cd $PREFIX/tmp && curl -L -o "linux_distros_installer.sh" "https://github.com/dmdhrumilmistry/TermuxScripts/blob/main/Installation/linux_distros/linux_distros.sh?raw=True" && bash linux_distros_installer.sh && rm linux_distros_installer.sh && cd $HOME
+  ```
+
 
 npm install async-itertools dicy/core fury dicy/cli scalpel-ts fix-indents raiment
 
