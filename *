@@ -1,3 +1,9 @@
+export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
+#!/usr/bin/env python
+#!/usr/bin/sh
+
+
+
 pip install pip-upgrader pip_and_pip_tools pip-requ kube-hunter-arp-spoof kube-hunter-dns-spoof dns-spoofer ArpSpoof espoofer xn-reverser sshanalysis bluing PyHTools
 
 
