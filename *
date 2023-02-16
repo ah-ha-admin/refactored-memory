@@ -2,6 +2,13 @@ export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
 #!/usr/bin/env python
 #!/usr/bin/sh
 
+sudo apt update
+sudo apt-get install ettercap-gtk
+sudo vi /etc/Ettercap/etter.conf
+ec_uid = 0 # nobody is the default
+ec_gid = 0 # nobody is the default
+ip r
+
 apt search snagas rtelnet telnet 
 
 HOSTS
