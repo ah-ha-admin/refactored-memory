@@ -6,8 +6,12 @@ sudo apt update
 sudo apt-get install ettercap-gtk
 sudo vi /etc/Ettercap/etter.conf
 ec_uid = 0 # nobody is the default
-ec_gid = 0 # nobody is the default
+ec_gid= 0 # nobody is the default
 ip r
+sudo -E Ettercap -G
+sudo vi /etc/Ettercap/etter.dns
+
+
 
 apt search snagas rtelnet telnet 
 
