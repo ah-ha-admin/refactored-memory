@@ -2,6 +2,35 @@ export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
 #!/usr/bin/env python
 #!/usr/bin/sh
 
+apt search snagas rtelnet telnet 
+
+HOSTS
+
+Machines are in a Wireguard mesh.
+
+· leaf: Oracle VM (192.168.4.1)
+· fern: Raspberry Pi 4B (192.168.4.2)
+· jade: Oracle VM (192.168.4.3)
+
+
+INFRASTRUCTURE
+
+· cert-manager: Auto-provision Let's Encrypt Certs
+· metallb: Bare metal LoadBalancer provider
+· flannel: CNI provider
+· longhorn: Distributed block storage
+
+
+APPLICATIONS
+
+· radicale: CardDAV/CalDAV server (dav.icyphox.sh)
+· registry: Self-hosted container registry (reg.icyphox.sh)
+· yarr: RSS reader (f.icyphox.sh)
+· znc: IRC bouncer (irc.icyphox.sh:6666)
+· fsrv: File host service (x.icyphox.sh)
+· lms: Music/Subsonic server (m.icyphox.sh)
+· cgit: Git web frontend (git.icyphox.sh)
+
 
 
 pip install pip-upgrader pip_and_pip_tools pip-requ kube-hunter-arp-spoof kube-hunter-dns-spoof dns-spoofer ArpSpoof espoofer xn-reverser sshanalysis bluing PyHTools
