@@ -1,7 +1,8 @@
 export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
 #!/usr/bin/env python
 #!/usr/bin/sh
-
+pip installer pip
+pip install enscons devpi bdist_wheel virtualenv conda pex pdm 
 $sudo apt-get update
 $sudo apt-get install python3.6
 $sudo apt-get install software-properties-common
