@@ -2,6 +2,8 @@ export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
 #!/usr/bin/env python
 #!/usr/bin/sh
 
+npm install ci eslint esbuild any-promise mosca --save
+
 $sudo apt-get install debian-goodies
 $sudo apt-get install needrestart
 
