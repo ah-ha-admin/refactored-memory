@@ -20,7 +20,7 @@ pip install conda
 
 pip installer pip
 pip install pip_and_pip_tools
-pip install enscons devpi bdist_wheel virtualenv conda pex pdm auto-machine-learning Machine-Learning-Preprocess-CLI ibm-watson-machine-learning shim setuptools_shim
+pip install enscons devpi bdist_wheel virtualenv conda pex pdm auto-machine-learning Machine-Learning-Preprocess-CLI ibm-watson-machine-learning shim setuptools_shim input-helper
 
 $sudo apt-get update
 $sudo apt-get install python3.6
