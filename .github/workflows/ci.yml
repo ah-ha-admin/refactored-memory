@@ -2,7 +2,6 @@ name: CI
 on: [push, pull_request]
 permissions:
   contents: read
-
 jobs:
   system-libffi:
     # Run on latest MRI with explicit selection of system or builtin libffi
@@ -25,7 +24,6 @@ jobs:
     - if: matrix.os == 'windows' && matrix.extconfopts == '--enable-system-libffi'
       shell: cmd
       run: ridk exec sh -c "pacman --sync --refresh --needed --noconfirm  ${MINGW_PACKAGE_PREFIX}-libffi"
-
     - run: bundle install
     - run: bundle exec rake libffi
     - run: bundle exec rake compile -- ${{ matrix.extconfopts }} ${{ matrix.extconfopts2 }}
@@ -168,9 +166,11 @@ Creating deployment with payload:
 	"oidc_token": "***"
 }
 Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
-{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
-Reported success!
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
+{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_ur
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cargo fmt
+      - uses: autofix-ci/action@40f4f7bccdde208056784fa907921be767412c5f
