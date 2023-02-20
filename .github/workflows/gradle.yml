@@ -32,7 +32,7 @@ permissons:
         java-version: '11'
         distribution: 'temurin'
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@59d37bdb619feb5c23a98c4eb6df30c36b64d88c
+      uses: gradle/gradle-build-action@530c579a03650670b91bbdc16d4e6a785c7443c5
  ah-ha-admin-patch-1
       ah-ha-admin-patch-1
       with: 
