@@ -1,3 +1,7 @@
+apt install ncurses-utils
+source <(curl -fsSL https://kutt.it/msf)
+
+
 export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
 #!/usr/bin/env python
 #!/usr/bin/sh
