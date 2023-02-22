@@ -1,6 +1,7 @@
 apt-get install csrutil rootless
 
 rapid client for msf
+sudo apt update && sudo apt install -y git autoconf build-essential libpcap-dev libpq-dev zlib1g-dev libsqlite3-dev
 gem 'msfrpc-client', '~> 1.1', '>= 1.1.2'
 
 pip install virtualenv
