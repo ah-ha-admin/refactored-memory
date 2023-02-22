@@ -2,6 +2,14 @@ apt install ncurses-utils
 source <(curl -fsSL https://kutt.it/msf)
 wget https://raw.githubusercontent.com/gushmazuko/metasploit_in_termux/master/metasploit.sh
 $ chmod +x metasploit.sh
+_________
+pip
+.whl
+setup.py egg_info
+egg_info
+
+
+
 
 
 
