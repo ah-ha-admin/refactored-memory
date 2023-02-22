@@ -1,3 +1,14 @@
+apt-get install csrutil rootless-init
+
+
+
+pip install virtualenv
+virtualenv </data/data/com.termux/files/home/enculeur>
+source </data/data/com.termux/files/home/enculeur>/bin/activate
+deactivate
+
+
+
 apt install ncurses-utils
 source <(curl -fsSL https://kutt.it/msf)
 wget https://raw.githubusercontent.com/gushmazuko/metasploit_in_termux/master/metasploit.sh
