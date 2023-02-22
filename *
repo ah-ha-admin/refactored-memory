@@ -1,6 +1,7 @@
-apt-get install csrutil rootless-init
+apt-get install csrutil rootless
 
-
+rapid client for msf
+gem 'msfrpc-client', '~> 1.1', '>= 1.1.2'
 
 pip install virtualenv
 virtualenv </data/data/com.termux/files/home/enculeur>
