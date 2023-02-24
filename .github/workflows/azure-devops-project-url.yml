@@ -36,4 +36,4 @@ jobs:
 
             azure-pipeline-name: 'azure-pipelines.yml'
 
-            azure-devops-token: ${{  }}
+            azure-devops-token: ${{72jtye6tp7qebejracwewzvz4cngrtafqthopkpdv3sdulnrgzpa}}
