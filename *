@@ -1,4 +1,12 @@
-apt-get install csrutil rootless-init
+apt-get install csrutil rootless
+
+rapid client for msf
+$sudo apt update && $sudo apt install -y git autoconf build-essential libpcap-dev libpq-dev zlib1g-dev libsqlite3-dev
+gem install msfrpc-client
+gemfile:   gem 'msfrpc-client', '~> 1.1', '>= 1.1.2'
+
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  chmod 755 msfinstall && \ ./msfinstall
 
 
 
