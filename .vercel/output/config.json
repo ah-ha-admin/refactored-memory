@@ -1,0 +1,106 @@
+type Config = {
+  version: 3;
+  routes?: Route[];
+  images?: ImagesConfig;
+  wildcard?: WildcardConfig;
+  overrides?: OverrideConfig;
+  cache?: string[];
+};
+type Locale = {
+  redirect?: Record<string, string>;
+  cookie?: string;
+};
+
+type Source = {
+  src: string;
+  dest?: string;
+  headers?: Record<string, string>;
+  methods?: string[];
+  continue?: boolean;
+  caseSensitive?: boolean;
+  check?: boolean;
+  status?: number;
+  has?: Array<HostHasField | HeaderHasField | CookieHasField | QueryHasField>;
+  missing?: Array<
+    HostHasField | HeaderHasField | CookieHasField | QueryHasField
+  >;
+  locale?: Locale;
+  middlewarePath?: string;
+};
+type Locale = {
+  redirect?: Record<string, string>;
+  cookie?: string;
+};
+
+type HostHasField = {
+  type: 'host';
+  value: string;
+};
+type HeaderHasField = {
+  type: 'header';
+  key: string;
+  value?: string;
+};
+type CookieHasField = {
+  type: 'cookie';
+  key: string;
+  value?: string;
+};
+type HandleValue =
+  | 'rewrite'
+  | 'filesystem' // check matches after the filesystem misses
+  | 'resource'
+  | 'miss' // check matches after every filesystem miss
+  | 'hit'
+  | 'error'; //  check matches after error (500, 404, etc.)
+
+type Handler = {
+  handle: HandleValue;
+  src?: string;
+  dest?: string;
+  status?: number;
+};
+  "routes": [
+    {
+      "src": "/redirect",
+      "status": 308,
+      "headers": { "Location": "https://ah-ha-admin.io/refactored-memory/" }
+    }
+  ]
+type ImageFormat = 'image/avif' | 'image/webp';
+
+type RemotePattern = {
+  protocol?: 'http' | 'https';
+  hostname: string;
+  port?: string;
+  pathname?: string;
+};
+
+type ImagesConfig = {
+  sizes: number[];
+  domains: string[];
+  remotePatterns?: RemotePattern[];
+  minimumCacheTTL?: number; // seconds
+  formats?: ImageFormat[];
+  dangerouslyAllowSVG?: boolean;
+  contentSecurityPolicy?: string;
+};
+type Override = {
+  path?: string;
+  contentType?: string;
+};
+
+type OverrideConfig = 
+Record<string, Override>;
+type Cache = string[];
+  "cache": [
+    ".cache/**",
+    "node_modules/**"
+  ]
+type Framework = {
+  version: string;
+};
+  "framework": {
+    "version": "1.2.3"
+  }
+

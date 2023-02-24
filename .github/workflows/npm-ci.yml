@@ -1,0 +1,25 @@
+name: Run CI
+on: [push, pull_request]
+
+jobs:
+  normal_ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run normal CI
+        run: ./run-tests
+
+  pull_request_ci:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run PR CI
+        run: ./run-additional-pr-c
+        - name: Install Dependencies
+  run: npm install
+  - name: Clean install dependencies and build
+  run: |
+    npm ci
+    npm run build
+    

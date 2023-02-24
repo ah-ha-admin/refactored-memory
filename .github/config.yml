@@ -1,0 +1,18 @@
+version: 2.1
+orbs: node: circleci/node@5.0.3
+version: '2.1'
+
+orbs:
+
+  node: circleci/node@x.y
+
+workflows:
+
+  run-npm-command:
+
+    jobs:
+
+      - node/run:
+
+          yarn-run: build
+[![CircleCI](https://dl.circleci.com/insights-snapshot/gh/ah-ha-admin/refactored-memory/main/say-hello-workflow/badge.svg?window=90d)](https://app.circleci.com/insights/github/ah-ha-admin/refactored-memory/workflows/say-hello-workflow/overview?branch=main&reporting-window=last-90-days&insights-snapshot=true)

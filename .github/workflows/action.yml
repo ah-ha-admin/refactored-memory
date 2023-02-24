@@ -1,3 +1,213 @@
+ main
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cargo fmt
+      - uses: autofix-ci/action@40f4f7bccdde208056784fa907921be767412c5f
+name: Build
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build with logs
+        run: |
+          mkdir ${{ runner.temp }}/build_logs
+          ./build.sh --log-path ${{ runner.temp }}/build_logs
+      - name: Upload logs on fail
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build failure logs
+          path: ${{ runner.temp }}/build_logs
+
+- name: Dependencies Autoupdate
+  uses: romoh/dependencies-autoupdate@v1.2
+  runs-on: ubuntu-latest
+  
+- name: Setup CI/CD tools
+  uses: CashStory/setup-cd-tools@v1.0.2
+  runs-on: ubuntu-latest
+  
+- name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0     
+  runs-on: ubuntu-latest
+  
+- name: Checkout
+  uses: actions/checkout@v3.3.0  
+  jobs:
+  my_first_job:
+    steps:
+    
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          repository: Ah-ha-admin/refactored-memory
+          ref: v1.0
+          token: ${{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}}
+          path: ./.github/actions/refactored-memory
+        runs-on: ubuntu-latest
+      - name: Run my action
+      
+        uses: ./.github/actions/workflows/jobs
+  
+  Run: actions/deploy-pages@v1
+  
+  Actor: ah-ha-admin
+   
+   Run actions/checkout@v3
+ 
+  Name: docker
+  Action ID: 3610059348
+  Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-previe  {"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}
+  Creating deployment with payload:"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
+"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099","oidc_token": "***"
+}
+Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
+{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
+Reported success!
+
+Run actions/workflows@v3
+runs-on: action/checkout@v3
+  on: pull request,draft,commit,comment,push
+on:
+  push:
+      branches:
+            - main
+            jobs:
+              publish-components:
+                  name: Publish Marketplace Content to Pipedream
+                      runs-on: ubuntu-latest
+                          steps:
+                                - name: Checkout code
+                                        uses: actions/checkout@v3.3.0
+                                              - uses: pnpm/action-setup@v2.2.4
+                                                      with:
+                                                                version: 7.0.0
+                                                                      - name: Get pnpm store directory
+                                                                              id: pnpm-cache
+                                                                                      run: |
+                                                                                                echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+                                                                                                      - uses: actions/cache@v3
+                                                                                                              name: Setup pnpm cache
+                                                                                                                      with:
+                                                                                                                                path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+                                                                                                                                          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                                                                                                                                                    restore-keys: |
+                                                                                                                                                                ${{ runner.os }}-pnpm-store-
+                                                                                                                                                                      - name: Install dependencies
+                                                                                                                                                                              run: pnpm install -r --no-frozen-lockfile
+                                                                                                                                                                                    - name: Setup Node Env
+                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                                    with:
+                                                                                                                                                                                                              node-version: 14
+                                                                                                                                                                                                                        registry-url: https://registry.npmjs.org/
+                                                                                                                                                                                                                                  cache: 'pnpm'
+                                                                                                                                                                                                                                        - name: Get Changed Files
+                                                                                                                                                                                                                                                id: files
+                                                                                                                                                                                                                                                        uses: jitterbit/get-changed-files@v1
+                                                                                                                                                                                                                                                                with:
+                                                                                                                                                                                                                                                                          format: 'csv'
+                                                                                                                                                                                                                                                                                - name: Publish changes to marketplace content
+                                                                                                                                                                                                                                                                                        id: publish
+                                                                                                                                                                                                                                                                                                env:
+                                                                                                                                                                                                                                                                                                          PD_API_KEY: ${{ secrets.PD_API_KEY }}
+                                                                                                                                                                                                                                                                                                                    ENDPOINT: ${{ secrets.ENDPOINT }}
+                                                                                                                                                                                                                                                                                                                            shell: bash {0} # don't fast fail
+                                                                                                                                                                                                                                                                                                                                    run: |
+                                                                                                                                                                                                                                                                                                                                              printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
+                                                                                                                                                                                                                                                                                                                                                        pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
+																																	
+																																	defineComponent({
+  async run({ steps, $ }) {
+    await $.respond({
+      status: 200,
+      headers: { "API-KEY": "PROCESS.ENV" },
+      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
+      
+      onCreate:
+      AppCenter.start(getApplication(), "{"5058cbeb-fd90-4520-8bbf-46f9a6f4fe6e"dependencies { def appCenterSdkVersion = '4.4.5' implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}" implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}" }}", Analytics.class, Crashes.class);
+steps:
+
+- uses: actions/checkout@v3
+
+- uses: actions/setup-node@v3
+
+  with:
+
+    node-version: latest
+
+- run: npm ci
+
+- run: npm test
+- name: Setup Node.js environment
+
+  uses: actions/setup-node@v3.6.0
+
+- uses: jfrog/setup-jfrog-cli@v3
+  with:
+    version: latest
+    
+    - name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0
+
+- name: Gradle Wrapper Validation
+  uses: gradle/wrapper-validation-action@v1
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml)Run actions/deploy-pages@v1Actor: ah-ha-adminAction ID: 3610059348Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-preview{"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}Creating deployment with payload:{	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",	"oidc_token": "***"}Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}Reported success!
+
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-go@v3
+    with:
+      go-version: '1.16.1' # The Go version to download (if necessary) and use.
+  - run: go run hello.go
+- name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0
+- name: Checkout
+uses: actions/checkout@v3.3.0  
+  jobs:
+  my_first_job:
+    steps:
+    
+      - name: Check out repository
+      
+        uses: actions/checkout@v3
+	
+        with:
+          repository: Ah-ha-admin/refactored-memory
+          ref: v1.0
+          token: ${{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}}
+          path: ./.github/actions/refactored-memory
+      
+      - name: Run my action
+      
+        uses: ./.github/actions/workflows/jobs
+  
+  Run: actions/deploy-pages@v1
+  
+  Actor: ah-ha-admin
+   
+   Run actions/checkout@v3
+ 
+ Name: docker
+  Action ID: 3610059348
+  Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-previe  {"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}
+  Creating deployment with payload:
+	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
+	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",
+	"oidc_token": "***"
+=======
 Run actions/deploy-pages@v1
 Actor:@ah-ha-admin
 Run actions/checkout@v3
@@ -8,14 +218,498 @@ Artifact URL:https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5B
 Creating deployment with payload:{"artifact_url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
 	"pages_build_version"":d844251c0b0442681cc87b49a1acb46f9109b099",
 	"oidc_token":"***"
+action-runner-linux-arm64
 }
 Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
 {"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
 Reported success!
 
 Run actions/workflows@v3
+main
+runs-on: action/checkout@v3
+  on: pull request,draft,commit,comment,push
+on:
+  push:
+      branches:
+            - main
+            jobs:
+              publish-components:
+                  name: Publish Marketplace Content to Pipedream
+                      runs-on: ubuntu-latest
+                          steps:
+                                - name: Checkout code
+                                        uses: actions/checkout@v3.3.0
+                                              - uses: pnpm/action-setup@v2.2.4
+                                                      with:
+                                                                version: 7.0.0
+                                                                      - name: Get pnpm store directory
+                                                                              id: pnpm-cache
+                                                                                      run: |
+                                                                                                echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+                                                                                                      - uses: actions/cache@v3
+                                                                                                              name: Setup pnpm cache
+                                                                                                                      with:
+                                                                                                                                path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+                                                                                                                                          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                                                                                                                                                    restore-keys: |
+                                                                                                                                                                ${{ runner.os }}-pnpm-store-
+                                                                                                                                                                      - name: Install dependencies
+                                                                                                                                                                              run: pnpm install -r --no-frozen-lockfile
+                                                                                                                                                                                    - name: Setup Node Env
+                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                                    with:
+                                                                                                                                                                                                              node-version: 14
+                                                                                                                                                                                                                        registry-url: https://registry.npmjs.org/
+                                                                                                                                                                                                                                  cache: 'pnpm'
+                                                                                                                                                                                                                                        - name: Get Changed Files
+                                                                                                                                                                                                                                                id: files
+                                                                                                                                                                                                                                                        uses: jitterbit/get-changed-files@v1
+                                                                                                                                                                                                                                                                with:
+                                                                                                                                                                                                                                                                          format: 'csv'
+                                                                                                                                                                                                                                                                                - name: Publish changes to marketplace content
+                                                                                                                                                                                                                                                                                        id: publish
+                                                                                                                                                                                                                                                                                                env:
+                                                                                                                                                                                                                                                                                                          PD_API_KEY: ${{ secrets.PD_API_KEY }}
+                                                                                                                                                                                                                                                                                                                    ENDPOINT: ${{ secrets.ENDPOINT }}
+                                                                                                                                                                                                                                                                                                                            shell: bash {0} # don't fast fail
+                                                                                                                                                                                                                                                                                                                                    run: |
+                                                                                                                                                                                                                                                                                                                                              printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
+                                                                                                                                                                                                                                                                                                                                                        pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
+																																	
+																																	defineComponent({
+  async run({ steps, $ }) {
+    await $.respond({
+      status: 200,
+      headers: { "API-KEY": "PROCESS.ENV" },
+      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
+      
+      onCreate:
+      AppCenter.start(getApplication(), "{"5058cbeb-fd90-4520-8bbf-46f9a6f4fe6e"dependencies { def appCenterSdkVersion = '4.4.5' implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}" implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}" }}", Analytics.class, Crashes.class);
+steps:
+
+- uses: actions/checkout@v3
+
+- uses: actions/setup-node@v3
+
+  with:
+
+    node-version: latest
+
+- run: npm ci
+
+- run: npm test
+- name: Setup Node.js environment
+
+  uses: actions/setup-node@v3.6.0
+
+- uses: jfrog/setup-jfrog-cli@v3
+  with:
+    version: latest
+    
+    - name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0
+
+- name: Gradle Wrapper Validation
+  uses: gradle/wrapper-validation-action@v1
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml)Run actions/deploy-pages@v1Actor: ah-ha-adminAction ID: 3610059348Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-preview{"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}Creating deployment with payload:{	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",	"oidc_token": "***"}Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}Reported success!
+
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-go@v3
+    with:
+      go-version: '1.16.1' # The Go version to download (if necessary) and use.
+  - run: go run hello.go
+- name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0
+- name: Checkout
+uses: actions/checkout@v3.3.0  
+  jobs:
+  my_first_job:
+    steps:
+    
+      - name: Check out repository
+      
+        uses: actions/checkout@v3
+	
+        with:
+          repository: Ah-ha-admin/refactored-memory
+          ref: v1.0
+          token: ${{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}}
+          path: ./.github/actions/refactored-memory
+      
+      - name: Run my action
+      
+        uses: ./.github/actions/workflows/jobs
+  
+  Run: actions/deploy-pages@v1
+  
+  Actor: ah-ha-admin
+   
+   Run actions/checkout@v3
+ 
+ Name: docker
+  Action ID: 3610059348
+  Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-previe  {"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}
+  Creating deployment with payload:
+	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
+	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",
+	"oidc_token": "***"
+}
+Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
+{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
+Reported success!
+
+Run actions/workflows@v3
+runs-on: action/checkout@v3
+  on: pull request,draft,commit,comment,push
+on:
+  push:
+      branches:
+            - main
+            jobs:
+              publish-components:
+                  name: Publish Marketplace Content to Pipedream
+                      runs-on: ubuntu-latest
+                          steps:
+                                - name: Checkout code
+                                        uses: actions/checkout@v3.3.0
+                                              - uses: pnpm/action-setup@v2.2.4
+                                                      with:
+                                                                version: 7.0.0
+                                                                      - name: Get pnpm store directory
+                                                                              id: pnpm-cache
+                                                                                      run: |
+                                                                                                echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+                                                                                                      - uses: actions/cache@v3
+                                                                                                              name: Setup pnpm cache
+                                                                                                                      with:
+                                                                                                                                path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+                                                                                                                                          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                                                                                                                                                    restore-keys: |
+                                                                                                                                                                ${{ runner.os }}-pnpm-store-
+                                                                                                                                                                      - name: Install dependencies
+                                                                                                                                                                              run: pnpm install -r --no-frozen-lockfile
+                                                                                                                                                                                    - name: Setup Node Env
+                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                                    with:
+                                                                                                                                                                                                              node-version: 14
+                                                                                                                                                                                                                        registry-url: https://registry.npmjs.org/
+                                                                                                                                                                                                                                  cache: 'pnpm'
+                                                                                                                                                                                                                                        - name: Get Changed Files
+                                                                                                                                                                                                                                                id: files
+                                                                                                                                                                                                                                                        uses: jitterbit/get-changed-files@v1
+                                                                                                                                                                                                                                                                with:
+                                                                                                                                                                                                                                                                          format: 'csv'
+                                                                                                                                                                                                                                                                                - name: Publish changes to marketplace content
+                                                                                                                                                                                                                                                                                        id: publish
+                                                                                                                                                                                                                                                                                                env:
+                                                                                                                                                                                                                                                                                                          PD_API_KEY: ${{ secrets.PD_API_KEY }}
+                                                                                                                                                                                                                                                                                                                    ENDPOINT: ${{ secrets.ENDPOINT }}
+                                                                                                                                                                                                                                                                                                                            shell: bash {0} # don't fast fail
+                                                                                                                                                                                                                                                                                                                                    run: |
+                                                                                                                                                                                                                                                                                                                                              printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
+                                                                                                                                                                                                                                                                                                                                                        pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
+																																	
+																																	defineComponent({
+  async run({ steps, $ }) {
+    await $.respond({
+      status: 200,
+      headers: { "API-KEY": "PROCESS.ENV" },
+      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
+      
+      onCreate:
+      AppCenter.start(getApplication(), "{"5058cbeb-fd90-4520-8bbf-46f9a6f4fe6e"dependencies { def appCenterSdkVersion = '4.4.5' implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}" implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}" }}", Analytics.class, Crashes.class);
+steps:
+
+- uses: actions/checkout@v3
+
+- uses: actions/setup-node@v3
+
+  with:
+
+    node-version: latest
+
+- run: npm ci
+
+- run: npm test
+- name: Setup Node.js environment
+
+  uses: actions/setup-node@v3.6.0
+
+- uses: jfrog/setup-jfrog-cli@v3
+  with:
+    version: latest
+    
+    - name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0
+
+- name: Gradle Wrapper Validation
+  uses: gradle/wrapper-validation-action@v1
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml)Run actions/deploy-pages@v1Actor: ah-ha-adminAction ID: 3610059348Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-preview{"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}Creating deployment with payload:{	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",	"oidc_token": "***"}Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}Reported success!
+
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-go@v3
+    with:
+      go-version: '1.16.1' # The Go version to download (if necessary) and use.
+  - run: go run hello.go
+
+- name: Setup Node.js environment
+
+  uses: actions/setup-node@v3.6.0
+ 
+- name: Checkout
+
+uses: actions/checkout@v3.3.0  
+  jobs:
+  my_first_job:
+    steps:
+    
+      - name: Check out repository
+      
+        uses: actions/checkout@v3
+	
+        with:
+          repository: Ah-ha-admin/refactored-memory
+          ref: v1.0
+          token: ${{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}}
+          path: ./.github/actions/refactored-memory
+      
+      - name: Run my action
+      
+        uses: ./.github/actions/workflows/jobs
+  
+  Run: actions/deploy-pages@v1
+  
+  Actor: ah-ha-admin
+   
+   Run actions/checkout@v3
+ 
+ Name: docker
+  Action ID: 3610059348
+  Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-previe  {"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}
+  Creating deployment with payload:
+	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",
+	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",
+	"oidc_token": "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"
+}
+Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
+{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}
+Reported success!
+
+Run actions/workflows@v3
+runs-on: action/checkout@v3
+  on: pull request,draft,commit,comment,push
+on:
+  push:
+      branches:
+            - main
+            jobs:
+              publish-components:
+                  name: Publish Marketplace Content to Pipedream
+                      runs-on: ubuntu-latest
+                          steps:
+                                - name: Checkout code
+                                        uses: actions/checkout@v3.3.0
+                                              - uses: pnpm/action-setup@v2.2.4
+                                                      with:
+                                                                version: 7.0.0
+                                                                      - name: Get pnpm store directory
+                                                                              id: pnpm-cache
+                                                                                      run: |
+                                                                                                echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+                                                                                                      - uses: actions/cache@v3
+                                                                                                              name: Setup pnpm cache
+                                                                                                                      with:
+                                                                                                                                path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+                                                                                                                                          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                                                                                                                                                    restore-keys: |
+                                                                                                                                                                ${{ runner.os }}-pnpm-store-
+                                                                                                                                                                      - name: Install dependencies
+                                                                                                                                                                              run: pnpm install -r --no-frozen-lockfile
+                                                                                                                                                                                    - name: Setup Node Env
+                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                                    with:
+                                                                                                                                                                                                              node-version: 14
+                                                                                                                                                                                                                        registry-url: https://registry.npmjs.org/
+                                                                                                                                                                                                                                  cache: 'pnpm'
+                                                                                                                                                                                                                                        - name: Get Changed Files
+                                                                                                                                                                                                                                                id: files
+                                                                                                                                                                                                                                                        uses: jitterbit/get-changed-files@v1
+                                                                                                                                                                                                                                                                with:
+                                                                                                                                                                                                                                                                          format: 'csv'
+                                                                                                                                                                                                                                                                                - name: Publish changes to marketplace content
+                                                                                                                                                                                                                                                                                        id: publish
+                                                                                                                                                                                                                                                                                                env:
+                                                                                                                                                                                                                                                                                                          PD_API_KEY: ${{ secrets.PD_API_KEY }}
+                                                                                                                                                                                                                                                                                                                    ENDPOINT: ${{ secrets.ENDPOINT }}
+                                                                                                                                                                                                                                                                                                                            shell: bash {0} # don't fast fail
+                                                                                                                                                                                                                                                                                                                                    run: |
+                                                                                                                                                                                                                                                                                                                                              printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
+                                                                                                                                                                                                                                                                                                                                                        pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
+																																	
+																																	defineComponent({
+  async run({ steps, $ }) {
+    await $.respond({
+      status: 200,
+      headers: { "API-KEY": "PROCESS.ENV" },
+      body: { message: "process.env" }, // This can be any string, object, Buffer, or Readable runners:
+  - name: "gpu-runner"
+    cloud: "gcp"
+    gpu: "nvidia-tesla-t4"
+    instance_type: "n1-standard-1"
+    machine_image: "ubuntu-minimal-2004-lts"
+    preemptible: true
+    labels:
+      - "cirun-gpu-runner"
+      
+      onCreate:
+      AppCenter.start(getApplication(), "{"5058cbeb-fd90-4520-8bbf-46f9a6f4fe6e"dependencies { def appCenterSdkVersion = '4.4.5' implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}" implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}" }}", Analytics.class, Crashes.class);
+steps:
+
+- uses: actions/checkout@v3
+
+- uses: actions/setup-node@v3
+
+  with:
+
+    node-version: latest
+
+- run: npm ci
+
+- run: npm test
+- name: Setup Node.js environment
+
+  uses: actions/setup-node@v3.6.0
+
+- uses: jfrog/setup-jfrog-cli@v3
+  with:
+    version: latest
+    
+    - name: Setup Node.js environment
+  uses: actions/setup-node@v3.6.0
+
+- name: Gradle Wrapper Validation
+  uses: gradle/wrapper-validation-action@v1
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/jekyll-gh-pages.yml)Run actions/deploy-pages@v1Actor: ah-ha-adminAction ID: 3610059348Artifact URL: https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/workflows/3610059348/artifacts?api-version=6.0-preview{"count":1,"value":[{"containerId":1385265,"size":102400,"signedContent":null,"fileContainerResourceUrl":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/resources/Containers/1385265","type":"actions_storage","name":"github-pages","url":"https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages","expiresOn":"2022-12-04T20:12:07.8712362Z","items":null}]}Creating deployment with payload:{	"artifact_url": "https://pipelines.actions.githubusercontent.com/4KXsrVU1mUOKs7pos5Bk6Fq09D6jySVjT3cpPMvrTyCLYNX7nf/_apis/pipelines/1/runs/1832/artifacts?artifactName=github-pages&%24expand=SignedContent",	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",	"oidc_token": "***"}Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099{"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_url":""}Reported success!
+
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-go@v3
+    with:
+      go-version: '1.16.1' # The Go version to download (if necessary) and use.
+  - run: go run hello.go
+
+{ 	
+"name": "actions", 
+"matcher": { 	
+"matchType": "regex", 	
+"regex": ".*" 	}, 	
+"ruleSet": { 
+"repository": 
+{"visibility": null, 	
+"has_issues": null, 	
+"has_projects": null, 	
+"has_wiki": null,
+"is_template": null,
+"default_branch": "main",
+"allow_squash_merge": null,
+"allow_merge_commit": null, 	
+"allow_rebase_merge": null, 
+"delete_branch_on_merge": null
+},  
+"automatedSecurityFixes":
+{ "enabled": true}, 
+"vulnerabilityAlerts": 
+{ "enabled": true 		}, 
+"teamsSetting":
+{"teamPermissions": [],
+"removeOthers": false 		} 	} }
+
+jobs:
+autofix:
+runs-on: ubuntu-latest 
+steps: 
+- uses: actions/checkout@v3
+- run: cargo fmt
+- uses: autofix-ci/action@40f4f7bccdde208056784fa907921be767412c5f
+
+2. Receive automatic fixes.
+
+name: Build
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build with logs
+        run: |
+          mkdir ${{ runner.temp }}/build_logs
+          ./build.sh --log-path ${{ runner.temp }}/build_logs
+      - name: Upload logs on fail
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build failure logs
+          path: ${{ runner.temp }}/build_logs
+
+name: Sync termux.com
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-termux-com:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_TERMUX_COM_TOKEN }}
+      - name: Sync termux.com
+        if: github.repository == 'termux/termux.com'
+        run: |
+                git config --global user.name 'agnostic-apollo'
+                git config --global user.email 'agnosticapollo@gmail.com'
+
+                # Add termux/termux.github.io as upstrem and fetch it
+                echo "Adding upstream"
+                git remote add upstream https://github.com/termux/termux.github.io.git
+                git fetch upstream
+
+                # Switch to mirror branch
+                echo "Checking out mirror branch"
+                git checkout mirror
+
+                # Rebase upstream/master over mirror branch and keep CNAME(termux.com) file
+                echo "Rebase upstream/master"
+                git rebase --strategy-option=theirs upstream/master
+
+                # Push branch
+                echo "Pushing mirror branch"
+                git push -f origin mirror
 runs-on:action/checkout@v3
      steps :
     - checkout/branch:main'
     pipline
      "push,pull request,draft,commit,comment"
+ action-runner-linux-arm64
