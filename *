@@ -1,5 +1,8 @@
 apt-get install csrutil rootless
 
+pip install events-system
+
+
 rapid client for msf
 $sudo apt update && $sudo apt install -y git autoconf build-essential libpcap-dev libpq-dev zlib1g-dev libsqlite3-dev
 gem install msfrpc-client
