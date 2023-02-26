@@ -20,3 +20,10 @@ jobs:
             azure-devops-project-url: https://dev.azure.com/sexflixxxvip00/projetCI
             azure-pipeline-name: 'azure-pipelines.yml'
             azure-devops-token: ${{acsiymjio7c5twmiqedh4ruiti7lgoogedfew5ky5adr6fd72kda}}
+steps:
+  - name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{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}}
