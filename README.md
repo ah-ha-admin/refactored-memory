@@ -1,3 +1,4 @@
+[![Code Scanning - Action](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codeql-analysis.yml)
 [![Datree Workflow](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/datree-validation.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/datree-validation.yml)
 [![Quick Checks](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/checks.yml/badge.svg?event=create)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/checks.yml)
 [![.github/workflows/cleanthat.yaml](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/cleanthat.yaml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/cleanthat.yaml)
