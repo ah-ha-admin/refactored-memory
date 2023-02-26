@@ -1,10 +1,18 @@
 apt-get install csrutil rootless
+export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
+
 
 pip install events-system
 VIRTUAL ENVIRONMENT:
 python3 -m venv /data/data/files/home/.venv
+Install it by typing:
+pip install --user pipenv
+In the project root (where Pipfile is) run:
+pipenv install --dev
 
+pip install  nvidia-docker-autoconf autoconf facebook-snooper tap-facebook facebook-data-miner 
 
+apt-get install autoconf automake build-essential libtool python-dev
 
 rapid client for msf
 $sudo apt update && $sudo apt install -y git autoconf build-essential libpcap-dev libpq-dev zlib1g-dev libsqlite3-dev
