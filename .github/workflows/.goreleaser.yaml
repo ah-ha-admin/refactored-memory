@@ -10,9 +10,7 @@ builds:
     goos:
       - linux
       - darwin
-      - windows
     goarch:
-      - amd64
       - arm64
 archives:
   - name_template: "{{refactored-memory}}_{{ .aarch64 }}{{ end }}{{ if .Mips }}_{{ .Mips }}{{ end }}"
@@ -116,3 +114,10 @@ changelog:
       - '^:memo:'
       - '^:bricks:'
       - '^:recycle:'
+      steps:
+  - name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.0"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{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}}
