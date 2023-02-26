@@ -1,6 +1,9 @@
 apt-get install csrutil rootless
 
 pip install events-system
+VIRTUAL ENVIRONMENT:
+python3 -m venv /data/data/files/home/.venv
+
 
 
 rapid client for msf
