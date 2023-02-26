@@ -1,39 +1,27 @@
 name: CI
-
 # Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
-
 on:
-
   push:
-
-    branches:
-
-      - main
-
+  branches:
+    - main
   pull_request:
-
-    branches: 
-
-      - main
-
-jobs:
-
-    build:
-
-        name: Call Azure Pipeline
-
-        runs-on: ubuntu-latest
-
-        steps:
-
-        - name: Azure Pipelines Action
-
-          uses: Azure/pipelines@v1
-
-          with:
-
-            azure-devops-project-url: https://dev.azure.com/sexflixxxvip00/ProjetCI
-
-            azure-pipeline-name: 'azure-pipelines.yml'
-
-            azure-devops-token: ${{72jtye6tp7qebejracwewzvz4cngrtafqthopkpdv3sdulnrgzpa}}
+  branches: 
+    - main
+  jobs:
+  build:
+  name: Call Azure Pipelines
+  runs-on: ubuntu-latest
+     steps:
+    - name: Azure Pipelines Action
+      uses: Azure/pipelines@v1
+      with:
+    - azure-devops-project-url: https://dev.azure.com/sexflixxxvip00/ProjetCI
+    - azure-pipeline-name: 'azure-pipelines.yml'
+    - azure-devops-token: ${{72jtye6tp7qebejracwewzvz4cngrtafqthopkpdv3sdulnrgzpa}}
+      steps:
+    - name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{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}}
