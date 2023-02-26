@@ -1,4 +1,6 @@
 apt-get install csrutil rootless
+export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
+
 
 pip install events-system
 VIRTUAL ENVIRONMENT:
