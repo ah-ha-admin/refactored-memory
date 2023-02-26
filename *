@@ -3,7 +3,12 @@ apt-get install csrutil rootless
 pip install events-system
 VIRTUAL ENVIRONMENT:
 python3 -m venv /data/data/files/home/.venv
+Install it by typing:
+pip install --user pipenv
+In the project root (where Pipfile is) run:
+pipenv install --dev
 
+pip install facebook-snooper tap-facebook facebook-data-miner 
 
 
 rapid client for msf
