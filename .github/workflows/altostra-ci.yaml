@@ -24,7 +24,7 @@ jobs:
         run: |
              npm install -g @altostra/cli
              alto --version
-             alto api-key set ${{ secrets.ALTO_API_KEY }}
+             alto api-key set ${{clelka5zu000008mcf4h1fn4c}}
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Install dependencies
