@@ -715,7 +715,7 @@ runs-on:action/checkout@v3
  action-runner-linux-arm64
 steps:
   - name: "Check if user has write access"
-    uses: "lannonbr/repo-permission-check-action@2.0.0"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
     with:
       permission: "write"
     env:
