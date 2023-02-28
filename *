@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 gem 'nokogiri'
 gem 'rack', '~> 2.2.4'
 gem 'rspec'
-
+ 
+ pip install vim-debug debug-utils pip-box pip_mirror pip-run pybuilder-pip-tools
 
 apt-get install csrutil rootless
 export LD_PRELOAD=${PREFIX}/lib/libtermux-exec.so
