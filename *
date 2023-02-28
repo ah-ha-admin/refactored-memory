@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 gem 'nokogiri'
 gem 'rack', '~> 2.2.4'
 gem 'rspec'
+
+npmfix;;
+sudo chown -R $(whoami) /usr/{lib/node_modules}
  
  pip install vim-debug debug-utils pip-box pip_mirror pip-run pybuilder-pip-tools
 
