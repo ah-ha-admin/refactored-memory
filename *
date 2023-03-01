@@ -1,3 +1,11 @@
+SOLUTION FOR APT & DPKG ERROR =
+apt --fix-broken install,
+apt purge, 
+apt clean,
+apt autoclean, 
+dpkg -i --force-overwrite /data/data/com.termux/files/usr/etc/apt/sources.list
+
+
 source 'https://rubygems.org'
 gem 'nokogiri'
 gem 'rack', '~> 2.2.4'
