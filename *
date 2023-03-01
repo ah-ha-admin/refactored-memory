@@ -5,6 +5,13 @@ apt clean,
 apt autoclean, 
 dpkg -i --force-overwrite /data/data/com.termux/files/usr/etc/apt/sources.list
 
+POUR CHANGER SOURCES == apt edit-sources
+MIRROR SOURCES.LIST :;;
+
+
+deb https://dl.bintray.com/grimler/termux-root-packages-21 root stable
+
+
 
 source 'https://rubygems.org'
 gem 'nokogiri'
