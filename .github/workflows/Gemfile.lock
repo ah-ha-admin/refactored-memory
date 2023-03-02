@@ -563,6 +563,6 @@ DEPENDENCIES
   webdrivers
   webrick
   xml-simple
+BUNDLED WITH gem 'rake', '~> 13.0', '>= 13.0.6'
 
-BUNDLED WITH
    2.3.25
