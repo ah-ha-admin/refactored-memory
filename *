@@ -1,3 +1,8 @@
+
+Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
+gem install rake
+
+
 SOLUTION FOR APT & DPKG ERROR =
 apt --fix-broken install,
 apt purge, 
