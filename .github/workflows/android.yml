@@ -55,7 +55,23 @@ jobs:
           node-version: 16
 
       - run: npm ci
-      - run: npx prettier --write .
+      - run: npx prettier --write 
+      
+        prebuilds:
+    master: true
+    branches: true
+        pullRequests: true
+    pullRequestsFromForks: true
+    addComment: true
+    addBadge: true
+    addLabel: prebuilt-in-gitpod
+steps:
+  - name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{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}}     .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
 
