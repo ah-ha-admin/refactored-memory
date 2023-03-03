@@ -165,6 +165,13 @@ Creating deployment with payload:
 	"pages_build_version": "d844251c0b0442681cc87b49a1acb46f9109b099",
 	"oidc_token": "***"
 }
+- name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{github_pat_11A4HPB7A0Q7raD8GNlvUv_HWYZi1lifIsihvvZ6TaXSgfzxpM5
+
 Created deployment for d844251c0b0442681cc87b49a1acb46f9109b099
 {"page_url":"https://ah-ha-admin.github.io/refactored-memory/","status_url":"https://api.github.com/repos/ah-ha-admin/refactored-memory/pages/deployment/status/d844251c0b0442681cc87b49a1acb46f9109b099","preview_ur
 jobs:
