@@ -61,7 +61,7 @@ jobs:
 30
     - name: Set up Ruby
 31
-      uses: ruby/setup-ruby@92aece5fc9c784ab66851c1e702b1bd5885a51f2 # v1.139.0
+      uses: ruby/setup-ruby@5a73aa9f67560c0d447ab95e2c73fb8d0f790c01 # v1.141.0
 32
       with:
 33
@@ -254,7 +254,7 @@ jobs:
     # If running on a self-hosted runner, check it meets the requirements
     # listed at https://github.com/ruby/setup-ruby#using-self-hosted-runners
     - name: Set up Ruby
-      uses: ruby/setup-ruby@92aece5fc9c784ab66851c1e702b1bd5885a51f2 # v1.139.0
+      uses: ruby/setup-ruby@5a73aa9f67560c0d447ab95e2c73fb8d0f790c01 # v1.141.0
       with:
         ruby-version: 2.6
 
