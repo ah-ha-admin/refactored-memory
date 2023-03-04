@@ -5,7 +5,8 @@ gem install rake
 deb http://deb.debian.org/debian unstable main
 deb http://deb.debian.org/debian-debug unstable-debug main
 deb http://deb.debian.org/debian-ports unstable main
-
+deb http://cdn-fastly.deb.debian.org/debian stable main
+deb http://cdn-fastly.deb.debian.org/debian-security stable/updates main
 
 pip install py_essentials essentials-configuration 
 
