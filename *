@@ -2,7 +2,16 @@
 Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
 gem install rake
 
-pip install socialbrute
+deb http://deb.debian.org/debian unstable main
+deb http://deb.debian.org/debian-debug unstable-debug main
+deb http://deb.debian.org/debian-ports unstable main
+deb http://cdn-fastly.deb.debian.org/debian stable main
+deb http://cdn-fastly.deb.debian.org/debian-security stable/updates main
+
+pip install py_essentials essentials-configuration 
+
+ create requirement.txt file
+pip freeze > requirements.txt
 
 KATALON:
 - GRADLE: https://gradle.org/
