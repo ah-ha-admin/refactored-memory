@@ -1,6 +1,12 @@
 
 Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
 gem install rake
+ 
+ METASPLOIT;;:
+$sudo mkdir -p /var/cache/omnibus
+$sudo mkdir -p /opt/metasploit-framework
+$sudo chown `whoami` /var/cache/omnibus
+$sudo chown `whoami` /opt/metasploit-framework
 
 deb http://deb.debian.org/debian unstable main
 deb http://deb.debian.org/debian-debug unstable-debug main
