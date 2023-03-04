@@ -2,7 +2,8 @@
 Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
 gem install rake
 
-pip install socialbrute
+ create requirement.txt file
+pip freeze > requirements.txt
 
 KATALON:
 - GRADLE: https://gradle.org/
