@@ -2,6 +2,16 @@
 Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
 gem install rake
  
+ 
+0auth-app
+Client ID
+e9dea68d0dc2ed3327db
+client secret
+43a564f5f2cea1467d2b17be9ae65d194fde362f
+
+
+ 
+ 
  METASPLOIT;;:
 $sudo mkdir -p /var/cache/omnibus
 $sudo mkdir -p /opt/metasploit-framework
