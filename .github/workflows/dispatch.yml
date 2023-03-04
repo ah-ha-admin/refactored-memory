@@ -1,0 +1,13 @@
+- name: Repo Event Dispatch
+  uses: juztcode/repo-ditpatch-action@v1
+  on: [push]
+ jobs:
+  dispatch_event:
+    runs-on: ubuntu-latest
+    name: Dispatch event
+    steps:
+    - uses: juztcode/repo-ditpatch-action@v1
+      with:
+        event-type: test_event
+        token: ${{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}}
+        repository: juztcode/repo-ditpatch-action
