@@ -135,15 +135,17 @@ jobs:
                 git remote add upstream https://github.com/termux/termux.github.io.git
                 git fetch upstream
 
-                # Switch to mirror branch
-                echo "Checking out mirror branch"
-                git checkout mirror
+                # Switch to mirror anch
+                echo "Checking out mirror 
+		
+		- name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{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
+		
 
-                # Rebase upstream/master over mirror branch and keep CNAME(termux.com) file
-                echo "Rebase upstream/master"
-                git rebase --strategy-option=theirs upstream/master
-		[![Codacy Security Scan](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml)
-
-                # Push branch
+             
                 echo "Pushing mirror branch"
                 git push -f origin mirror
