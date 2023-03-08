@@ -2,6 +2,12 @@
 Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
 gem install rake
  
+ deb http://deb.debian.org/debian unstable main
+deb http://deb.debian.org/debian-debug unstable-debug main
+deb http://deb.debian.org/debian-ports unstable main
+ 
+ 
+ 
  
 0auth-app
 Client ID
