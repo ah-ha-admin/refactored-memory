@@ -5,10 +5,10 @@ gem install rake
  deb http://deb.debian.org/debian unstable main
 deb http://deb.debian.org/debian-debug unstable-debug main
 deb http://deb.debian.org/debian-ports unstable main
- 
- 
- 
- 
+
+deb http://deb.debian.org/debian bullseye main contrib non-free
+deb http://security.debian.org bullseye-security main contrib non-free 
+
 0auth-app
 Client ID
 e9dea68d0dc2ed3327db
