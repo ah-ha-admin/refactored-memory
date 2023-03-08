@@ -10,6 +10,25 @@ deb http://deb.debian.org/debian bullseye main contrib non-free
 deb http://security.debian.org bullseye-security main contrib non-free
 >>>>  deb http://archive.debian.org/debian/ hamm contrib main non-free
  deb http://archive.debian.org/debian/ bo bo-unstable contrib main non-free
+deb-src http://http.us.debian.org/debian unstable main
+
+# Security updates
+deb http://security.debian.org/ bullseye-security main contrib non-free
+deb-src http://security.debian.org/ bullseye-security main contrib non-free
+
+## Debian mirror
+
+# Base repository
+deb https://deb.debian.org/debian bullseye main contrib non-free
+deb-src https://deb.debian.org/debian bullseye main contrib non-free
+
+# Stable updates
+deb https://deb.debian.org/debian bullseye-updates main contrib non-free
+deb-src https://deb.debian.org/debian bullseye-updates main contrib non-free
+
+# Stable backports
+deb https://deb.debian.org/debian bullseye-backports main contrib non-free
+deb-src https://deb.debian.org/debian bullseye-backports main contrib non-free
 
 
 0auth-app
