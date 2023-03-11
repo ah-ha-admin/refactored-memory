@@ -33,7 +33,7 @@ jobs:
     - name: Build package
       run: python -m build
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@0eaf3a11fdca4a989056b00eda351a21c1b0426e
+      uses: pypa/gh-action-pypi-publish@32b5e9370928566935e085a9154f23bd662ef41c
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
@@ -71,7 +71,7 @@ jobs:
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Format your code with https://github.com/psf/black
-      - uses: install-pinned/black@01bdeb8005b1c929b857e7a447a68fd8b22de195
+      - uses: install-pinned/black@61e9116e9a39f2dd836078fec8fc13f132c884eb
       - run: black .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c016
