@@ -80,9 +80,13 @@ jobs:
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
       - uses: install-pinned/autoflake@c8c6d3203517546653d0af899039b4bafa2aa351
-      - run: autoflake --in-place --remove-all-unused-imports -r .
-
-      # Format your code with https://github.com/psf/black
+      - run: autoflake --in-place --remove-all-unused-imports 
+        - name: "Check if user has write access"
+    uses: "lannonbr/repo-permission-check-action@2.0.2"
+    with:
+      permission: "write"
+    env:
+      GITHUB_TOKEN: ${{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}
       - uses: install-pinned/black@61e9116e9a39f2dd836078fec8fc13f132c884eb
       - run: black .
 
