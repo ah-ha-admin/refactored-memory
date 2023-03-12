@@ -8,10 +8,10 @@ Do not modify lines containing the address
 http://security.debian.org/.
 These lines contains security updates for packages.
 
-Save and exit the sources.list file.
+Save and exit the sources.list curl https://cli.pipedream.com/install | sudo sh
 
 
-
+curl https://cli.pipedream.com/install | sudo sh
 
 
 
