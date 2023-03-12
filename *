@@ -1,3 +1,21 @@
+⬇️⬇️⬇️⬇️⬇️⬇️
+$sudo nano /etc/apt/sources.list
+Replace the line containing the address 
+http://ftp.us.debian.org/debian/ with the new address location:
+
+http://mirrors.linode.com/debian/
+Do not modify lines containing the address 
+http://security.debian.org/.
+These lines contains security updates for packages.
+
+Save and exit the sources.list file.
+
+
+
+
+
+
+
 
 Gemfile:gem 'rake', '~> 13.0', '>= 13.0.6'
 gem install rake
