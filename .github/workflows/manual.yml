@@ -1,0 +1,27 @@
+name: Manual workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name: 'name'
+      description: 'Person to greet'
+    default: 'World'
+    required: true
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps: using the runners shell
+   - name: Send greeting
+      run: echo "Hello ${{ github.event.inputs.name }}"
+      export default {
+  name: "Action Demo",
+  description: "This is a demo action",
+  key: "action_demo",
+  version: "0.0.1",
+  type: "action",
+  props: {},
+  async run() {
+    return `hello world!`
+  },
+}
+
+      
