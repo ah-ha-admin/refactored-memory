@@ -1,0 +1,21 @@
+
+on: 
+    push:
+      branches:
+        - main
+      paths-ignore:
+        - '**.md'
+jobs:
+  initial_flow:
+    runs-on: ubuntu-latest
+    name: A job to train new model
+    steps:
+    - name: Train new model
+      id: train
+      uses: ZoranPandovski/automl-actions@main
+      with:
+        dataset: "https://raw.githubusercontent.com/mindsdb/mindsdb-examples/master/classics/home_rentals/dataset/test.csv"
+        target: "rental_price"
+        when: '{"sqft": 3000}'
+    - name: Predicted value
+      run: echo "${{ steps.train.outputs.prediction }}"
