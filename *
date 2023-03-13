@@ -13,7 +13,7 @@ Save and exit the sources.list curl https://cli.pipedream.com/install | sudo sh
 
 curl https://cli.pipedream.com/install | sudo sh
 
-
+curl -fsSL https://jb.gg/qodana-cli/install | bash
 
 
 
