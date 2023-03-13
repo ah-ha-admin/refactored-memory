@@ -1,6 +1,10 @@
-[![Codacy Security Scan](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml)
+name: autofix
+on:
+push:
+branch:
+main
 jobs:
-  autofix:
+  autofix
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -146,6 +150,7 @@ jobs:
       GITHUB_TOKEN: ${{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
       - name: Cache
   uses: actions/cache@v3.3.1
+  
 
              
                 echo "Pushing mirror branch"
