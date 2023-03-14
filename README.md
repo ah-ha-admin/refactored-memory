@@ -1,3 +1,4 @@
+[![Codacy Security Scan](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml/badge.svg?event=check_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml)
 [![Mark stale issues and pull requests](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/stale.yml/badge.svg)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/stale.yml)
 [![Terraform](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/terraform.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/terraform.yml)
 [![Codacy Security Scan](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/ah-ha-admin/refactored-memory/actions/workflows/codacy.yml)
