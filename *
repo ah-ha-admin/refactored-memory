@@ -1,4 +1,6 @@
-⬇️⬇️⬇️⬇️⬇️⬇️
+⬇️
+SL https://downloads.slack-edge.com/slack-cli/install.sh | bash
+⬇️⬇️⬇️⬇️⬇️
 $sudo nano /etc/apt/sources.list
 Replace the line containing the address 
 http://ftp.us.debian.org/debian/ with the new address location:
