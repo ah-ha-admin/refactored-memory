@@ -226,7 +226,7 @@ jobs:
       go-version: ${{ steps.get-go-version.outputs.version }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Determine Go version
         id: get-go-version
         uses: ./.github/actions/go-version
@@ -239,7 +239,7 @@ jobs:
       filepath: ${{ steps.generate-metadata-file.outputs.filepath }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Generate package metadata
         id: generate-metadata-file
         uses: hashicorp/actions-generate-metadata@v1
@@ -285,7 +285,7 @@ jobs:
       GO_LDFLAGS: ${{ needs.get-product-version.outputs.go-ldflags }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install Go toolchain
         uses: actions/setup-go@v3
@@ -414,7 +414,7 @@ jobs:
       version: ${{needs.get-product-version.outputs.product-version}}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build Docker images
         uses: hashicorp/actions-docker-build@v1
         with:
@@ -457,7 +457,7 @@ jobs:
       build_script: ./internal/command/e2etest/make-archive.sh
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install Go toolchain
         uses: actions/setup-go@v3
@@ -634,7 +634,7 @@ jobs:
       version: ${{needs.get-product-version.outputs.product-version}}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # FIXME: We should include some sort of pre-validation step here, to
       # confirm that the doc content is mechanically valid so that the
       # publishing pipeline will be able to render all content without errors.

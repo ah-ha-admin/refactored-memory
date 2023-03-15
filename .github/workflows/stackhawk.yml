@@ -84,7 +84,7 @@ jobs:
   stackhawk-hawkscan:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: stackhawk/hawkscan-action@v2.0.1
       with:
         apiKey: ${{hawk.Pef2X0hP8ryJcWfE23Mt.g1vMt73kbxSNZrRdCazs}}
