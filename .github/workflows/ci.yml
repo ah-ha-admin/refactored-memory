@@ -13,7 +13,7 @@ jobs:
         extconfopts2: [ --disable-libffi-alloc, --enable-libffi-alloc ]
     runs-on: ${{ matrix.os }}-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
@@ -48,7 +48,7 @@ jobs:
           ruby: 2.3 # compilation fails
     runs-on: ${{ matrix.os }}-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
