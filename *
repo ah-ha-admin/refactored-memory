@@ -1,4 +1,6 @@
 142.169.16.158
+-----------------
+bundle config mirror.https://rubygems.org http://localhost:9292
 
 $sudo nano /etc/apt/sources.list
 
