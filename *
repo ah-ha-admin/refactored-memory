@@ -1,4 +1,7 @@
+$sudo nano /etc/apt/sources.list
+
 ⬇️
+
 SL https://downloads.slack-edge.com/slack-cli/install.sh | bash
 ⬇️⬇️⬇️⬇️⬇️
 $sudo nano /etc/apt/sources.list
