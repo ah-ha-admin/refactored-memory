@@ -1,5 +1,42 @@
 142.169.16.158
 -----------------
+deb http://deb.debian.org/debian-debug/ bullseye-debug main
+deb https://packages.microsoft.com/repos/code stable main
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-add-repository https://packages.microsoft.com/debian/10/prod
+sudo apt-get update
+
+   # apt install apt-transport-https
+2. Create a new file in /etc/apt/sources.list.d/ named tor.list. Add the following entries:
+   deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org <DISTRIBUTION> main
+   deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org <DISTRIBUTION> main
+If you want to try experimental packages, add these in addition to the lines from above:
+
+   deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-experimental-<DISTRIBUTION> main
+   deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-experimental-<DISTRIBUTION> main
+Ou les versions quotidiennes :
+
+   deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-nightly-main-<DISTRIBUTION> main
+   deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-nightly-main-<DISTRIBUTION> main
+Replace <DISTRIBUTION> with your Operating System codename. Run lsb_release -c or cat /etc/debian_version to check the Operating System version.
+
+Note: Ubuntu Focal dropped support for 32-bit, so instead use:
+
+   deb     [arch=<ARCHITECTURE> signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org focal main
+   deb-src [arch=<ARCHITECTURE> signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org focal main
+Replace <ARCHITECTURE> with your system architecture (you found it earlier by writing dpkg --print-architecture).
+
+Warning symptom, when running sudo apt update:
+
+   Skipping acquire of configured file 'main/binary-i386/Packages' as repository 'http://deb.torproject.org/torproject.org focal InRelease' doesn't support architecture 'i386'
+3. Then add the gpg key used to sign the packages by running the following command at your command prompt:
+   # wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/tor-archive-keyring.gpg >/dev/null
+4. Install tor and tor debian keyring
+We provide a Debian package to help you keep our signing key current. It is recommended you use it. Install it with the following commands:
+
+   # apt update
+   # apt install tor deb.torproject.org-keyring
+
 bundle config mirror.https://rubygems.org http://localhost:9292
 
 $sudo nano /etc/apt/sources.list
