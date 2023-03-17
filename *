@@ -3,6 +3,7 @@ https://atl.mirrors.clouvider.net/debian/dists/stable/
 https://atl.mirrors.clouvider.net/debian/dists/stable/main/Contents-source.gz
 
 
+http://ftp.ports.debian.org/debian-ports/pool-hppa/main/d/d52/d52_3.4.1-1.1_hppa.deb
 deb http://deb.debian.org/debian/ bullseye main
 deb-src http://deb.debian.org/debian/ bullseye main
 
