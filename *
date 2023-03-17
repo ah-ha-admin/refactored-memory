@@ -1,5 +1,10 @@
 142.169.16.158
 -----------------
+deb http://deb.debian.org/debian-debug/ bullseye-debug main
+deb https://packages.microsoft.com/repos/code stable main
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-add-repository https://packages.microsoft.com/debian/10/prod
+sudo apt-get update
 
    # apt install apt-transport-https
 2. Create a new file in /etc/apt/sources.list.d/ named tor.list. Add the following entries:
