@@ -2,6 +2,10 @@ https://atl.mirrors.clouvider.net/debian/dists/stable/
 
 https://atl.mirrors.clouvider.net/debian/dists/stable/main/Contents-source.gz
 
+https://deb.debian.org/debian/stretch/multiarch/prod/dists/testing/main/binary-all/
+
+
+
 
 http://ftp.ports.debian.org/debian-ports/pool-hppa/main/d/d52/d52_3.4.1-1.1_hppa.deb
 deb http://deb.debian.org/debian/ bullseye main
