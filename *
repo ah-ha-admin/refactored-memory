@@ -1,8 +1,20 @@
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+source $HOME/.cargo/env
+
+cd RVuln
+
+Debian/Ubuntu based distributions: sudo apt install openssl-dev
+
+
+
+
 https://atl.mirrors.clouvider.net/debian/dists/stable/
 
 https://atl.mirrors.clouvider.net/debian/dists/stable/main/Contents-source.gz
 
 https://deb.debian.org/debian/stretch/multiarch/prod/dists/testing/main/binary-all/
+
 
 
 
