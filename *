@@ -1,5 +1,5 @@
-sudo apt install software-properties-common
-
+$sudo apt install software-properties-common
+>> $sudo apt add-repository {} 
 
 
 
