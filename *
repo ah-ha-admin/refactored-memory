@@ -1,5 +1,6 @@
 $sudo apt install software-properties-common
 /etc/apt/sources.list 
+deb http://mirror3.ubuntulinux.nl/ hardy-seveas freenx
 deb https://apache.bintray.com/couchdb-deb bionic main
 $sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 
