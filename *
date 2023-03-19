@@ -1,3 +1,6 @@
+pip install cuda
+
+
 apt install rust-bindgen rust 
 cargo install apt-parser
 
