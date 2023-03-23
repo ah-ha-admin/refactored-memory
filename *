@@ -1,3 +1,5 @@
+gpg -abs -o Release.gpg Release
+
 $sudo apt install software-properties-common
 /etc/apt/sources.list 
 deb http://mirror3.ubuntulinux.nl/ hardy-seveas freenx
