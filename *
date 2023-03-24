@@ -1,3 +1,6 @@
+SIGNING REPOSITORY GPG CONFLICY
+ gpg --ignore-time-conflict --no-options --no-default-keyring --homedir /tmp/tmp.77TqYGKU7b --no-auto-check-trustdb --trust-model always --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+
 gpg -abs -o Release.gpg Release
 
 $sudo apt install software-properties-common
