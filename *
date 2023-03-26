@@ -1,3 +1,8 @@
+(Gpg) DIRMNGR = 
+$sudo apt-get install dirmngr --install-recommends
+apt-key adv --keyserver keyring.debian.org --recv-keys 0x1827364554637281
+
+
 SIGNING REPOSITORY GPG CONFLICY
  gpg --ignore-time-conflict --no-options --no-default-keyring --homedir /tmp/tmp.77TqYGKU7b --no-auto-check-trustdb --trust-model always --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 But you can also use that apt repository without the pgp key by putting this, in the sources.list file:
