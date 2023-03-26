@@ -1,7 +1,7 @@
 (Gpg) DIRMNGR = 
 $sudo apt-get install dirmngr --install-recommends
 apt-key adv --keyserver keyring.debian.org --recv-keys 0x1827364554637281
-
+echo "deb https://dl.bintray.com/rabbitmq/debian stretch main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list
 
 SIGNING REPOSITORY GPG CONFLICY
  gpg --ignore-time-conflict --no-options --no-default-keyring --homedir /tmp/tmp.77TqYGKU7b --no-auto-check-trustdb --trust-model always --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
