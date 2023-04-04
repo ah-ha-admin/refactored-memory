@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout-dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@77b84bec90e9a0d07f68a3cedd3651ba9e606a12
+      - uses: dart-lang/setup-dart@a26e6d85971a8fe86d8e574311349dc7f73b3b98
       - name: Install dependencies
         run: dart pub get
      '--fatal-infos' for slightly stricter analysis.
