@@ -1,3 +1,7 @@
+sudo nano /etc/apt/sources.list or. sudo apt edit-sources Your PPAs are stored to: ls /etc/apt/sources.list.d/*
+Though do mention when editing those files manually 
+make sure you know what you are doing/editing that this/those repos/sources that you're adding will definitely work with your current distro otherwise you can break/damage your apt.
+
 npm ::: ⬇️
 dos2unix package.json
 
