@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up R ${{4.1.1}}
-        uses: r-lib/actions/setup-r@4376fa2b0c39cf62cdb7679cfc8209b93ddbd5fd
+        uses: r-lib/actions/setup-r@4723ad22e584161241adeffe987de81ddec698b6
         with:
           r-version: ${{4.1.1}}
       - name: Install dependencies
