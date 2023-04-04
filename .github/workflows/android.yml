@@ -36,7 +36,7 @@ overwrite-settings: true
       run: ./gradlew build
  ah-ha-admin-patch-4
 - name: Setup Java JDK
-  uses: actions/setup-java@v3.10.0
+  uses: actions/setup-java@v3.11.0
     - name:autofix.ci: 
 nn:
 pull_request:
