@@ -180,4 +180,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: cargo fmt
-      - uses: autofix-ci/action@40f4f7bccdde208056784fa907921be767412c5f
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
