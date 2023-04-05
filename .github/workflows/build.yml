@@ -247,7 +247,7 @@ jobs:
           version: ${{ needs.get-product-version.outputs.product-version }}
           product: ${{ env.PKG_NAME }}
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: metadata.json
           path: ${{ steps.generate-metadata-file.outputs.filepath }}
@@ -320,7 +320,7 @@ jobs:
           go build -ldflags "${GO_LDFLAGS}" -o dist/ .
           zip -r -j out/${{ env.PKG_NAME }}_${FULL_VERSION}_${{ matrix.goos }}_${{ matrix.goarch }}.zip dist/
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ${{ env.PKG_NAME }}_${{ env.FULL_VERSION }}_${{ matrix.goos }}_${{ matrix.goarch }}.zip
           path: out/${{ env.PKG_NAME }}_${{ env.FULL_VERSION }}_${{ matrix.goos }}_${{ matrix.goarch }}.zip
@@ -375,12 +375,12 @@ jobs:
           echo "RPM_PACKAGE=$(basename out/*.rpm)" >> $GITHUB_ENV
           echo "DEB_PACKAGE=$(basename out/*.deb)" >> $GITHUB_ENV
       - name: "Save .rpm package"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.RPM_PACKAGE }}
           path: out/${{ env.RPM_PACKAGE }}
       - name: "Save .deb package"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.DEB_PACKAGE }}
           path: out/${{ env.DEB_PACKAGE }}
@@ -476,7 +476,7 @@ jobs:
           # that "terraform version" is returning that version number.
           bash ./internal/command/e2etest/make-archive.sh
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: terraform-e2etest_${{ matrix.goos }}_${{ matrix.goarch }}.zip
           path: internal/command/e2etest/build/terraform-e2etest_${{ matrix.goos }}_${{ matrix.goarch }}.zip
@@ -641,7 +641,7 @@ jobs:
       - name: "Create documentation source bundle"
         run: |
           (cd website && zip -9 -r ../terraform-cli-docs-source_${{ env.version }}.zip .)
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: terraform-cli-docs-source_${{ env.version }}.zip
           path: terraform-cli-docs-source_${{ env.version }}.zip
