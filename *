@@ -1,4 +1,799 @@
-apt install typescript
+NVM 
+For a fully manual install, execute the following lines to first clone the nvm repository into $HOME/.nvm, and then load nvm:
+
+export NVM_DIR="$HOME/.nvm" && (
+  git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+  cd "$NVM_DIR"
+  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+) && \. "$NVM_DIR/nvm.sh"
+Now add these lines to your ~/.bashrc, ~/.profile, or ~/.zshrc file to have it automatically sourced upon login: (you may have to add to more than one of the above files)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+install script ⬇⬇
+
+#!/usr/bin/env bash
+
+{ # this ensures the entire script is downloaded #
+
+nvm_has() {
+  type "$1" > /dev/null 2>&1
+}
+
+nvm_echo() {
+  command printf %s\\n "$*" 2>/dev/null
+}
+
+if [ -z "${BASH_VERSION}" ] || [ -n "${ZSH_VERSION}" ]; then
+  # shellcheck disable=SC2016
+  nvm_echo >&2 'Error: the install instructions explicitly say to pipe the install script to `bash`; please follow them'
+  exit 1
+fi
+
+nvm_grep() {
+  GREP_OPTIONS='' command grep "$@"
+}
+
+nvm_default_install_dir() {
+  [ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm"
+}
+
+nvm_install_dir() {
+  if [ -n "$NVM_DIR" ]; then
+    printf %s "${NVM_DIR}"
+  else
+    nvm_default_install_dir
+  fi
+}
+
+nvm_latest_version() {
+  nvm_echo "v0.39.3"
+}
+
+nvm_profile_is_bash_or_zsh() {
+  local TEST_PROFILE
+  TEST_PROFILE="${1-}"
+  case "${TEST_PROFILE-}" in
+    *"/.bashrc" | *"/.bash_profile" | *"/.zshrc" | *"/.zprofile")
+      return
+    ;;
+    *)
+      return 1
+    ;;
+  esac
+}
+
+#
+# Outputs the location to NVM depending on:
+# * The availability of $NVM_SOURCE
+# * The method used ("script" or "git" in the script, defaults to "git")
+# NVM_SOURCE always takes precedence unless the method is "script-nvm-exec"
+#
+nvm_source() {
+  local NVM_GITHUB_REPO
+  NVM_GITHUB_REPO="${NVM_INSTALL_GITHUB_REPO:-nvm-sh/nvm}"
+  local NVM_VERSION
+  NVM_VERSION="${NVM_INSTALL_VERSION:-$(nvm_latest_version)}"
+  local NVM_METHOD
+  NVM_METHOD="$1"
+  local NVM_SOURCE_URL
+  NVM_SOURCE_URL="$NVM_SOURCE"
+  if [ "_$NVM_METHOD" = "_script-nvm-exec" ]; then
+    NVM_SOURCE_URL="https://raw.githubusercontent.com/${NVM_GITHUB_REPO}/${NVM_VERSION}/nvm-exec"
+  elif [ "_$NVM_METHOD" = "_script-nvm-bash-completion" ]; then
+    NVM_SOURCE_URL="https://raw.githubusercontent.com/${NVM_GITHUB_REPO}/${NVM_VERSION}/bash_completion"
+  elif [ -z "$NVM_SOURCE_URL" ]; then
+    if [ "_$NVM_METHOD" = "_script" ]; then
+      NVM_SOURCE_URL="https://raw.githubusercontent.com/${NVM_GITHUB_REPO}/${NVM_VERSION}/nvm.sh"
+    elif [ "_$NVM_METHOD" = "_git" ] || [ -z "$NVM_METHOD" ]; then
+      NVM_SOURCE_URL="https://github.com/${NVM_GITHUB_REPO}.git"
+    else
+      nvm_echo >&2 "Unexpected value \"$NVM_METHOD\" for \$NVM_METHOD"
+      return 1
+    fi
+  fi
+  nvm_echo "$NVM_SOURCE_URL"
+}
+
+#
+# Node.js version to install
+#
+nvm_node_version() {
+  nvm_echo "$NODE_VERSION"
+}
+
+nvm_download() {
+  if nvm_has "curl"; then
+    curl --fail --compressed -q "$@"
+  elif nvm_has "wget"; then
+    # Emulate curl with wget
+    ARGS=$(nvm_echo "$@" | command sed -e 's/--progress-bar /--progress=bar /' \
+                            -e 's/--compressed //' \
+                            -e 's/--fail //' \
+                            -e 's/-L //' \
+                            -e 's/-I /--server-response /' \
+                            -e 's/-s /-q /' \
+                            -e 's/-sS /-nv /' \
+                            -e 's/-o /-O /' \
+                            -e 's/-C - /-c /')
+    # shellcheck disable=SC2086
+    eval wget $ARGS
+  fi
+}
+
+install_nvm_from_git() {
+  local INSTALL_DIR
+  INSTALL_DIR="$(nvm_install_dir)"
+  local NVM_VERSION
+  NVM_VERSION="${NVM_INSTALL_VERSION:-$(nvm_latest_version)}"
+  if [ -n "${NVM_INSTALL_VERSION:-}" ]; then
+    # Check if version is an existing ref
+    if command git ls-remote "$(nvm_source "git")" "$NVM_VERSION" | nvm_grep -q "$NVM_VERSION" ; then
+      :
+    # Check if version is an existing changeset
+    elif ! nvm_download -o /dev/null "$(nvm_source "script-nvm-exec")"; then
+      nvm_echo >&2 "Failed to find '$NVM_VERSION' version."
+      exit 1
+    fi
+  fi
+
+  local fetch_error
+  if [ -d "$INSTALL_DIR/.git" ]; then
+    # Updating repo
+    nvm_echo "=> nvm is already installed in $INSTALL_DIR, trying to update using git"
+    command printf '\r=> '
+    fetch_error="Failed to update nvm with $NVM_VERSION, run 'git fetch' in $INSTALL_DIR yourself."
+  else
+    fetch_error="Failed to fetch origin with $NVM_VERSION. Please report this!"
+    nvm_echo "=> Downloading nvm from git to '$INSTALL_DIR'"
+    command printf '\r=> '
+    mkdir -p "${INSTALL_DIR}"
+    if [ "$(ls -A "${INSTALL_DIR}")" ]; then
+      # Initializing repo
+      command git init "${INSTALL_DIR}" || {
+        nvm_echo >&2 'Failed to initialize nvm repo. Please report this!'
+        exit 2
+      }
+      command git --git-dir="${INSTALL_DIR}/.git" remote add origin "$(nvm_source)" 2> /dev/null \
+        || command git --git-dir="${INSTALL_DIR}/.git" remote set-url origin "$(nvm_source)" || {
+        nvm_echo >&2 'Failed to add remote "origin" (or set the URL). Please report this!'
+        exit 2
+      }
+    else
+      # Cloning repo
+      command git clone "$(nvm_source)" --depth=1 "${INSTALL_DIR}" || {
+        nvm_echo >&2 'Failed to clone nvm repo. Please report this!'
+        exit 2
+      }
+    fi
+  fi
+  # Try to fetch tag
+  if command git --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" fetch origin tag "$NVM_VERSION" --depth=1 2>/dev/null; then
+    :
+  # Fetch given version
+  elif ! command git --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" fetch origin "$NVM_VERSION" --depth=1; then
+    nvm_echo >&2 "$fetch_error"
+    exit 1
+  fi
+  command git -c advice.detachedHead=false --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" checkout -f --quiet FETCH_HEAD || {
+    nvm_echo >&2 "Failed to checkout the given version $NVM_VERSION. Please report this!"
+    exit 2
+  }
+  if [ -n "$(command git --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" show-ref refs/heads/master)" ]; then
+    if command git --no-pager --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" branch --quiet 2>/dev/null; then
+      command git --no-pager --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" branch --quiet -D master >/dev/null 2>&1
+    else
+      nvm_echo >&2 "Your version of git is out of date. Please update it!"
+      command git --no-pager --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" branch -D master >/dev/null 2>&1
+    fi
+  fi
+
+  nvm_echo "=> Compressing and cleaning up git repository"
+  if ! command git --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" reflog expire --expire=now --all; then
+    nvm_echo >&2 "Your version of git is out of date. Please update it!"
+  fi
+  if ! command git --git-dir="$INSTALL_DIR"/.git --work-tree="$INSTALL_DIR" gc --auto --aggressive --prune=now ; then
+    nvm_echo >&2 "Your version of git is out of date. Please update it!"
+  fi
+  return
+}
+
+#
+# Automatically install Node.js
+#
+nvm_install_node() {
+  local NODE_VERSION_LOCAL
+  NODE_VERSION_LOCAL="$(nvm_node_version)"
+
+  if [ -z "$NODE_VERSION_LOCAL" ]; then
+    return 0
+  fi
+
+  nvm_echo "=> Installing Node.js version $NODE_VERSION_LOCAL"
+  nvm install "$NODE_VERSION_LOCAL"
+  local CURRENT_NVM_NODE
+
+  CURRENT_NVM_NODE="$(nvm_version current)"
+  if [ "$(nvm_version "$NODE_VERSION_LOCAL")" == "$CURRENT_NVM_NODE" ]; then
+    nvm_echo "=> Node.js version $NODE_VERSION_LOCAL has been successfully installed"
+  else
+    nvm_echo >&2 "Failed to install Node.js $NODE_VERSION_LOCAL"
+  fi
+}
+
+install_nvm_as_script() {
+  local INSTALL_DIR
+  INSTALL_DIR="$(nvm_install_dir)"
+  local NVM_SOURCE_LOCAL
+  NVM_SOURCE_LOCAL="$(nvm_source script)"
+  local NVM_EXEC_SOURCE
+  NVM_EXEC_SOURCE="$(nvm_source script-nvm-exec)"
+  local NVM_BASH_COMPLETION_SOURCE
+  NVM_BASH_COMPLETION_SOURCE="$(nvm_source script-nvm-bash-completion)"
+
+  # Downloading to $INSTALL_DIR
+  mkdir -p "$INSTALL_DIR"
+  if [ -f "$INSTALL_DIR/nvm.sh" ]; then
+    nvm_echo "=> nvm is already installed in $INSTALL_DIR, trying to update the script"
+  else
+    nvm_echo "=> Downloading nvm as script to '$INSTALL_DIR'"
+  fi
+  nvm_download -s "$NVM_SOURCE_LOCAL" -o "$INSTALL_DIR/nvm.sh" || {
+    nvm_echo >&2 "Failed to download '$NVM_SOURCE_LOCAL'"
+    return 1
+  } &
+  nvm_download -s "$NVM_EXEC_SOURCE" -o "$INSTALL_DIR/nvm-exec" || {
+    nvm_echo >&2 "Failed to download '$NVM_EXEC_SOURCE'"
+    return 2
+  } &
+  nvm_download -s "$NVM_BASH_COMPLETION_SOURCE" -o "$INSTALL_DIR/bash_completion" || {
+    nvm_echo >&2 "Failed to download '$NVM_BASH_COMPLETION_SOURCE'"
+    return 2
+  } &
+  for job in $(jobs -p | command sort)
+  do
+    wait "$job" || return $?
+  done
+  chmod a+x "$INSTALL_DIR/nvm-exec" || {
+    nvm_echo >&2 "Failed to mark '$INSTALL_DIR/nvm-exec' as executable"
+    return 3
+  }
+}
+
+nvm_try_profile() {
+  if [ -z "${1-}" ] || [ ! -f "${1}" ]; then
+    return 1
+  fi
+  nvm_echo "${1}"
+}
+
+#
+# Detect profile file if not specified as environment variable
+# (eg: PROFILE=~/.myprofile)
+# The echo'ed path is guaranteed to be an existing file
+# Otherwise, an empty string is returned
+#
+nvm_detect_profile() {
+  if [ "${PROFILE-}" = '/dev/null' ]; then
+    # the user has specifically requested NOT to have nvm touch their profile
+    return
+  fi
+
+  if [ -n "${PROFILE}" ] && [ -f "${PROFILE}" ]; then
+    nvm_echo "${PROFILE}"
+    return
+  fi
+
+  local DETECTED_PROFILE
+  DETECTED_PROFILE=''
+
+  if [ "${SHELL#*bash}" != "$SHELL" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+      DETECTED_PROFILE="$HOME/.bashrc"
+    elif [ -f "$HOME/.bash_profile" ]; then
+      DETECTED_PROFILE="$HOME/.bash_profile"
+    fi
+  elif [ "${SHELL#*zsh}" != "$SHELL" ]; then
+    if [ -f "$HOME/.zshrc" ]; then
+      DETECTED_PROFILE="$HOME/.zshrc"
+    elif [ -f "$HOME/.zprofile" ]; then
+      DETECTED_PROFILE="$HOME/.zprofile"
+    fi
+  fi
+
+  if [ -z "$DETECTED_PROFILE" ]; then
+    for EACH_PROFILE in ".profile" ".bashrc" ".bash_profile" ".zprofile" ".zshrc"
+    do
+      if DETECTED_PROFILE="$(nvm_try_profile "${HOME}/${EACH_PROFILE}")"; then
+        break
+      fi
+    done
+  fi
+
+  if [ -n "$DETECTED_PROFILE" ]; then
+    nvm_echo "$DETECTED_PROFILE"
+  fi
+}
+
+#
+# Check whether the user has any globally-installed npm modules in their system
+# Node, and warn them if so.
+#
+nvm_check_global_modules() {
+  local NPM_COMMAND
+  NPM_COMMAND="$(command -v npm 2>/dev/null)" || return 0
+  [ -n "${NVM_DIR}" ] && [ -z "${NPM_COMMAND%%"$NVM_DIR"/*}" ] && return 0
+
+  local NPM_VERSION
+  NPM_VERSION="$(npm --version)"
+  NPM_VERSION="${NPM_VERSION:--1}"
+  [ "${NPM_VERSION%%[!-0-9]*}" -gt 0 ] || return 0
+
+  local NPM_GLOBAL_MODULES
+  NPM_GLOBAL_MODULES="$(
+    npm list -g --depth=0 |
+    command sed -e '/ npm@/d' -e '/ (empty)$/d'
+  )"
+
+  local MODULE_COUNT
+  MODULE_COUNT="$(
+    command printf %s\\n "$NPM_GLOBAL_MODULES" |
+    command sed -ne '1!p' |                     # Remove the first line
+    wc -l | command tr -d ' '                   # Count entries
+  )"
+
+  if [ "${MODULE_COUNT}" != '0' ]; then
+    # shellcheck disable=SC2016
+    nvm_echo '=> You currently have modules installed globally with `npm`. These will no'
+    # shellcheck disable=SC2016
+    nvm_echo '=> longer be linked to the active version of Node when you install a new node'
+    # shellcheck disable=SC2016
+    nvm_echo '=> with `nvm`; and they may (depending on how you construct your `$PATH`)'
+    # shellcheck disable=SC2016
+    nvm_echo '=> override the binaries of modules installed with `nvm`:'
+    nvm_echo
+
+    command printf %s\\n "$NPM_GLOBAL_MODULES"
+    nvm_echo '=> If you wish to uninstall them at a later point (or re-install them under your'
+    # shellcheck disable=SC2016
+    nvm_echo '=> `nvm` Nodes), you can remove them from the system Node as follows:'
+    nvm_echo
+    nvm_echo '     $ nvm use system'
+    nvm_echo '     $ npm uninstall -g a_module'
+    nvm_echo
+  fi
+}
+
+nvm_do_install() {
+  if [ -n "${NVM_DIR-}" ] && ! [ -d "${NVM_DIR}" ]; then
+    if [ -e "${NVM_DIR}" ]; then
+      nvm_echo >&2 "File \"${NVM_DIR}\" has the same name as installation directory."
+      exit 1
+    fi
+
+    if [ "${NVM_DIR}" = "$(nvm_default_install_dir)" ]; then
+      mkdir "${NVM_DIR}"
+    else
+      nvm_echo >&2 "You have \$NVM_DIR set to \"${NVM_DIR}\", but that directory does not exist. Check your profile files and environment."
+      exit 1
+    fi
+  fi
+  # Disable the optional which check, https://www.shellcheck.net/wiki/SC2230
+  # shellcheck disable=SC2230
+  if nvm_has xcode-select && [ "$(xcode-select -p >/dev/null 2>/dev/null ; echo $?)" = '2' ] && [ "$(which git)" = '/usr/bin/git' ] && [ "$(which curl)" = '/usr/bin/curl' ]; then
+    nvm_echo >&2 'You may be on a Mac, and need to install the Xcode Command Line Developer Tools.'
+    # shellcheck disable=SC2016
+    nvm_echo >&2 'If so, run `xcode-select --install` and try again. If not, please report this!'
+    exit 1
+  fi
+  if [ -z "${METHOD}" ]; then
+    # Autodetect install method
+    if nvm_has git; then
+      install_nvm_from_git
+    elif nvm_has curl || nvm_has wget; then
+      install_nvm_as_script
+    else
+      nvm_echo >&2 'You need git, curl, or wget to install nvm'
+      exit 1
+    fi
+  elif [ "${METHOD}" = 'git' ]; then
+    if ! nvm_has git; then
+      nvm_echo >&2 "You need git to install nvm"
+      exit 1
+    fi
+    install_nvm_from_git
+  elif [ "${METHOD}" = 'script' ]; then
+    if ! nvm_has curl && ! nvm_has wget; then
+      nvm_echo >&2 "You need curl or wget to install nvm"
+      exit 1
+    fi
+    install_nvm_as_script
+  else
+    nvm_echo >&2 "The environment variable \$METHOD is set to \"${METHOD}\", which is not recognized as a valid installation method."
+    exit 1
+  fi
+
+  nvm_echo
+
+  local NVM_PROFILE
+  NVM_PROFILE="$(nvm_detect_profile)"
+  local PROFILE_INSTALL_DIR
+  PROFILE_INSTALL_DIR="$(nvm_install_dir | command sed "s:^$HOME:\$HOME:")"
+
+  SOURCE_STR="\\nexport NVM_DIR=\"${PROFILE_INSTALL_DIR}\"\\n[ -s \"\$NVM_DIR/nvm.sh\" ] && \\. \"\$NVM_DIR/nvm.sh\"  # This loads nvm\\n"
+
+  # shellcheck disable=SC2016
+  COMPLETION_STR='[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion\n'
+  BASH_OR_ZSH=false
+
+  if [ -z "${NVM_PROFILE-}" ] ; then
+    local TRIED_PROFILE
+    if [ -n "${PROFILE}" ]; then
+      TRIED_PROFILE="${NVM_PROFILE} (as defined in \$PROFILE), "
+    fi
+    nvm_echo "=> Profile not found. Tried ${TRIED_PROFILE-}~/.bashrc, ~/.bash_profile, ~/.zprofile, ~/.zshrc, and ~/.profile."
+    nvm_echo "=> Create one of them and run this script again"
+    nvm_echo "   OR"
+    nvm_echo "=> Append the following lines to the correct file yourself:"
+    command printf "${SOURCE_STR}"
+    nvm_echo
+  else
+    if nvm_profile_is_bash_or_zsh "${NVM_PROFILE-}"; then
+      BASH_OR_ZSH=true
+    fi
+    if ! command grep -qc '/nvm.sh' "$NVM_PROFILE"; then
+      nvm_echo "=> Appending nvm source string to $NVM_PROFILE"
+      command printf "${SOURCE_STR}" >> "$NVM_PROFILE"
+    else
+      nvm_echo "=> nvm source string already in ${NVM_PROFILE}"
+    fi
+    # shellcheck disable=SC2016
+    if ${BASH_OR_ZSH} && ! command grep -qc '$NVM_DIR/bash_completion' "$NVM_PROFILE"; then
+      nvm_echo "=> Appending bash_completion source string to $NVM_PROFILE"
+      command printf "$COMPLETION_STR" >> "$NVM_PROFILE"
+    else
+      nvm_echo "=> bash_completion source string already in ${NVM_PROFILE}"
+    fi
+  fi
+  if ${BASH_OR_ZSH} && [ -z "${NVM_PROFILE-}" ] ; then
+    nvm_echo "=> Please also append the following lines to the if you are using bash/zsh shell:"
+    command printf "${COMPLETION_STR}"
+  fi
+
+  # Source nvm
+  # shellcheck source=/dev/null
+  \. "$(nvm_install_dir)/nvm.sh"
+
+  nvm_check_global_modules
+
+  nvm_install_node
+
+  nvm_reset
+
+  nvm_echo "=> Close and reopen your terminal to start using nvm or run the following to use it now:"
+  command printf "${SOURCE_STR}"
+  if ${BASH_OR_ZSH} ; then
+    command printf "${COMPLETION_STR}"
+  fi
+}
+
+#
+# Unsets the various functions defined
+# during the execution of the install script
+#
+nvm_reset() {
+  unset -f nvm_has nvm_install_dir nvm_latest_version nvm_profile_is_bash_or_zsh \
+    nvm_source nvm_node_version nvm_download install_nvm_from_git nvm_install_node \
+    install_nvm_as_script nvm_try_profile nvm_detect_profile nvm_check_global_modules \
+    nvm_do_install nvm_reset nvm_default_install_dir nvm_grep
+}
+
+[ "_$NVM_ENV" = "_testing" ] || nvm_do_install
+
+} # this ensures the entire script is downloaded #
+
+⬇ NPM PACKAGE.JSON
+-----------------------
+{
+  "name": "code-oss-dev",
+  "version": "1.75.0",
+  "distro": "b98758b73895a1b6a22e12271bab9159589dfd47",
+  "author": {
+    "name": "Microsoft Corporation"
+  },
+  "license": "MIT",
+  "main": "./out/main",
+  "private": true,
+  "scripts": {
+    "test": "echo Please run any of the test scripts from the scripts folder.",
+    "test-browser": "npx playwright install && node test/unit/browser/index.js",
+    "test-browser-no-install": "node test/unit/browser/index.js",
+    "test-node": "mocha test/unit/node/index.js --delay --ui=tdd --timeout=5000 --exit",
+    "preinstall": "node build/npm/preinstall.js",
+    "postinstall": "node build/npm/postinstall.js",
+    "compile": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js compile",
+    "watch": "npm-run-all -lp watch-client watch-extensions",
+    "watchd": "deemon yarn watch",
+    "watch-webd": "deemon yarn watch-web",
+    "kill-watchd": "deemon --kill yarn watch",
+    "kill-watch-webd": "deemon --kill yarn watch-web",
+    "restart-watchd": "deemon --restart yarn watch",
+    "restart-watch-webd": "deemon --restart yarn watch-web",
+    "watch-client": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js watch-client",
+    "watch-clientd": "deemon yarn watch-client",
+    "kill-watch-clientd": "deemon --kill yarn watch-client",
+    "watch-extensions": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js watch-extensions watch-extension-media",
+    "watch-extensionsd": "deemon yarn watch-extensions",
+    "kill-watch-extensionsd": "deemon --kill yarn watch-extensions",
+    "precommit": "node build/hygiene.js",
+    "gulp": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js",
+    "electron": "node build/lib/electron",
+    "7z": "7z",
+    "update-grammars": "node build/npm/update-all-grammars.mjs",
+    "update-localization-extension": "node build/npm/update-localization-extension.js",
+    "smoketest": "node build/lib/preLaunch.js && cd test/smoke && yarn compile && node test/index.js",
+    "smoketest-no-compile": "cd test/smoke && node test/index.js",
+    "download-builtin-extensions": "node build/lib/builtInExtensions.js",
+    "download-builtin-extensions-cg": "node build/lib/builtInExtensionsCG.js",
+    "monaco-compile-check": "tsc -p src/tsconfig.monaco.json --noEmit",
+    "tsec-compile-check": "node node_modules/tsec/bin/tsec -p src/tsconfig.tsec.json",
+    "vscode-dts-compile-check": "tsc -p src/tsconfig.vscode-dts.json && tsc -p src/tsconfig.vscode-proposed-dts.json",
+    "valid-layers-check": "node build/lib/layersChecker.js",
+    "update-distro": "node build/npm/update-distro.mjs",
+    "web": "echo 'yarn web' is replaced by './scripts/code-server' or './scripts/code-web'",
+    "compile-web": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js compile-web",
+    "watch-web": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js watch-web",
+    "eslint": "node build/eslint",
+    "playwright-install": "node build/azure-pipelines/common/installPlaywright.js",
+    "compile-build": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js compile-build",
+    "compile-extensions-build": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js compile-extensions-build",
+    "minify-vscode": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js minify-vscode",
+    "minify-vscode-reh": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js minify-vscode-reh",
+    "minify-vscode-reh-web": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js minify-vscode-reh-web",
+    "hygiene": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js hygiene",
+    "core-ci": "node --max_old_space_size=8095 ./node_modules/gulp/bin/gulp.js core-ci",
+    "extensions-ci": "node --max_old_space_size=4095 ./node_modules/gulp/bin/gulp.js extensions-ci",
+    "webview-generate-csp-hash": "npx github:apaatsio/csp-hash-from-html csp-hash ./src/vs/workbench/contrib/webview/browser/pre/index.html"
+  },
+  "dependencies": {
+    "@microsoft/1ds-core-js": "^3.2.2",
+    "@microsoft/1ds-post-js": "^3.2.2",
+    "@parcel/watcher": "2.0.7",
+    "@vscode/iconv-lite-umd": "0.7.0",
+    "@vscode/ripgrep": "^1.14.2",
+    "@vscode/sqlite3": "5.1.2-vscode",
+    "@vscode/sudo-prompt": "9.3.1",
+    "@vscode/vscode-languagedetection": "1.0.21",
+    "graceful-fs": "4.2.8",
+    "http-proxy-agent": "^2.1.0",
+    "https-proxy-agent": "^2.2.3",
+    "jschardet": "3.0.0",
+    "keytar": "7.9.0",
+    "minimist": "^1.2.6",
+    "native-is-elevated": "0.4.3",
+    "native-keymap": "3.3.2",
+    "native-watchdog": "1.4.1",
+    "node-pty": "0.11.0-beta11",
+    "spdlog": "^0.13.0",
+    "tas-client-umd": "0.1.6",
+    "v8-inspect-profiler": "^0.1.0",
+    "vscode-oniguruma": "1.7.0",
+    "vscode-policy-watcher": "^1.1.1",
+    "vscode-proxy-agent": "^0.12.0",
+    "vscode-regexpp": "^3.1.0",
+    "vscode-textmate": "8.0.0",
+    "xterm": "5.2.0-beta.10",
+    "xterm-addon-canvas": "0.4.0-beta.6",
+    "xterm-addon-search": "0.11.0",
+    "xterm-addon-serialize": "0.9.0",
+    "xterm-addon-unicode11": "0.5.0",
+    "xterm-addon-webgl": "0.15.0-beta.4",
+    "xterm-headless": "5.2.0-beta.10",
+    "yauzl": "^2.9.2",
+    "yazl": "^2.4.3"
+  },
+  "devDependencies": {
+    "7zip": "0.0.6",
+    "@playwright/test": "1.27.1",
+    "@swc/cli": "0.1.57",
+    "@swc/core": "1.2.245",
+    "@types/cookie": "^0.3.3",
+    "@types/copy-webpack-plugin": "^6.0.3",
+    "@types/cssnano": "^4.0.0",
+    "@types/debug": "4.1.5",
+    "@types/graceful-fs": "4.1.2",
+    "@types/gulp-postcss": "^8.0.0",
+    "@types/gulp-svgmin": "^1.2.1",
+    "@types/http-proxy-agent": "^2.0.1",
+    "@types/keytar": "^4.4.0",
+    "@types/minimist": "^1.2.1",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/sinon": "^10.0.2",
+    "@types/sinon-test": "^2.4.2",
+    "@types/trusted-types": "^1.0.6",
+    "@types/vscode-notebook-renderer": "^1.72.0",
+    "@types/webpack": "^4.41.25",
+    "@types/wicg-file-system-access": "^2020.9.5",
+    "@types/windows-foreground-love": "^0.3.0",
+    "@types/windows-mutex": "^0.4.0",
+    "@types/windows-process-tree": "^0.2.0",
+    "@types/winreg": "^1.2.30",
+    "@types/yauzl": "^2.9.1",
+    "@types/yazl": "^2.4.2",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/experimental-utils": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "@vscode/l10n-dev": "0.0.21",
+    "@vscode/telemetry-extractor": "^1.9.8",
+    "@vscode/test-web": "^0.0.32",
+    "ansi-colors": "^3.2.3",
+    "asar": "^3.0.3",
+    "chromium-pickle-js": "^0.2.0",
+    "cookie": "^0.4.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "cson-parser": "^1.3.3",
+    "css-loader": "^3.6.0",
+    "cssnano": "^4.1.11",
+    "debounce": "^1.0.0",
+    "deemon": "^1.8.0",
+    "electron": "19.1.8",
+    "eslint": "8.7.0",
+    "eslint-plugin-header": "3.1.1",
+    "eslint-plugin-jsdoc": "^39.3.2",
+    "eslint-plugin-local": "^1.0.0",
+    "event-stream": "3.3.4",
+    "fancy-log": "^1.3.3",
+    "fast-plist": "0.1.3",
+    "file-loader": "^5.1.0",
+    "glob": "^5.0.13",
+    "gulp": "^4.0.0",
+    "gulp-atom-electron": "^1.33.0",
+    "gulp-azure-storage": "^0.12.1",
+    "gulp-bom": "^3.0.0",
+    "gulp-buffer": "0.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^5.0.0",
+    "gulp-filter": "^5.1.0",
+    "gulp-flatmap": "^1.0.2",
+    "gulp-gunzip": "^1.0.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-json-editor": "^2.5.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-remote-retry-src": "^0.8.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svgmin": "^4.1.0",
+    "gulp-untar": "^0.0.7",
+    "gulp-vinyl-zip": "^2.1.2",
+    "husky": "^0.13.1",
+    "innosetup": "6.0.5",
+    "is": "^3.1.0",
+    "istanbul-lib-coverage": "^3.2.0",
+    "istanbul-lib-instrument": "^5.2.0",
+    "istanbul-lib-report": "^3.0.0",
+    "istanbul-lib-source-maps": "^4.0.1",
+    "istanbul-reports": "^3.1.5",
+    "lazy.js": "^0.4.2",
+    "merge-options": "^1.0.1",
+    "mime": "^1.4.1",
+    "minimatch": "^3.0.4",
+    "minimist": "^1.2.6",
+    "mkdirp": "^1.0.4",
+    "mocha": "^9.2.2",
+    "mocha-junit-reporter": "^2.0.0",
+    "mocha-multi-reporters": "^1.5.1",
+    "npm-run-all": "^4.1.5",
+    "opn": "^6.0.0",
+    "optimist": "0.3.5",
+    "p-all": "^1.0.0",
+    "path-browserify": "^1.0.1",
+    "pump": "^1.0.1",
+    "queue": "3.0.6",
+    "rcedit": "^1.1.0",
+    "request": "^2.85.0",
+    "rimraf": "^2.2.8",
+    "sinon": "^11.1.1",
+    "sinon-test": "^3.1.3",
+    "source-map": "0.6.1",
+    "source-map-support": "^0.3.2",
+    "style-loader": "^1.3.0",
+    "ts-loader": "^9.2.7",
+    "ts-node": "^10.9.1",
+    "tsec": "0.1.4",
+    "typescript": "^5.0.0-dev.20221214",
+    "typescript-formatter": "7.1.0",
+    "underscore": "^1.12.1",
+    "util": "^0.12.4",
+    "vinyl": "^2.0.0",
+    "vinyl-fs": "^3.0.0",
+    "vscode-nls-dev": "^3.3.1",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-stream": "^6.1.2",
+    "xml2js": "^0.4.17",
+    "yaserver": "^0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/microsoft/vscode/issues"
+  },
+  "optionalDependencies": {
+    "@vscode/windows-registry": "1.0.6",
+    "windows-foreground-love": "0.4.0",
+    "windows-mutex": "0.4.1",
+    "windows-process-tree": "0.3.4"
+  },
+  "resolutions": {
+    "elliptic": "^6.5.3",
+    "nwmatcher": "^1.4.4"
+  }
+}
+homepage": "https://[github-ah-ha-admin].github.io/[Refactored-memory]"
+{
+  "name": "ghactions-next-version",
+  "version": "0.1.1",
+  "private": false,
+  "description": "Format, bump, and update a version of Node.js and Python packages",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist/* lib/* && tsc && ncc build -o dist src/index.ts",
+    "publish": "gh-pages -d src"
+    "test": "jest",
+    "lint"publish": "gh-pages -d src"": "eslint src/*.ts --cache",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "uglify": "uglifyjs dist/index.js -cm > dist/index.min.js && rm dist/index.js && mv dist/index.min.js dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vemel/nextversion.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "version",
+    "pep440",
+    "semver"
+  ],
+  "author": "Vlad Emelianov",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@renovate/pep440": "^1.0.0",
+    "semver": "^7.3.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.21",
+    "@types/node": "^12.20.6",
+    "@types/semver": "^7.3.4",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "@vercel/ncc": "^0.27.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "github-actions": "^0.5.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3",
+    "uglify-js": "^3.13.1"
+  }
+}
+-----------------------
+
 sudo nano /etc/apt/sources.list or. sudo apt edit-sources Your PPAs are stored to: ls /etc/apt/sources.list.d/*
 Though do mention when editing those files manually 
 make sure you know what you are doing/editing that this/those repos/sources that you're adding will definitely work with your current distro otherwise you can break/damage your apt.

@@ -37,7 +37,7 @@ jobs:
       #      node-version: "16.x"
 
 
-      - uses: jfrog/frogbot@bf25a2d861aef4bbb9282882963e57472a327583
+      - uses: jfrog/frogbot@dc4ead76118af93feca0c8601745020030a45636
         env:
           # [Mandatory]
           # JFrog platform URL (This functionality requires version 3.29.0 or above of Xray)
