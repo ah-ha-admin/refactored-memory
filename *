@@ -1,3 +1,6 @@
+The following command creates a symbolic link at the command-line interface (shell):
+ ln -s target_path link_path
+lchmod lchflags lstat lchown readlink -l symlink()
 NVM 
 For a fully manual install, execute the following lines to first clone the nvm repository into $HOME/.nvm, and then load nvm:
 
