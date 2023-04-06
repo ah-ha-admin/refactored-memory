@@ -1,3 +1,7 @@
+https://coder.com/docs/code-server/latest/install
+
+
+SYMLINK ETC 
 The following command creates a symbolic link at the command-line interface (shell):
  ln -s target_path link_path
 lchmod lchflags lstat lchown readlink -l symlink()
