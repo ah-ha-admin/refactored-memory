@@ -719,7 +719,7 @@ steps:
   - name: "Check if user has write access"
     uses: "lannonbr/repo-permission-check-action@2.0.2"
    - name: Load available actions
-  uses: devops-actions/load-available-actions@v1.2.27
+  uses: devops-actions/load-available-actions@v2.1.3
     
     
     
