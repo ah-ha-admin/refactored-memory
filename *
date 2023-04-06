@@ -1,6 +1,6 @@
 https://coder.com/docs/code-server/latest/install
-Nouvelle GPG KEY PAIR NEEDED AND WILL after that ⬇⬇⬇
-avec curl (VSCODE + NODEJS APP LAB
+⬇ KEY PAIR GPG KEY PAIR NEEDED AND WILL after that ⬇⬇⬇
+installer code-server (VSCODE + NODEJS APP LAB
 curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
 
 SYMLINK ETC 
