@@ -10,7 +10,7 @@ require (
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/go-enry/go-enry/v2 v2.8.4
-	github.com/liamg/clinch v1.6.1
+	github.com/liamg/clinch v1.6.4
 	github.com/mattn/go-isatty v0.0.18
 	github.com/moby/term v0.0.0-20210610120745-9d4ed1856297 // indirect
 	github.com/morikuni/aec v1.0.0 // indirect
