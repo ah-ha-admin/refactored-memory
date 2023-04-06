@@ -1,3 +1,23 @@
+$sudo apt install openssh-client
+$sudo apt install openssh-server
+man sshd_config
+$sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+$sudo chmod a-w /etc/ssh/sshd_config.original
+$sudo sshd -t -f /etc/ssh/sshd_config
+$sudo systemctl restart sshd.service
+ssh-keygen -t rsa
+ssh-keygen -t rsa -b 4096
+By default the public key is saved in the file ~/.ssh/id_rsa.pub, while ~/.ssh/id_rsa is the private key. Now copy the id_rsa.pub file 
+to the remote host and append it to ~/.ssh/authorized_keys by entering:
+
+ssh-copy-id username@remotehost
+
+Finally, double check the permissions on the authorized_keys file, only the authenticated user should have read and write permissions. If the permissions are not correct change them by:
+
+chmod 600 .ssh/authorized_keys
+
+
+
 https://coder.com/docs/code-server/latest/install
 ⬇ KEY PAIR GPG KEY PAIR NEEDED AND WILL after that ⬇⬇⬇
 installer code-server (VSCODE + NODEJS APP LAB
