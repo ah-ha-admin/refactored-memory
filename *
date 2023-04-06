@@ -1,5 +1,6 @@
 https://coder.com/docs/code-server/latest/install
-
+avec curl (VSCODE + NODEJS APP LAB
+curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
 
 SYMLINK ETC 
 The following command creates a symbolic link at the command-line interface (shell):
