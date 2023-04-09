@@ -1,6 +1,85 @@
 pip install aircrack-gui
 aircrack-gui.py
 
+$ keytool -printcert -jarfile com.termux.gui_4.apk 
+Signer #1:
+
+Signature:
+
+Owner: CN=FDroid, OU=FDroid, O=fdroid.org, L=ORG, ST=ORG, C=UK
+Issuer: CN=FDroid, OU=FDroid, O=fdroid.org, L=ORG, ST=ORG, C=UK
+Serial number: 51024fec
+Valid from: Thu Dec 16 08:14:42 CET 2021 until: Mon May 03 09:14:42 CEST 2049
+Certificate fingerprints:
+         SHA1: 13:F1:BF:EB:1F:12:3D:DA:FC:88:D3:03:B2:0D:B9:E2:30:BD:5C:8E
+         SHA256: 7D:C2:91:1E:6B:90:D2:D8:0E:71:BC:B4:C9:06:AE:F3:CB:A7:4C:10:3B:5B:14:5A:76:40:49:C9:6F:D4:AD:D2
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: A3 BF 73 28 6F 57 3A 0A   37 CE 97 5E 12 99 40 F4  ..s(oW:.7..^..@.
+0010: 34 C7 CF B7                                        4...
+]
+]
+
+$ keytool -printcert -jarfile com.termux_117.apk   
+Signer #1:
+
+Signature:
+
+Owner: CN=FDroid, OU=FDroid, O=fdroid.org, L=ORG, ST=ORG, C=UK
+Issuer: CN=FDroid, OU=FDroid, O=fdroid.org, L=ORG, ST=ORG, C=UK
+Serial number: cd73f88
+Valid from: Mon Oct 26 08:35:59 CET 2015 until: Fri Mar 13 08:35:59 CET 2043
+Certificate fingerprints:
+         SHA1: E8:75:4A:2C:61:43:92:07:1D:27:02:1B:BC:DF:B8:DD:A7:E0:71:1C
+         SHA256: 22:8F:B2:CF:E9:08:31:C1:49:9E:C3:CC:AF:61:E9:6E:8E:1C:E7:07:66:B9:47:46:72:CE:42:73:34:D4:1C:42
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 90 7C B4 50 85 65 90 90   99 E3 58 04 AB FD CF CC  ...P.e....X.....
+0010: B9 06 C8 22                                        ..."
+]
+]
+
+$ keytool -printcert -jarfile com.termux.api_49.apk 
+Signer #1:
+
+Signature:
+
+Owner: CN=FDroid, OU=FDroid, O=fdroid.org, L=ORG, ST=ORG, C=UK
+Issuer: CN=FDroid, OU=FDroid, O=fdroid.org, L=ORG, ST=ORG, C=UK
+Serial number: cd73f88
+Valid from: Mon Oct 26 08:35:59 CET 2015 until: Fri Mar 13 08:35:59 CET 2043
+Certificate fingerprints:
+         SHA1: E8:75:4A:2C:61:43:92:07:1D:27:02:1B:BC:DF:B8:DD:A7:E0:71:1C
+         SHA256: 22:8F:B2:CF:E9:08:31:C1:49:9E:C3:CC:AF:61:E9:6E:8E:1C:E7:07:66:B9:47:46:72:CE:42:73:34:D4:1C:42
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 90 7C B4 50 85 65 90 90   99 E3 58 04 AB FD CF CC  ...P.e....X.....
+0010: B9 06 C8 22                                        ..."
+]
+]
+
+
 $sudo apt install -y debian-keyring debian-archive-keyring
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | $sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | $sudo tee /etc/apt/sources.list.d/caddy-stable.list
