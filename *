@@ -26,6 +26,8 @@ server {
       proxy_set_header Accept-Encoding gzip;
     }
 }
+sudo ln -s ../sites-available/code-server /etc/nginx/sites-enabled/code-server
+sudo certbot --non-interactive --redirect --agree-tos --nginx -d mydomain.com -m me@example.com
 
 
 npm run INIT_CWD
