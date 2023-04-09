@@ -1,3 +1,6 @@
+$sudo dpkg --remove --force-remove-reinstreq nodejs-doc
+
+
 cd /etc/apt/sources.list.d 
 $sudo rm nodesource.list
 $sudo apt --fix-broken install
