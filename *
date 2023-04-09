@@ -12,7 +12,20 @@ mydomain.com/code/* {
 $sudo systemctl reload caddy
 $sudo apt update
 $sudo apt install -y nginx certbot python3-certbot-nginx
+$sudo nano /etc/nginx/sites-available/code-server 
+server {
+    listen 80;
+    listen [::]:80;
+    server_name mydomain.com;
 
+    location / {
+      proxy_pass http://localhost:8080/;
+      proxy_set_header Host $host;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection upgrade;
+      proxy_set_header Accept-Encoding gzip;
+    }
+}
 
 
 npm run INIT_CWD
