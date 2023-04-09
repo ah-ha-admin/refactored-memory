@@ -1,5 +1,10 @@
-$sudo dpkg --remove --force-remove-reinstreq nodejs-doc
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install slack_bolt
 
+
+$sudo dpkg --remove --force-remove-reinstreq nodejs-doc
 
 cd /etc/apt/sources.list.d 
 $sudo rm nodesource.list
