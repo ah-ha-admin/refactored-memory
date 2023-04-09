@@ -1,5 +1,7 @@
-pip install aircrack-gui
-aircrack-gui.py
+
+aircrack_gui.py
+
+rm -rf $PREFIX/lib/node_modules/npm
 
 $ keytool -printcert -jarfile com.termux.gui_4.apk 
 Signer #1:
