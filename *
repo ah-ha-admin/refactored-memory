@@ -3,6 +3,15 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | $sudo gpg --
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | $sudo tee /etc/apt/sources.list.d/caddy-stable.list
 $sudo apt update
 $sudo apt install caddy
+mydomain.com
+reverse_proxy 127.0.0.1:8080
+mydomain.com/code/* {
+  uri strip_prefix /code
+  reverse_proxy 127.0.0.1:8080
+}
+$sudo systemctl reload caddy
+
+
 
 npm run INIT_CWD
 
