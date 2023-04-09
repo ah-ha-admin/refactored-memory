@@ -49,7 +49,7 @@ jobs:
         with:
           repository: Ah-ha-admin/refactored-memory
           ref: v1.0
-          token: ${{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}}
+          token: ${{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}}
           path: ./.github/actions/refactored-memory
         runs-on: ubuntu-latest
       - name: Run my action
@@ -121,9 +121,7 @@ on:
                                                                                                                                                                                                                                                                                                                             shell: bash {0} # don't fast fail
                                                                                                                                                                                                                                                                                                                                     run: |
                                                                                                                                                                                                                                                                                                                                               printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
-                                                                                                                                                                                                                                                                                                                                                        pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
-																																	
-																																	defineComponent({
+                                                                                                                                                                                                                                                                                                                                                        pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files				defineComponent({
   async run({ steps, $ }) {
     await $.respond({
       status: 200,
@@ -189,7 +187,7 @@ uses: actions/checkout@v3.3.0
         with:
           repository: Ah-ha-admin/refactored-memory
           ref: v1.0
-          token: ${{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}}
+          token: ${{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}}
           path: ./.github/actions/refactored-memory
       
       - name: Run my action
@@ -277,9 +275,8 @@ on:
                                                                                                                                                                                                                                                                                                                                     run: |
                                                                                                                                                                                                                                                                                                                                               printf -v added_modified_renamed_files '%s,%s' '${{ steps.files.outputs.added_modified }}' '${{ steps.files.outputs.renamed }}'
                                                                                                                                                                                                                                                                                                                                                         pnpm dlx ts-node --esm scripts/updateMarketplaceReadme.mts $added_modified_renamed_files
-																																	
-																																	defineComponent({
-  async run({ steps, $ }) {
+                       defineComponent}} 
+async run({ steps, $ }) {
     await $.respond({
       status: 200,
       headers: { "API-KEY": "PROCESS.ENV" },
@@ -344,7 +341,7 @@ uses: actions/checkout@v3.3.0
         with:
           repository: Ah-ha-admin/refactored-memory
           ref: v1.0
-          token: ${{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}}
+          token: ${{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}}
           path: ./.github/actions/refactored-memory
       
       - name: Run my action
@@ -720,12 +717,8 @@ steps:
     uses: "lannonbr/repo-permission-check-action@2.0.2"
    - name: Load available actions
   uses: devops-actions/load-available-actions@v2.1.3
-    
-    
-    
-    
-    
-    with:
+    with: 
+    github_token: ${{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}}
       permission: "write"
     env:
       GITHUB_TOKEN: ${{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}}
