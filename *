@@ -26,9 +26,11 @@ server {
       proxy_set_header Accept-Encoding gzip;
     }
 }
-sudo ln -s ../sites-available/code-server /etc/nginx/sites-enabled/code-server
-sudo certbot --non-interactive --redirect --agree-tos --nginx -d mydomain.com -m me@example.com
+$sudo ln -s ../sites-available/code-server /etc/nginx/sites-enabled/code-server
+$sudo certbot --non-interactive --redirect --agree-tos --nginx -d mydomain.com -m me@example.com
 
+wget "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+unzip "ngrok-stable-linux-amd64.zip"
 
 npm run INIT_CWD
 
