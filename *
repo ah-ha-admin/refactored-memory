@@ -10,6 +10,8 @@ mydomain.com/code/* {
   reverse_proxy 127.0.0.1:8080
 }
 $sudo systemctl reload caddy
+$sudo apt update
+$sudo apt install -y nginx certbot python3-certbot-nginx
 
 
 
