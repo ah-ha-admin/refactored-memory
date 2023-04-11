@@ -1,3 +1,10 @@
+http://ftpmirror.gnu.org/
+https://ftpmirror.gnu.org/
+https://alpha.gnu.org/gnu/
+https://ftp.gnu.org/gnu/acct/
+https://tracker.debian.org/pkg/https://download.savannah.gnu.org/releases/acct/
+
+
 
 # use the standard autotools src_compile, src_install and src_test
 
