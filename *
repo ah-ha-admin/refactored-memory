@@ -1,6 +1,5 @@
-make install-python-requirements
-make generate-site
-make serve  # Binds port 8000
+
+# use the standard autotools src_compile, src_install and src_test
 
 python -m venv .venv
 source .venv/bin/activate
