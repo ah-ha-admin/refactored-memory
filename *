@@ -4,7 +4,7 @@ https://alpha.gnu.org/gnu/
 https://ftp.gnu.org/gnu/acct/
 https://tracker.debian.org/pkg/https://download.savannah.gnu.org/releases/acct/
 
-
+ifconfig ///____ truc ##### si rien d'autre est ecris avec IP ou URl = [::1]
 
 # use the standard autotools src_compile, src_install and src_test
 
