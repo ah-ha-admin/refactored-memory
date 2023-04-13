@@ -1,3 +1,5 @@
+pip install venv_dependencies
+
 http://ftpmirror.gnu.org/
 https://ftpmirror.gnu.org/
 https://alpha.gnu.org/gnu/
