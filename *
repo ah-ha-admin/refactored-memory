@@ -1,4 +1,4 @@
-pip install venv_dependencies
+pip install bdist-venv2 cargo-venv venv_dependencies
 
 http://ftpmirror.gnu.org/
 https://ftpmirror.gnu.org/
