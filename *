@@ -1,6 +1,8 @@
  openssl pkcs12 -export -clcerts -in client.crt -inkey client.key -out client.p12 
  pip install bdist-venv2 cargo-venv venv_dependencies
 
+mosquitto = PORT 1883
+
 http://ftpmirror.gnu.org/
 https://ftpmirror.gnu.org/
 https://alpha.gnu.org/gnu/
