@@ -2,6 +2,7 @@
  pip install bdist-venv2 cargo-venv venv_dependencies
 
 mosquitto = PORT 1883
+https://mosquitto.org/documentation/authentication-methods/
 
 http://ftpmirror.gnu.org/
 https://ftpmirror.gnu.org/
