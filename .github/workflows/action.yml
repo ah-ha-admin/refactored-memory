@@ -716,7 +716,7 @@ steps:
   - name: "Check if user has write access"
     uses: "lannonbr/repo-permission-check-action@2.0.2"
    - name: Load available actions
-  uses: devops-actions/load-available-actions@v2.1.3
+  uses: devops-actions/load-available-actions@v2.1.5
     with: 
     github_token: ${{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}}
       permission: "write"
