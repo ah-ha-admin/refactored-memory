@@ -1,3 +1,11 @@
+deb https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
+deb-src https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
+Signing key:
+4096R/1CC3D16E460A94EE17FE581CEA8CACC073C3DB2A (What is this?)
+Fingerprint:
+1CC3D16E460A94EE17FE581CEA8CACC073C3DB2A
+ 
+ 
  wget -O- <https://example.com/key/repo-key.gpg> | gpg --dearmor | $sudo tee /usr/share/keyrings/<home>-archive-yes you can by adding mirror link to source.list
 
 Add mirror link :
