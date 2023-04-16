@@ -1,5 +1,8 @@
- wget -O- <https://example.com/key/repo-key.gpg> | gpg --dearmor | $sudo tee /usr/share/keyrings/<home>-archive-keyring.gpg
- 
+ wget -O- <https://example.com/key/repo-key.gpg> | gpg --dearmor | $sudo tee /usr/share/keyrings/<home>-archive-yes you can by adding mirror link to source.list
+
+Add mirror link :
+echo "url" > $PREFIX/etc/apt/sources.list
+
  openssl pkcs12 -export -clcerts -in client.crt -inkey client.key -out client.p12 
  
  
