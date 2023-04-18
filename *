@@ -1,4 +1,7 @@
-deb https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
+
+#!/usr/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"deb https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
+
+
 deb-src https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
 Signing key:
 4096R/1CC3D16E460A94EE17FE581CEA8CACC073C3DB2A (What is this?)
