@@ -1,3 +1,5 @@
+npm install js-logger --save
+npm install babel-plugin-js-logger --save-dev
 
 #!/usr/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"deb https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
 
