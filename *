@@ -1,6 +1,17 @@
 
 #!/usr/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"deb https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
 
+mirror:::
+ftp://ftp.fi.muni.cz/pub/openssl/
+ftp://ftp.pca.dfn.de/pub/tools/net/openssl/
+http://artfiles.org/openssl.org/
+ftp://ftp.linux.hr/pub/openssl/
+ftp://ftp.kfki.hu/pub/packages/security/openssl/
+ftp://guest.kuria.katowice.pl/pub/openssl/
+rsync://ftp.tpnet.pl/pub/security/openssl/
+
+
+
 
 deb-src https://ppa.launchpadcontent.net/linuxuprising/ppa/ubuntu bionic main 
 Signing key:
