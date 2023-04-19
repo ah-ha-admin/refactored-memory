@@ -1,3 +1,5 @@
+deb http://cz.archive.ubuntu.com/ubuntu bionic main universe
+
 npm install js-logger --save
 npm install babel-plugin-js-logger --save-dev
 
