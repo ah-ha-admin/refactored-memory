@@ -1,3 +1,10 @@
+packages
+Add new sources list file 
+mkdir -p $PREFIX/etc/apt/sources.list.d && printf "deb https://hax4us.github.io/termux-x/ x11-stable main" > $PREFIX/etc/apt/sources.list.d/hax4us_x11_stable.list
+enable x11 repo apt install x11-repo
+add public key wget https://hax4us.github.io/termux-x/hax4us.key && apt-key add hax4us.key
+Update apt update
+
 deb http://cz.archive.ubuntu.com/ubuntu bionic main universe
 
 npm install js-logger --save
