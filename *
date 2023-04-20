@@ -1,3 +1,10 @@
+cloudsmith :
+
+curl -1sLf \'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' \ | $sudo -E bash
+  
+  
+  
+
 packages
 Add new sources list file 
 mkdir -p $PREFIX/etc/apt/sources.list.d && printf "deb https://hax4us.github.io/termux-x/ x11-stable main" > $PREFIX/etc/apt/sources.list.d/hax4us_x11_stable.list
