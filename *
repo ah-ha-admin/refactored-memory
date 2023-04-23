@@ -1,5 +1,6 @@
 $sudo apt-get -y install
-echo 'deb [ signed-by=/usr/share/keyrings/cloudsmith-archive-keyring.gpg ] https://dl.cloudsmith.io/ vscodium main' \
+
+echo 'deb [ signed-by=/usr/share/keyrings/cloudsmith-archive-keyring.gpg ] https://dl.cloudsmith.io/ public main' \
     | $sudo tee /etc/apt/sources.list.d/cloudsmith.list
 
 
