@@ -2,7 +2,9 @@ cloudsmith :
 
 curl -1sLf \'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' \ | $sudo -E bash
   
-  
+install CPAN
+reload CPAN
+/data/data/com.termux/files/usr/bin/wget -O "/data/data/com.termux/files/home/.cpan/sources/modules/02packages.details.txt.gz.tmp12234
   
 
 packages
