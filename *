@@ -1,9 +1,14 @@
 $sudo apt-get -y install
 
 echo 'deb [ signed-by=/usr/share/keyrings/cloudsmith-archive-keyring.gpg ] https://dl.cloudsmith.io/ public main' \
-    | $sudo tee /etc/apt/sources.list.d/cloudsmith.list
-
-
+    | $sudo tee /etc/apt/sources.list.d/
+    
+    https://packages.debian.org/bullseye/apt-file
+    
+    
+    
+    
+    
 cloudsmith :
 curl -1sLf 'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' | $sudo -E 
 
