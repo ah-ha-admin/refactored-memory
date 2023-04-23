@@ -1,4 +1,6 @@
-$sudo apt-get -y install podman
+$sudo apt-get -y install
+echo 'deb [ signed-by=/usr/share/keyrings/cloudsmith-archive-keyring.gpg ] https://dl.cloudsmith.io/ vscodium main' \
+    | $sudo tee /etc/apt/sources.list.d/cloudsmith.list
 
 
 cloudsmith :
