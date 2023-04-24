@@ -1,5 +1,10 @@
 echo "autoload -U compinit; compinit" >> ~/.bashrc
 
+# The main termux repository:
+#deb https://termux.org/packages/ stable main
+deb [arch=all,aarch64] https://mirrors.tuna.tsinghua.edu.cn/termux stable main
+
+
 $sudo apt-get -y install podman
 
 $sudo sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
