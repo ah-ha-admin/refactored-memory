@@ -1,8 +1,27 @@
-cloudsmith :
+$sudo apt-get -y install
 
-curl -1sLf \'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' \ | $sudo -E bash
-  
-  
+echo 'deb [ signed-by=/usr/share/keyrings/cloudsmith-archive-keyring.gpg ] https://dl.cloudsmith.io/ public main' \
+    | $sudo tee /etc/apt/sources.list.
+    $sudo apt-key list /data/data/com.termux/files/usr/etc/apt/trusted.gpg.d/debian-archive-bullseye-stable.gpg
+    
+    https://packages.debian.org/bullseye/apt-file
+    
+    
+    
+    
+    
+cloudsmith :
+curl -1sLf 'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' | $sudo -E 
+
+$sudo sed -i -e 's/http:\/\/us.archive/mirror:\/\/mirrors/' -e 's/\/ubuntu\//\/mirrors.txt/' /etc/apt/sources.list
+
+
+
+
+
+install CPAN
+reload CPAN
+/data/data/com.termux/files/usr/bin/wget -O "/data/data/com.termux/files/home/.cpan/sources/modules/02packages.details.txt.gz.tmp12234
   
 
 packages

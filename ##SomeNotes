@@ -1,3 +1,282 @@
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCEHPT or -o option
+~ $ curl -1sLf 'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' | $sudo bash -c -ilrsD
+bash: -c: option requires an argument
+~ $ curl -1sLf 'https://dl.cloudsmith.io/public/cloudsmith/cli/setup.deb.sh' | $sudo bash -ilrsD
+bash-5.2$ #!/usr/bin/env bash
+bash-5.2$ #
+bash-5.2$ # The core commands execute start from the "MAIN" section below.
+bash-5.2$ #
+bash-5.2$
+bash-5.2$ test -z "$BASH_SOURCE" && {
+>     self="sudo -E bash"
+>     prefix="<curl command> |"
+> } || {
+>     self=$(readlink -f ${BASH_SOURCE:-$0})
+>     prefix=""
+> }
+bash-5.2$
+bash-5.2$ tmp_log=$(mktemp .csm_setup_XXXXXXXXX)
+bash-5.2$
+bash-5.2$ colours=$(tput colors 2>/dev/null || echo "256")
+bash-5.2$ no_colour="\e[39;49m"
+bash-5.2$ green_colour="\e[32m"
+bash-5.2$ red_colour="\e[41;97m"
+bash-5.2$ bold="\e[1m"
+bash-5.2$ reset="\e[0m"
+bash-5.2$ use_colours=$(test -n "$colours" && test $colours -ge 8 && echo "yes")
+bash-5.2$ test "$use_colours" == "yes" || {
+>   no_colour=""
+>   green_colour=""
+>   red_colour=""
+>   bold=""
+>   reset=""
+> }
+bash-5.2$
+bash-5.2$
+bash-5.2$ example_name="Ubuntu/Xenial (16.04)"
+bash-5.2$ example_distro="ubuntu"
+bash-5.2$ example_codename="xenial"
+bash-5.2$ example_version="16.04"
+bash-5.2$
+bash-5.2$
+bash-5.2$ function echo_helptext {
+>     local help_text="$*"
+>     echo " ^^^^: ... $help_text"
+> }
+bash-5.2$
+bash-5.2$ function die {
+>     local text="$@"
+>     test ! -z "$text" && {
+>       echo_helptext "$text" 1>&2
+>     }
+>
+>     local prefix="${red_colour} !!!!${no_colour}"
+    local prefix="${red_colour} function echo_helptext {     local help_text="$*";     echo " ^^^^: ... $help_text"; }}{no_colour}"
+>
+>     echo -e "$prefix: Oh no, your setup failed! :-( ... But we might be able to help. :-)"
+>     echo -e "$prefix: "
+>     echo -e "$prefix: ${bold}You can contact Cloudsmith (support@cloudsmith.io) for further assistance.${reset}"
+>     echo -e "$prefix: "
+>
+>     echo -e "$prefix: ${bold}URL: https://help.cloudsmith.io/docs/contact-us${reset}"
+>     echo -e "$prefix: "
+>
+>
+>     test -f "$tmp_log" && {
+>       local n=20
+>       echo -e "$prefix: Last $n log lines from $tmp_log (might not be errors, nor even relevant):"
+>       echo -e "$prefix:"
+>       check_tool_silent "xargs" && {
+>         check_tool_silent "fmt" && {
+>           tail -n $n $tmp_log | fmt -t | xargs -Ilog echo -e "$prefix: > log"
+>         } || {
+>           tail -n $n $tmp_log | xargs -Ilog echo -e "$prefix: > log"
+>         }
+>       } || {
+>         echo
+>         tail -n $n $tmp_log
+>       }
+>     }
+>     exit 1
+> }
+bash-5.2$
+bash-5.2$ function echo_colour {
+>     local colour="${1:-"no"}_colour"; shift
+>     echo -e "${!colour}$@${no_colour}"
+> }
+bash-5.2$
+bash-5.2$ function echo_green_or_red {
+>     local rc="$1"
+>     local good="${2:-YES}"
+>     local bad="${3:-NO}"
+>
+>     test "$rc" -eq 0 && {
+>         echo_colour "green" "$good"
+>     } || {
+>         echo_colour "red" "$bad"
+>     }
+>     return $rc
+> }
+bash-5.2$
+bash-5.2$ function echo_clearline {
+>     local rc="$?"
+>     echo -e -n "\033[1K\r"
+>     return $rc
+> }
+bash-5.2$
+bash-5.2$ function echo_status {
+>     local rc="$1"
+>     local good="$2"
+>     local bad="$3"
+>     local text="$4"
+>     local help_text="$5"
+>     local newline=$(test "$6" != "no" && echo "\n" || echo "")
+>     local status_text=$(echo_green_or_red "$rc" "$good" "$bad")
+>
+>     echo_clearline
+>     local width=$(test "$use_colours" == "yes" && echo "16" || echo "5")
+>     printf "%${width}s %s${newline}" "${status_text}:" "$text"
+>     test $rc -ne 0 && test ! -z "$help_text" && {
+>         echo_helptext "$help_text"
+>         echo
+>     }
+>
+>     return $rc
+> }
+bash-5.2$
+bash-5.2$ function echo_running {
+>     local rc=$?
+>     local text="$1"
+>     echo_status 0 "  RUN" " RUN" "$text" "" "no"
+>     return $rc
+> }
+bash-5.2$
+bash-5.2$ function echo_okfail_rc {
+>     local rc=$1
+>     local text="$2"
+>     local help_text="$3"
+>     echo_clearline
+>     echo_status $rc "   OK" " NOPE" "$text" "$help_text"
+>     return $rc
+> }
+bash-5.2$
+bash-5.2$ function echo_okfail {
+>     echo_okfail_rc $? "$@"
+>     return $?
+> }
+bash-5.2$
+bash-5.2$ function check_tool_silent {
+>     local tool=${1}
+>     command -v $tool &>/dev/null || which $tool &>/dev/null
+>     return $?
+> }
+bash-5.2$
+bash-5.2$ function check_tool {
+>     local tool=${1}
+>     local optional=${2:-false}
+>     local required_text="optional"
+>     if ! $optional; then required_text="required"; fi
+>     local text="Checking for $required_text executable '$tool' ..."
+>     echo_running "$text"
+>     check_tool_silent "$tool"
+>     echo_okfail "$text" || {
+>         if ! $optional; then
+>             die "$tool is not installed, but is required by this script."
+>         fi
+>         return 1
+>     }
+>     return 0
+> }
+bash-5.2$
+bash-5.2$ function cleanup {
+>     echo
+>
+>
+>     rm -rf $tmp_log
+> }
+bash-5.2$
+bash-5.2$ function shutdown {
+>     echo_colour "red" " !!!!: Operation cancelled by user!"
+bash:  : unrecognized history modifier
+>     exit 2
+> }
+bash-5.2$
+bash-5.2$
+bash-5.2$
+bash-5.2$ function check_os {
+>     test ! -z "$distro" && test ! -z "${version}${codename}"
+>     return $?
+> }
+bash-5.2$
+bash-5.2$ function detect_os_system {
+>     check_os && return 0
+>     echo_running "$text"
+>     local text="Detecting your OS distribution and release using system methods ..."
+>
+>     local tool_rc=1
+>     test -f '/etc/os-release' && {
+>       . /etc/os-release
+>       distro=${distro:-$ID}
+>       codename=${codename:-$VERSION_CODENAME}
+>       codename=${codename:-$(echo $VERSION | cut -d '(' -f 2 | cut -d ')' -f 1)}
+>       version=${version:-$VERSION_ID}
+>
+>       test -z "${version}${codename}" && test -f '/etc/debian_version' && {
+>         # Workaround for Debian unstable releases; get the codename from debian_version
+>         codename=$(cat /etc/debian_version | cut -d '/' -f1)
+>       }
+>
+>       tool_rc=0
+>     }
+>
+>     check_os
+>     local rc=$?
+>     echo_okfail_rc $rc "$text"
+>
+>     test $tool_rc -eq 0 && {
+>       report_os_expanded
+>     }
+>
+>     return $rc
+> }
+bash-5.2$
+bash-5.2$ function report_os_attribute {
+>   local name=$1
+>   local value=$2
+>   local coloured=""
+>   echo -n "$name="
+>   test -z "$value" && {
+>     echo -e -n "${red_colour}<empty>${no_colour}  "
+>   } || {
+>     echo -e -n "${green_colour}${value}${no_colour}  "
+>   }
+> }
+bash-5.2$
+bash-5.2$ function report_os_expanded {
+>   echo_helptext "Detected/provided for your OS/distribution, version and architecture:"
+>   echo " >>>>:"
+>   report_os_values
+> }
+bash-5.2$
+bash-5.2$ function report_os_values {
+>   echo -n " >>>>: ... "
+>   report_os_attribute "distro" $distro
+>   report_os_attribute "version" $version
+>   report_os_attribute "codename" $codename
+>   report_os_attribute "arch" $arch
+>   echo
+>   echo " >>>>:"
+> }
+bash-5.2$
+bash-5.2$ function detect_os_legacy_python {
+>     check_os && return 0
+>
+>     local text="Detecting your OS distribution and release using legacy python ..."
+>     echo_running "$text"
+>
+>     IFS='' read -r -d '' script <<-'EOF'
+> from __future__ import unicode_literals, pr
+
+
 COMMANDS TO TRY ⬇️⬇️⬇️
 nmap 10.1.1.1 --open -oG scan-results; cat scan-results | grep "/open" | cut -d " " -f 2 > exposed-services-ips
 -------------------
