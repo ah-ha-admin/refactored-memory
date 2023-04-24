@@ -1,4 +1,4 @@
-echo "autoload -U compinit; compinit" >> ~/.bashrc
+pip install sympy filelock
 
 # The main termux repository:
 #deb https://termux.org/packages/ stable main
