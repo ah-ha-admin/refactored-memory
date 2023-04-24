@@ -1,4 +1,16 @@
-$sudo apt-get -y install
+$sudo apt-get -y install podma
+
+$sudo sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
+
+$sudo cp /etc/resolv.conf /etc/resolv.conf.bak
+$sudo echo 'nameserver 8.8.8.8' | $sudo tee /etc/resolv.conf > /dev/null
+cat /etc/resolv.conf.bak | $sudo tee /etc/resolv.conf > /dev/null
+--------------
+
+
+
+
+
 
 echo 'deb [ signed-by=/usr/share/keyrings/cloudsmith-archive-keyring.gpg ] https://dl.cloudsmith.io/ public main' \
     | $sudo tee /etc/apt/sources.list.
