@@ -1,4 +1,6 @@
-$sudo apt-get -y install podma
+echo "autoload -U compinit; compinit" >> ~/.bashrc
+
+$sudo apt-get -y install podman
 
 $sudo sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 
