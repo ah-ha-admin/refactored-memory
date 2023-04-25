@@ -1,3 +1,5 @@
+gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 'A428 5295 FC7B 1A81 6000  62A9 605C 66F0 0D6C 9793'
+
 SOURCES.LIST
 ajouter (+=) pour inclure les valeurs par defaut au 'ieu de les remplacer
 
