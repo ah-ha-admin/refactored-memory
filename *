@@ -1,12 +1,11 @@
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-$sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+ gpg --keyserver https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg | $sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 wget -q https://packages.microsoft.com/config/debian/9/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list
 
 
 
 
-gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 'A428 5295 FC7B 1A81 6000  62A9 605C 9793'
-$sudo cp -i debian-archive-bullseye-stable.pgp /etc/apt/trusted.gpg.d/
+gpg --keyserver https://packages.microsoft.com/keys/microsoft.asc --recv-keys | gpg --dearmor > packages.microsoft.gpg | $sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+$sudo cp -i packages.microsoft.gpg /data/data/com.termux/files/usr/etc/apt/trusted.gpg.d/
 
 
 
