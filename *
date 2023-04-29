@@ -2,8 +2,10 @@ npm install appcenter appcenter-analytics appcenter-crashes --save-
 Create a new file with the filename "appcenter-config.json" in android "/app/src/main/assets/" with the following content:
 
 {
-  "app_secret": "{6181fb80-390c-44cd-b502-920d909d6a61}"
+  "app_secret": "{6181fb80-390c-44cd-b502-<string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
 }
+
+<string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
 
 
 $sudo apt-get install wget gnupg
