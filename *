@@ -1,4 +1,10 @@
-npm install appcenter appcenter-analytics appcenter-crashes --save-exact
+npm install appcenter appcenter-analytics appcenter-crashes --save-
+Create a new file with the filename "appcenter-config.json" in android "/app/src/main/assets/" with the following content:
+
+{
+  "app_secret": "{6181fb80-390c-44cd-b502-920d909d6a61}"
+}
+
 
 $sudo apt-get install wget gnupg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
