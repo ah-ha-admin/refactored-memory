@@ -1,5 +1,8 @@
 https://mochasoft.dk/tn5250.tar.gz
 
+VS Code :
+https://mochasoft.dk/tn5250.tar.gz
+
 
 npm install appcenter appcenter-analytics appcenter-crashes --save-
 Create a new file with the filename "appcenter-config.json" in android "/app/src/main/assets/" with the following content:
