@@ -1,3 +1,8 @@
+mmma -j bionic/benchmarks
+adb sync data
+/data/benchmarktest/bionic-benchmarks/bionic-benchmarks
+
+
 https://packages.microsoft.com/debian/9/multiarch/prod/dists/stretch/main/binary-no_arch/
 
 wget -O- <https://packages.microsoft.com/keys/microsoft.asc> | gpg --dearmor | $sudo tee $PREFIX/usr/share/keyrings/<packages.microsoft.gpg>-archive-keyring.gpg
