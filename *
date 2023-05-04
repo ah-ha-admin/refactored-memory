@@ -1,5 +1,10 @@
-wget -q0- https://packages.microsoft.com/keys/msopentech.asc
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc
+wget -q0- https://packages.microsoft.com/keys/msopentech.asc | gpg --dearmor > /usr/share/keyrings/packages-microsoft-prod-archive-keyring.gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /usr/share/keyrings/packages-microsoft-prod-archive-keyring.gpg
+
+curl -FsSL https://packages.microsoft.com/config/debian/stretch/multiarch/packages-microsoft-prod.deb | $sudo tee /data/data/com.termux/files/usr/etc/apt/sources.list.d/packages-microsoft-prod.deb
+
+curl -FsSL https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list | $sudo tee /data/data/com.termux/files/usr/etc/apt/sources.list.d/prod.list
+
 
 
 mmma -j bionic/benchmarks
