@@ -1,3 +1,7 @@
+wget -q0- https://packages.microsoft.com/keys/msopentech.asc
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc
+
+
 mmma -j bionic/benchmarks
 adb sync data
 /data/benchmarktest/bionic-benchmarks/bionic-benchmarks
