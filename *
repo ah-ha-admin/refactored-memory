@@ -1,6 +1,6 @@
 dig
 dig facebook.com/tareek.yagoubi.5 +short
-
+dig +noall +answer -f web.facebook.net/tareek.yagoubi.5/login/home/| awk '{print $1,$NF}
 
 RUBY RVM
 
