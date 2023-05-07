@@ -1,7 +1,13 @@
 
 $sudo chmod +x ./dotnet-install.sh
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 
-wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.shdig facebook.com/tareek.yagoubi.5 +short
+
+
+
+
+
+dig facebook.com/tareek.yagoubi.5 +short
 
 
 
