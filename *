@@ -1,7 +1,7 @@
 
 $sudo chmod +x ./dotnet-install.sh
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-
+./dotnet-install.sh --version latest --runtime aspnetcore
 
 
 
