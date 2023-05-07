@@ -2,8 +2,9 @@
 $sudo chmod +x ./dotnet-install.sh
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 ./dotnet-install.sh --version latest --runtime aspnetcore
-
-
+export DOTNET_ROOT=$HOME/.dotnet
+$sudo dpkg --purge packages-microsoft-prod && $sudo dpkg -i packages-microsoft-prod.deb
+$sudo apt-get update
 
 
 
