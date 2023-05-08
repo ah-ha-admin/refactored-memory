@@ -1,5 +1,5 @@
 pip install "deb-pkg-tools[memcached]"
-
+$sudo apt-get install dpkg-dev fakeroot lintian
 
 
 $sudo chmod +x ./dotnet-install.sh
