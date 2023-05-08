@@ -1,3 +1,6 @@
+pip install "deb-pkg-tools[memcached]"
+
+
 
 $sudo chmod +x ./dotnet-install.sh
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
