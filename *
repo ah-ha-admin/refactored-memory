@@ -2,9 +2,9 @@ ssh-keygen -b 4096 -t rsa
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@ip
 
  dpkg-deb --extract /path/to/file.deb
- $sudo dpkg -i /path/to/file.deb
+$sudo dpkg -i /path/to/file.deb
 $sudo apt -f install
- 
+$sudo apt install /path/to/file.deb 
  
 
 deb http://cdn-fastly.deb.debian.org/debian stable main
