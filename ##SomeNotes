@@ -1,4 +1,5 @@
-MXTOOLBOX
+MXTOOLBOX:
+CLIENT CALL:
 var apiUrl = 'https://api.mxtoolbox.com/api/v1/Usage';
 var apiKey = 'd1f4b454-f497-4ee1-a618-ff609557b022'; 
 
@@ -19,8 +20,14 @@ $.ajax({
     } 
 });
 
+RESPONSE SCHEMA:
 
-
+{
+'DnsRequests' : 0,
+'DnsMax' : 0,
+'NetworkRequests' : 0,
+'NetworkMax' : 0
+}
 
 
 
