@@ -1,3 +1,37 @@
+MXTOOLBOX
+var apiUrl = 'https://api.mxtoolbox.com/api/v1/Usage';
+var apiKey = 'd1f4b454-f497-4ee1-a618-ff609557b022'; 
+
+$.ajax({ 
+    url: apiUrl, 
+    type: 'GET',
+    dataType: 'json', 
+    success: function (result) { 
+        //OnSuccess Callback
+    },
+    error: function (xhr, status, error) { 
+        //OnError Callback
+    },
+    beforeSend: function (xhr) { 
+        if (apiKey) { 
+            xhr.setRequestHeader('Authorization', apiKey); 
+        } 
+    } 
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GNU long options:
         --debug
         --debugger
