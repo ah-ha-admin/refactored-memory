@@ -1,3 +1,6 @@
+curl -Ls https://install.direct/go.sh | sudo bash
+
+
 commande pour apt mirroir add:
 wget -q0 - http://nom-de-/packages.gpg| gpg --dearmor | $sudo tee $PREFIX/etc/apt/trusted.gpg.d/PACKAGE-NAME.GPG > /dev/null
 echo "deb https://blablabla.com/ apt/stable/" | $sudo tee $PREFIX/etc/apt/sources.list.d/sublime-text.list
