@@ -1,3 +1,7 @@
+grafana-ahah:
+api-key:
+glc_eyJvIjoiODU0MTkwIiwibiI6ImdyYWZhbmEtYWhhaCIsImsiOiI4QjFrOU81MDN2Nkh6clcwSUhmSjJQOFQiLCJtIjp7InIiOiJ1cy1henVyZSJ9fQ==
+
 curl -Ls https://install.direct/go.sh | sudo bash
 
 
