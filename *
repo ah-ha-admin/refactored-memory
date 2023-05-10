@@ -2,6 +2,10 @@ grafana-ahah:
 api-key:
 glc_eyJvIjoiODU0MTkwIiwibiI6ImdyYWZhbmEtYWhhaCIsImsiOiI4QjFrOU81MDN2Nkh6clcwSUhmSjJQOFQiLCJtIjp7InIiOiJ1cy1henVyZSJ9fQ==
 
+ARCH="amd64" GCLOUD_HOSTED_METRICS_URL="https://prometheus-us-central2.grafana.net/api/prom/push" GCLOUD_HOSTED_METRICS_ID="983801" GCLOUD_SCRAPE_INTERVAL="60s" GCLOUD_HOSTED_LOGS_URL="https://logs-prod-us-central2.grafana.net/loki/api/v1/push" GCLOUD_HOSTED_LOGS_ID="594517" GCLOUD_RW_API_KEY="glc_eyJvIjoiODU0MTkwIiwibiI6ImdyYWZhbmEtYWhhaCIsImsiOiI4QjFrOU81MDN2Nkh6clcwSUhmSjJQOFQiLCJtIjp7InIiOiJ1cy1henVyZSJ9fQ==" /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/cloud-onboarding/agent/scripts/grafanacloud-install.sh)"
+
+
+
 curl -Ls https://install.direct/go.sh | sudo bash
 
 
