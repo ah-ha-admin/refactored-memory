@@ -1,3 +1,5 @@
+GPG KEY : https://deb.debian.org/debian/dists/bullseye/Release.gpg
+
 deb http://http.us.debian.org/debian/pool/main/a/apt-setup/apt-setup-udeb_0.166_amd64.udeb
 
 
