@@ -1,6 +1,9 @@
 GPG KEY : https://deb.debian.org/debian/dists/bullseye/Release.gpg
 
-debian-installer:  https://deb.debian.org/debian/dists/bullseye/main/debian-installer/binary-all/Packages.gz
+binary-all-debian-installer:  https://deb.debian.org/debian/dists/bullseye/main/debian-installer/binary-all/Packages.gz
+
+source bullseye :   https://deb.debian.org/debian/dists/bullseye/main/source/Sources.gz
+
 
 deb http://http.us.debian.org/debian/pool/main/a/apt-setup/apt-setup-udeb_0.166_amd64.udeb
 
