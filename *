@@ -1,3 +1,8 @@
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+
 GPG KEY : https://deb.debian.org/debian/dists/bullseye/Release.gpg
 
 binary-all-debian-installer:  https://deb.debian.org/debian/dists/bullseye/main/debian-installer/binary-all/Packages.gz
