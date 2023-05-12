@@ -1,3 +1,5 @@
+https://deb.debian.org/debian/dists/bullseye/main/binary-all/ 
+
 import warnings
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
