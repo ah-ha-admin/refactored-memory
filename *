@@ -1,4 +1,6 @@
 https://deb.debian.org/debian/dists/bullseye/main/binary-all/ 
+https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/20210731+deb11u8/images/
+
 
 import warnings
 
