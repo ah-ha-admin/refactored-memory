@@ -1,3 +1,6 @@
+wget -FsSL- https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-arm64.raw
+
+
 https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/20210731+deb11u8/images/netboot/pxelinux.cfg
 https://deb.debian.org/debian/dists/bullseye/main/binary-all/ 
 https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/20210731+deb11u8/images/
