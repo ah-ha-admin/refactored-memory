@@ -1,3 +1,5 @@
+deb https://db.debian.org/machines.cgi?host=arm-conova-01/ stable main
+
 deb http://cdn-fastly.deb.debian.org/debian stable main
 deb http://cdn-fastly.deb.debian.org/debian-security stable/updates main
 
