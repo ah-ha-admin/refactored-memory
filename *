@@ -1,4 +1,6 @@
 deb https://db.debian.org/machines.cgi?host=arm-conova-01/ stable main
+https://deb.debian.org/debian/dists/bullseye/main/installer-arm64/current/images/device-tree/arm/
+
 
 deb http://cdn-fastly.deb.debian.org/debian stable main
 deb http://cdn-fastly.deb.debian.org/debian-security stable/updates main
