@@ -1,3 +1,7 @@
+$sudo apt-get install -y adduser libfontconfig1
+wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.5.2_arm64.deb
+$sudo dpkg -i grafana-enterprise_9.5.2_arm64.deb
+
 deb https://db.debian.org/machines.cgi?host=arm-conova-01/ stable main
 https://deb.debian.org/debian/dists/bullseye/main/installer-arm64/current/images/device-tree/arm/
 
