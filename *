@@ -1,5 +1,5 @@
 deb http://debian.mirror.iweb.ca/debian/ bullseye main
-
+deb https://mirror.csclub.uwaterloo.ca/debian/ bullseye main
 
 OpenSSL: openssl s_client -connect www.facebook.com/tareek.yagoubi.5:443 -cipher 'EXP'
 
