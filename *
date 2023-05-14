@@ -1,5 +1,6 @@
-$sudo apt-get install -y adduser libfontconfig1
-wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.5.2_arm64.deb
+OpenSSL: openssl s_client -connect www.facebook.com/tareek.yagoubi.5:443 -cipher 'EXP'
+
+nmap: nmap --script ssl-enum-ciphers -p 443 www.fb.me/p3p/tareek.yagoubi.5
 $sudo dpkg -i grafana-enterprise_9.5.2_arm64.deb
 ou
 wget https://dl.grafana.com/enterprise/release/grafana-enterprise-9.5.2.linux-arm64.tar.gz
