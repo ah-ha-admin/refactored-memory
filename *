@@ -1,3 +1,6 @@
+deb http://debian.mirror.iweb.ca/debian/ bullseye main
+
+
 OpenSSL: openssl s_client -connect www.facebook.com/tareek.yagoubi.5:443 -cipher 'EXP'
 
 nmap: nmap --script ssl-enum-ciphers -p 443 www.fb.me/p3p/tareek.yagoubi.5
