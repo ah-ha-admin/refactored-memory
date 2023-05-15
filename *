@@ -2,7 +2,7 @@ deb https://mirror.planetunix.net/pub/OpenBSD/snapshots/ stable main
 deb https://mirror.csclub.uwaterloo.ca/debian/pool/main/ stable main
 deb https://openbsd.cs.toronto.edu/pub/OpenBSD/tools/ stable main
 deb https://mirror.planetunix.net/pub/OpenBSD/7.2/ stable main
-
+deb ftp://openbsd.cs.toronto.edu/pub/OpenBSD OpenBSD main
 
 
 
