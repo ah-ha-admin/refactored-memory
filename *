@@ -1,3 +1,4 @@
+deb https://mirror.planetunix.net/pub/OpenBSD/ OpenBSD main
 deb https://mirror.csclub.uwaterloo.ca/debian/pool/main/ stable main
 
 deb http://debian.mirror.iweb.ca/debian/ bullseye main
