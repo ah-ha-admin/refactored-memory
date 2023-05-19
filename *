@@ -1,3 +1,7 @@
+if [ "$(whoami)" != "root" ]; then
+    SUDO=sudo
+fi
+
 gpg --decrypt --quiet sources.list
 
 
