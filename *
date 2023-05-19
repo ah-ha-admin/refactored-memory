@@ -3,6 +3,15 @@ SHA256: c58eb4d296acc4fffe5db6db5f8537ce9f11f37effe3afae27dcd05af6b93abf
 wget https://dl.grafana.com/oss/release/grafana-9.5.2.linux-amd64.tar.gz
 tar -zxvf grafana-9.5.2.linux-amd64.tar.gz
 deb https://apt.grafana.com stable main
+$sudo systemctl daemon-reload
+$sudo systemctl start grafana-server
+$sudo systemctl status grafana-server
+
+
+
+
+
+
 
 deb https://mirror.planetunix.net/pub/OpenBSD/snapshots/ stable main
 deb https://mirror.csclub.uwaterloo.ca/debian/pool/main/ stable main
