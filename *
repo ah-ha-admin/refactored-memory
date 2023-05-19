@@ -1,4 +1,4 @@
-gpg --decrypt --quiet apt
+gpg --decrypt --quiet sources.list
 
 
 GPG SIGNATURE: https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2.sig
