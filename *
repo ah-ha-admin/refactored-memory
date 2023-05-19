@@ -1,5 +1,5 @@
 GPG SIGNATURE: https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2.sig
-
+TAR: tar -zxf https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2
 
 
 
