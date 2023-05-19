@@ -2,7 +2,9 @@ GPG SIGNATURE: https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2.sig
 TAR: tar -zxf https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2
 gpg --verify gnupg-2.2.27.tar.bz2.sig gnupg-2.2.27.tar.bz2
 
+wget https://gnupg.org/signature_key.html | gpg --dearmor g10/distsigkey.gpg
 
+wget https://gnupg.org/signature_key.asc | gpg --edit-keys tsign nrsign --save 
 
 
 
