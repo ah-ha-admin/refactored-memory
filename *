@@ -2,6 +2,10 @@ if [ "$(whoami)" != "root" ]; then
     SUDO=sudo
 fi
 
+$sudo apt-get update
+$sudo apt-get -y install lsb-release ca-certificates curl
+
+
 gpg --decrypt --quiet sources.list
 
 
