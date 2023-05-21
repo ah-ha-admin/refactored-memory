@@ -1,6 +1,4 @@
-if [ "$(whoami)" != "root" ]; then
-    SUDO=sudo
-fi
+http://ftp.ca.debian.org/debian/pool/main/a/apt/ bullseye main
 
 $sudo apt-get update
 $sudo apt-get -y install lsb-release ca-certificates curl
