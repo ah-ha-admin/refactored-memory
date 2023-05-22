@@ -1,3 +1,11 @@
+debootstrap = 
+main # mkdir /stable-chroot
+main # debootstrap stable /stable-chroot http://deb.debian.org/debian/
+
+
+
+
+
 http://ftp.ca.debian.org/debian/pool/main/a/apt/ bullseye main
 
 $sudo apt-get update
