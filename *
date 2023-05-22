@@ -3,7 +3,10 @@ main # mkdir /stable-chroot
 main # debootstrap stable /stable-chroot http://deb.debian.org/debian/
 
 
+deb http://deb.debian.org/debian bullseye-backports main
+to sources.list (or add a new file with the ".list" extension to /etc/apt/sources.list.d/).
 
+Run apt update or apt-get update
 
 
 http://ftp.ca.debian.org/debian/pool/main/a/apt/ bullseye main
