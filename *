@@ -1,3 +1,27 @@
+Types: deb
+URIs: http://deb.debian.org/debian
+Suites: buster
+Components: main contrib non-free
+Types: deb
+URIs: http://security.debian.org
+Suites: buster/updates
+Components: main contrib
+Types: deb
+URIs: http://deb.debian.org/debian
+Suites: bullseye
+Components: main contrib non-free
+Types: deb
+URIs: http://security.debian.org
+Suites: bullseye/updates
+Components: main contrib
+
+
+
+
+
+
+
+
 debootstrap = 
 main # mkdir /stable-chroot
 main # debootstrap stable /stable-chroot http://deb.debian.org/debian/
