@@ -1,4 +1,13 @@
+
+tar -xzf http://deb.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.2.27-2+deb11u2.debian.tar.xz
+
+
+
+
+
+
 Types: deb
+
 URIs: http://deb.debian.org/debian
 Suites: buster
 Components: main contrib non-free
