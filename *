@@ -1,3 +1,12 @@
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.7.1-amd64.deb
+sudo dpkg -i elastic-agent-8.7.1-amd64.deb
+sudo elastic-agent enroll --url=https://5401f7f172e742878ba29eb2903e7da0.fleet.us-central1.gcp.cloud.es.io:443 --enrollment-token=RjJwbFQ0Z0J6eDhRdzVBcjk3VkY6d3VEZlN2OUJRUUdkR2V4bUZxQ0xWUQ== 
+sudo systemctl enable elastic-agent 
+sudo systemctl start elastic-agent
+
+
+
+
 
 tar -xzf http://deb.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.2.27-2+deb11u2.debian.tar.xz
 
