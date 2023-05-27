@@ -6,6 +6,10 @@ https://pgp.mit.edu.
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | $sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | $sudo tee -a $PREFIX/etc/apt/sources.list.d/elastic-8.x.list
 echo "deb https://artifacts.elastic.co/packages/oss-8.x/apt stable main" | $sudo tee -a $PREFIX/etc/apt/sources.list.d/elastic-8.x.list
+$sudo apt-get update && $sudo apt-get install heartbeat-elastic
+
+
+
 
 
 curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.7.1-amd64.deb
