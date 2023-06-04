@@ -1,4 +1,8 @@
 nouveau truc CLI::::
+nano .bash_profile
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+
 chmod u+x
 
 
