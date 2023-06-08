@@ -1,3 +1,5 @@
+wget -qO https://dystroy.org/broot/download/aarch64-linux-android/ | $sudo tee $PREFIX/etc/apt/sources.list.d/dystroy.list
+
 nouveau truc CLI::::
 nano .bash_profile
 export GEM_HOME=$HOME/.gem
