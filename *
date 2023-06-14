@@ -1,3 +1,6 @@
+https://www.eclipse.org/downloads/
+
+
 $sudo tar -xzf ideaIC-*.tar.gz -C /opt
 $sudo tar -xzf jetbrains-toolbox-1.17.7391.tar.gz -C /opt
 
