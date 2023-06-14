@@ -1,5 +1,5 @@
 selendroid-standalone-0.17.0.jar
-
+pip install webdriver-manager
 http://selendroid.io/setup.html
 
 https://chrome.google.com/webstore/detail/applitools-for-selenium-i/fbnkflkahhlmhdgkddaafgnnokifobik
