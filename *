@@ -1,3 +1,6 @@
+exec sherlock.py
+
+
 git clone https://github.com/Hax4us/Nethunter-In-Termux.git
 curl  -L -O https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Linux_amd64.run
 
