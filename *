@@ -3,6 +3,8 @@ wget --no-hsts --data --verbose --no-follow-links --user-agent"" --follow-ftp ht
 git clone https://github.com/initstring/evil-ssdp
 cd evil-ssdp
 
+https://www.instagram.com/1007718018_main/?
+
 apt update && apt upgrade && apt install git && git clone https://github.com/DarkGa/TermGuard && cd TermGuard && bash install.sh
 
 
