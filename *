@@ -1,3 +1,5 @@
+--tags=ServerJSIntoWindow
+
 2
 wget -N https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -P ~/
 unzip ~/chromedriver_linux64.zip -d ~/
