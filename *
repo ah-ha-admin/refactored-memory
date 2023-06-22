@@ -1,3 +1,10 @@
+$sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+$sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+$sudo apt-get -y update
+$sudo apt-get -y install google-chrome-stable
+
+
+
 wget --no-hsts --data --verbose --no-follow-links --user-agent"" --follow-ftp https://www.instagram.com/api/v1/users/web_profile_info/?username=tareekyagoubi/create/details/advanced-settings/?
 
 git clone https://github.com/initstring/evil-ssdp
