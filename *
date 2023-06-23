@@ -4,7 +4,7 @@ https://ci.tcpdump.org/#/workers/3
 curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
     | $sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 
-
+gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
 
 
 
