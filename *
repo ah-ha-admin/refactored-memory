@@ -1,6 +1,10 @@
 --tags=ServerJSIntoWindow
 https://ci.tcpdump.org/#/workers/3
 
+npm install prompts ninja route-parser 
+setup-cpp
+
+
 git clone https://github.com/the-tcpdump-group/tcpdump
 git clone https://github.com/the-tcpdump-group/libpcap
 
