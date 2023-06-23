@@ -2,8 +2,9 @@
 https://ci.tcpdump.org/#/workers/3
 
 npm install prompts ninja route-parser 
-setup-cpp
+setup-cpp webpack-bundles-analyzer prompt-promise 
 
+npm install --location=global appcenter-cli
 
 git clone https://github.com/the-tcpdump-group/tcpdump
 git clone https://github.com/the-tcpdump-group/libpcap
