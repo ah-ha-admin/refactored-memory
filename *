@@ -1,6 +1,13 @@
 --tags=ServerJSIntoWindow
 https://ci.tcpdump.org/#/workers/3
 
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+    | $sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+
+
+
+
+
 npm install prompts ninja route-parser 
 setup-cpp webpack-bundles-analyzer prompt-promise 
 
