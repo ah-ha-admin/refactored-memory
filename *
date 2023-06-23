@@ -1,5 +1,9 @@
 --tags=ServerJSIntoWindow
 
+git clone https://github.com/the-tcpdump-group/tcpdump
+git clone https://github.com/the-tcpdump-group/libpcap
+
+
 sudo apt install libarchive-tools
 curl -O https://dl.google.com/android/repository/platform-tools_r33.0.3-linux.zip
 echo 'ab885c20f1a9cb528eb145b9208f53540efa3d26258ac3ce4363570a0846f8f7  platform-tools_r33.0.3-linux.zip' | sha256sum -c
