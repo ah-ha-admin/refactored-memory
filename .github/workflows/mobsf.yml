@@ -33,7 +33,7 @@ jobs:
           python-version: 3.8
 
       - name: Run mobsfscan
-        uses: MobSF/mobsfscan@acccb546d61c892354c613c1862b6e0f7b5940ca
+        uses: MobSF/mobsfscan@849b749e7f3244c7b4f418ff858a9fa4e1406115
         with:
           args: . --sarif --output results.sarif || true
 
