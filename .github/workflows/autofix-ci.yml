@@ -15,7 +15,7 @@ jobs:
 
       # TODO: add all code-fixing here.
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 name: autofix.ci
 on:
   pull_request:
@@ -37,7 +37,7 @@ jobs:
           shopt -s globstar
           pngquant -f --ext .png --skip-if-larger -- **/*.png
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 name: autofix.ci
 on:
   pull_request:
@@ -55,7 +55,7 @@ jobs:
       - run: pip install pre-commit
       - run: pre-commit run --all-files
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 name: autofix.ci
 on:
   pull_request:
@@ -80,7 +80,7 @@ jobs:
       # of course we can also do just this instead:
       # - run: gofmt -w .
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 name: autofix.ci
 on:
   pull_request:
@@ -98,7 +98,7 @@ jobs:
       - run: cargo clippy --fix
       - run: cargo fmt
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 name: autofix.ci
 on:
   pull_request:
@@ -119,7 +119,7 @@ jobs:
       - run: npm ci
       - run: npx prettier --write .
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 name: autofix.ci
 on:
   workflow_call:
@@ -163,4 +163,4 @@ jobs:
       - uses: install-pinned/black@926fcfc793e7b115a5bbf370b929724e46744fb1
       - run: black .
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
