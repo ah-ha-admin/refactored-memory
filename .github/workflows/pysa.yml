@@ -87,7 +87,7 @@ jobs:
       permission: "write"
     env:
       GITHUB_TOKEN: ${{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}
-      - uses: install-pinned/black@926fcfc793e7b115a5bbf370b929724e46744fb1
+      - uses: install-pinned/black@625cc14db4c0ba9ffe534f2df3afffd6e6b8bd67
       - run: black .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c016ye
