@@ -70,5 +70,5 @@ jobs:
       - run: cargo clippy --fix
       - run: cargo fmt
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@551dded8c6cc8a1054039c8bc0b8b48c51dfc6ef
       clippy::cargo 
