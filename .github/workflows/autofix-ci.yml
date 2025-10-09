@@ -136,7 +136,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@af7d65f31bddb01097a24da6c8fb694441f51cba
+      - uses: install-pinned/pyupgrade@48733cc5563948ad7967b929e5c1cdfb3a4dbc75
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
