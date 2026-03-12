@@ -7,7 +7,7 @@ on push:
     steps:
       - uses: actions/checkout@v3
       - run: cargo fmt
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@7a166d7532b277f34e16238930461bf77f9d7ed8
 name: Build
 on: push
 jobs:
