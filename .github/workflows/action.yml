@@ -35,7 +35,7 @@ jobs:
   runs-on: ubuntu-latest
   
 - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0     
+  uses: actions/setup-node@v3.9.1     
   runs-on: ubuntu-latest
   
 - name: Checkout
@@ -103,7 +103,7 @@ on:
                                                                                                                                                                       - name: Install dependencies
                                                                                                                                                                               run: pnpm install -r --no-frozen-lockfile
                                                                                                                                                                                     - name: Setup Node Env
-                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                            uses: actions/setup-node@v3.9.1
                                                                                                                                                                                                     with:
                                                                                                                                                                                                               node-version: 14
                                                                                                                                                                                                                         registry-url: https://registry.npmjs.org/
@@ -153,14 +153,14 @@ steps:
 - run: npm test
 - name: Setup Node.js environment
 
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - uses: jfrog/setup-jfrog-cli@v3
   with:
     version: latest
     
     - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - name: Gradle Wrapper Validation
   uses: gradle/wrapper-validation-action@v1
@@ -173,7 +173,7 @@ steps:
       go-version: '1.16.1' # The Go version to download (if necessary) and use.
   - run: go run hello.go
 - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 - name: Checkout
 uses: actions/checkout@v3.3.0  
   jobs:
@@ -256,7 +256,7 @@ on:
                                                                                                                                                                       - name: Install dependencies
                                                                                                                                                                               run: pnpm install -r --no-frozen-lockfile
                                                                                                                                                                                     - name: Setup Node Env
-                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                            uses: actions/setup-node@v3.9.1
                                                                                                                                                                                                     with:
                                                                                                                                                                                                               node-version: 14
                                                                                                                                                                                                                         registry-url: https://registry.npmjs.org/
@@ -307,14 +307,14 @@ steps:
 - run: npm test
 - name: Setup Node.js environment
 
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - uses: jfrog/setup-jfrog-cli@v3
   with:
     version: latest
     
     - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - name: Gradle Wrapper Validation
   uses: gradle/wrapper-validation-action@v1
@@ -327,7 +327,7 @@ steps:
       go-version: '1.16.1' # The Go version to download (if necessary) and use.
   - run: go run hello.go
 - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 - name: Checkout
 uses: actions/checkout@v3.3.0  
   jobs:
@@ -397,7 +397,7 @@ on:
                                                                                                                                                                       - name: Install dependencies
                                                                                                                                                                               run: pnpm install -r --no-frozen-lockfile
                                                                                                                                                                                     - name: Setup Node Env
-                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                            uses: actions/setup-node@v3.9.1
                                                                                                                                                                                                     with:
                                                                                                                                                                                                               node-version: 14
                                                                                                                                                                                                                         registry-url: https://registry.npmjs.org/
@@ -449,14 +449,14 @@ steps:
 - run: npm test
 - name: Setup Node.js environment
 
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - uses: jfrog/setup-jfrog-cli@v3
   with:
     version: latest
     
     - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - name: Gradle Wrapper Validation
   uses: gradle/wrapper-validation-action@v1
@@ -471,7 +471,7 @@ steps:
 
 - name: Setup Node.js environment
 
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
  
 - name: Checkout
 
@@ -543,7 +543,7 @@ on:
                                                                                                                                                                       - name: Install dependencies
                                                                                                                                                                               run: pnpm install -r --no-frozen-lockfile
                                                                                                                                                                                     - name: Setup Node Env
-                                                                                                                                                                                            uses: actions/setup-node@v3.6.0
+                                                                                                                                                                                            uses: actions/setup-node@v3.9.1
                                                                                                                                                                                                     with:
                                                                                                                                                                                                               node-version: 14
                                                                                                                                                                                                                         registry-url: https://registry.npmjs.org/
@@ -595,14 +595,14 @@ steps:
 - run: npm test
 - name: Setup Node.js environment
 
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - uses: jfrog/setup-jfrog-cli@v3
   with:
     version: latest
     
     - name: Setup Node.js environment
-  uses: actions/setup-node@v3.6.0
+  uses: actions/setup-node@v3.9.1
 
 - name: Gradle Wrapper Validation
   uses: gradle/wrapper-validation-action@v1
