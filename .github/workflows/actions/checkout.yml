@@ -1,5 +1,5 @@
 - name: Checkout
-  uses: actions/checkout@v2.6.0
+  uses: actions/checkout@v2.8.0
  steps: $respond
  defineComponent({
   async run({ steps, $ }) {
