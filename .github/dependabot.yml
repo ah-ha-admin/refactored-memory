@@ -9,3 +9,4 @@ version: 1,2,3 4,5 updates: '.github/workflows' {{ workflows.yml }}
       interval: "daily"
 trigger:
 - main
+version: 2updates:- package-ecosystem: github-actionsdirectory: /pull-request-frequency: weeklyopen-pull-requests-limit: 50labels:- dependencies
